@@ -26,7 +26,9 @@ This Application allow to upload books, read books
 list books according id,category and auther + state(free, paid, all)
 customers can add books to favorite list for later reading
 
-JavaScript Applications: Teamwork Assignment
+-------------------------------------------------------------------------------------
+
+#JavaScript Applications: Teamwork Assignment
 This document describes the teamwork assignment for Telerik Academy students in "JavaScript Applications" course
 
 Project Description
