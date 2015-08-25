@@ -1,4 +1,3 @@
-
 body {background-color:black}
 .menu, .menu ul {
     list-style: none;
@@ -21,6 +20,7 @@ body {background-color:black}
     border-bottom: 2px solid #181818;
     border-top: 2px solid #303030;
     min-width: 120px;
+    box-shadow: 0px 1px 1px gray;
 }
 .menu > li {
     display: block;
@@ -60,7 +60,7 @@ body {background-color:black}
 .menu li:hover > a {
     border-radius: 5px 0 0 0;
     border-left: 3px solid #C4302B;
-    color: #C4302B;
+    color: #C4302B;    
 }
 
 /* submenu styles */
@@ -167,6 +167,16 @@ body {background-color:black}
     -ms-transition-delay: 350ms;
     -o-transition-delay: 350ms;
     transition-delay: 350ms;
+}
+.menu li:first-child {
+    border-radius: 20px 0 0 0;
+}
+.menu li:first-child:hover > a {
+    border-radius: 20px 0 0 0;
+}
+
+.menu li:last-child {
+    border-radius:0 0 20px  0;
 }
 
 .submenu li:nth-child(1) {
