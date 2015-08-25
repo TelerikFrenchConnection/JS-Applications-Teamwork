@@ -1,0 +1,67 @@
+.book-details-box {
+	font-family:Consolas;
+	display: block;
+	width: 600px;
+	height: 400px;
+	background: -moz-linear-gradient(#292929, #252525);
+    background: -ms-linear-gradient(#292929, #252525);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #292929), color-stop(100%, #252525));
+    background: -webkit-linear-gradient(#292929, #252525);
+    background: -o-linear-gradient(#292929, #252525);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#252525');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#252525')";
+    background: linear-gradient(#292929, #252525);
+	color:#808080;
+	border-left:2px dashed gray; 
+	border-right:2px dashed gray; 
+	border-radius: 60px 0 60px 0;
+	margin-bottom: 20px; margin-top: 20px;
+	-webkit-transition: all 1.8s ease-in-out;
+	-moz-transition: all 1.8s ease-in-out;
+	-o-transition: all 1.8s ease-in-out;
+	transition: all 1.8s ease-in-out;
+	padding: 20px 10px 0px 10px;
+}
+.book-details-box img {
+	float: left;
+	margin: 20px;
+	border-radius: 10px;
+	box-shadow:0 0 1px 1px gray;
+}
+.book-details-box div.book-details {
+	padding: 5px;
+}
+.book-details-box div.book-details a {
+    border-radius: 0;
+    color:#808080;
+    text-decoration: none;
+}
+.book-details-box div.book-details a:hover  {
+    border-radius: 0;
+    color: #ffffff;
+}
+.book-details-box .action-buttons {
+	padding-left: 2%;
+}
+.book-details-box .action-buttons button {
+	background-color: #1c1c1c;
+	color:#808080;
+	border:1px solid black;
+	margin-top:5px;
+	margin-left:10px;
+	font-size: 14px;
+	font-family: Consolas;
+	padding:10px;	
+}
+.book-details-box .action-buttons button:hover {
+	border:1px solid gray;
+	color: #C4302B; 
+	background-color: black;
+}
+.book-details-box .action-buttons button:first-child {
+    border-radius: 20px 0 0 0;
+}
+.book-details-box .action-buttons button:last-child {
+    border-radius:0 0 20px  0;
+}
+

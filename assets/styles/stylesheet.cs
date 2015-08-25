@@ -1,4 +1,13 @@
+body,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,img,input,li,ol,p,textarea,ul{
+    margin:0;
+    padding:0;
+    border:0}
+.wrapper {
+    width: 920px;
+    margin:0px auto;
+}
 body {background-color:black}
+
 .menu, .menu ul {
     list-style: none;
     padding: 0;
@@ -19,7 +28,7 @@ body {background-color:black}
 
     border-bottom: 2px solid #181818;
     border-top: 2px solid #303030;
-    min-width: 120px;
+    min-width: 100px;
     box-shadow: 0px 1px 1px gray;
 }
 .menu > li {
@@ -35,13 +44,12 @@ body {background-color:black}
     color: #808080;
     display: block;
     font-family: Consolas;
-    font-size: 20px;
-    line-height: 48px;
-    padding: 0 25px;
+    font-size: 18px;
+    line-height: 36px;
+    padding: 0 25px 0 25px;
     text-decoration: none;
     text-transform: uppercase;
 }
-
 
 .menu li:hover {
     background-color: #1c1c1c;
@@ -69,7 +77,7 @@ body {background-color:black}
     max-height: 0;
     position: absolute;
     top: 100%;
-    z-index: 0;
+    z-index: 0;   
 
     -webkit-perspective: 400px;
     -moz-perspective: 400px;
@@ -79,18 +87,23 @@ body {background-color:black}
 }
 .submenu li {
     opacity: 0;
-
+    min-width: 160px;
     -webkit-transform: rotateY(90deg);
     -moz-transform: rotateY(90deg);
     -ms-transform: rotateY(90deg);
     -o-transform: rotateY(90deg);
     transform: rotateY(90deg);
+    text-align:center;
 
     -webkit-transition: opacity .4s, -webkit-transform .5s;
     -moz-transition: opacity .4s, -moz-transform .5s;
     -ms-transition: opacity .4s, -ms-transform .5s;
     -o-transition: opacity .4s, -o-transform .5s;
     transition: opacity .4s, transform .5s;
+}
+.submenu a {
+    font-size:14px;
+    padding: 0 5px 0 5px;
 }
 .menu .submenu li:hover a {
     border-left: 3px solid #454545;
