@@ -26,6 +26,16 @@ This Application allow to upload books, read books
 list books according id,category and auther + state(free, paid, all)
 customers can add books to favorite list for later reading
 
+For the project we will use:
+ sammy.js as route loader, 
+ Q for backwards compatibility
+system.js 
+ Bootstrap и KendoUI for UI-a.
+more info:- http://telerikacademy.com/Courses/Courses/Details/110
+sammy.js - https://www.youtube.com/watch?v=AHkR5YjkSLU..
+
+
+
 -------------------------------------------------------------------------------------
 
 #JavaScript Applications: Teamwork Assignment
