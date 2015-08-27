@@ -2,70 +2,72 @@
 <html>
 <head>
 	<title>E-Library French Connection</title>
-	<link rel="stylesheet" type="text/css" href="assets/styles/stylesheet.cs">
+	<link rel="stylesheet" type="text/css" href="lib/bower_components/normalize-css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/styles.css">
 	<link rel="stylesheet" type="text/css" href="assets/styles/book-details.css">
 </head>
 <body>
-<div class="wrapper">
-	<ul class="menu">
-		<li><a href="#">Home</a></li>
-		<li><a href="#s1">Categories</a>
-			<ul class="submenu">
-				<li><a href="#">Action</a></li>
-				<li><a href="#">Mystery</a></li>
-				<li><a href="#">Science fiction</a></li>
-				<li><a href="#">Horror</a></li>
-				<li><a href="#">Science</a></li>
-				<li><a href="#">History</a></li>
-				<li><a href="#">Fantasy</a></li>
-				<li><a href="#">Comics</a></li>			
-			</ul>
-		</li>
-		<li><a href="#" class="search">Search</a></li>
-		<li><a href="#">My Library</a>
-		    <ul class="submenu">
-				<li><a href="#">Submenu a</a></li>
-				<li><a href="#">Submenu b</a></li>
-				<li><a href="#">Submenu c</a></li>
-				<li><a href="#">Submenu d</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Log in</a></li>
-		<li><a href="#">Sign up</a></li>	
-		<li><a href="https://www.script-tutorials.com/whirling-dropdown-menu/">Contact us</a></li>
-	</ul>
-
-    <div id="content">
-    	<div class="book-details-box">
-			<div class="inner">
-				<img alt="sample image" src="assets/images/sample.jpg" width="200" height="300">
-				<div class="book-details">
-					<h1>Brave New World</h1>
-					<h2><a href="#">Aldous Huxley</a></h2>
-					<p class="book-review">
-					THIS IS SAMPLE BOOK DETAILS PAGE
-					(this is NOT the book gallery thumbnails page)
-					(template with handlebars will be ccreated later in /views)
-					All buttons / designs / colors are just temp for testing purposes
-					<br>
-					<br>
-					{{this.review}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nibh ligula, malesuada sit amet finibus sit amet, euismod ut lorem. Maecenas convallis odio vel turpis feugiat, id pellentesque sapien tincidunt.
-					 Suspendisse potenti. Donec vitae condimentum purus, ac feugiat ipsum. Morbi condimentum sed augue ut pharetra.
-					</p>		
-			</div>
-			<div class="action-buttons">
-				<button type="button">Sample button</button>
-				<button type="button">Read Sample</button>
-				<button type="button">Add to My Library</button>
-				<button type="button">Buy Now</button>
-			</div>		
-		</div>	
-	</div>	
-
-    </div>
-</div>
+	<div class="wrapper">
+		<ul class="menu">
+			<li><a href="#">Home</a></li>
+			<li><a href="#s1">Categories</a>
+				<ul class="submenu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Mystery</a></li>
+					<li><a href="#">Science fiction</a></li>
+					<li><a href="#">Horror</a></li>
+					<li><a href="#">Science</a></li>
+					<li><a href="#">History</a></li>
+					<li><a href="#">Fantasy</a></li>
+					<li><a href="#">Comics</a></li>			
+				</ul>
+			</li>
+			<li><a href="#" class="search">Search</a></li>
+			<li><a href="#">My Library</a>
+				<ul class="submenu">
+					<li><a href="#">Submenu a</a></li>
+					<li><a href="#">Submenu b</a></li>
+					<li><a href="#">Submenu c</a></li>
+					<li><a href="#">Submenu d</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Log in</a></li>
+			<li><a href="#">Sign up</a></li>	
+			<li><a href="https://www.script-tutorials.com/whirling-dropdown-menu/">Contact us</a></li>
+		</ul>
 	
+		<div id="content">
+			<div class="book-details-box">
+				<div class="inner">
+					<img alt="sample image" src="assets/images/sample.jpg" width="200" height="300">
+					<div class="book-details">
+						<h1>Brave New World</h1>
+						<h2><a href="#">Aldous Huxley</a></h2>
+						<p class="book-review">
+						THIS IS SAMPLE BOOK DETAILS PAGE
+						(this is NOT the book gallery thumbnails page)
+						(template with handlebars will be ccreated later in /views)
+						All buttons / designs / colors are just temp for testing purposes
+						<br>
+						<br>
+						{{this.review}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nibh ligula, malesuada sit amet finibus sit amet, euismod ut lorem. Maecenas convallis odio vel turpis feugiat, id pellentesque sapien tincidunt.
+							Suspendisse potenti. Donec vitae condimentum purus, ac feugiat ipsum. Morbi condimentum sed augue ut pharetra.
+						</p>		
+					</div>
+					<div class="action-buttons">
+						<button type="button">Sample button</button>
+						<button type="button">Read Sample</button>
+						<button type="button">Add to My Library</button>
+						<button type="button">Buy Now</button>
+					</div>		
+				</div>	
+			</div>	
+		</div>
+	</div>
 	
+	<script src="lib/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="lib/bower_components/system.js/dist/system.js"></script>
 	<script src="config.js"></script>
 	<script>
