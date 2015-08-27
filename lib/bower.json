@@ -19,6 +19,9 @@
     "system.js": "",
 	"sammy": "",
 	"bootstrap": "",
-	"q": ""
+	"q": "",
+	"chai": "",
+	"mustache.js": "",
+	"underscore": ""
   }
 }
