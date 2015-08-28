@@ -11,14 +11,14 @@ import signupController from './controllers/signupController.js';
 
 export function init($element) {
 	var app = sammy('#content', function () {
-		this.before({}, function() {
+		this.before({}, function () {
 			$('#content').html('');
 		});
 
 		this.get('#/', function () {
 			homeController.load();
 		});
-		
+
 		this.get('#/home', function () {
             homeController.load();
 		});
@@ -26,7 +26,7 @@ export function init($element) {
 		this.get('#/categories', function () {
 			categoriesController.load();
 		});
-		
+
 		this.get('#/categories/:categoryName', function () {
 			var category = this.params['categoryName'];
             categoriesController.load(category);
@@ -35,33 +35,33 @@ export function init($element) {
 		this.get('#/library', function () {
 			libraryController.load()
 		});
-		
+
 		this.get('#/library/:bookId', function () {
 			var bookId = this.params['bookId'];
 			libraryController.load(bookId)
 		});
-		
-		this.get('#/search', function() {
+
+		this.get('#/search', function () {
             searchController.load()
 		});
-		
-		this.get('#/search/:string', function() {
+
+		this.get('#/search/:string', function () {
 			var searchString = this.params['string'];
             searchController.load(searchString);
 		});
-		
-		this.get('#/contact', function() {
+
+		this.get('#/contact', function () {
 			contactController.load()
 		});
-		
-		this.get('#/login', function() {
+
+		this.get('#/login', function () {
 			loginController.load()
 		});
-		
-		this.get('#/signup', function() {
+
+		this.get('#/signup', function () {
 			signupController.load()
 		});
 	});
-	
-	app.run('#/');		
+
+	app.run('#/');
 }
