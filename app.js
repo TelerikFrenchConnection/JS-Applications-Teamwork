@@ -9,58 +9,29 @@ import contactController from './controllers/contactController.js';
 import loginController from './controllers/loginController.js';
 import signupController from './controllers/signupController.js';
 
-export function init($element) {
-	var app = sammy('#content', function () {
+export function init(element) {
+	var app = sammy(element, function () {
 		this.before({}, function () {
-			$('#content').html('');
-		});
+			$(element).html('');
+        });
 
-		this.get('#/', function () {
-			homeController.load();
-		});
+		this.get('#/', homeController.load);
+		this.get('#/home', homeController.load);
 
-		this.get('#/home', function () {
-			homeController.load();
-		});
+		this.get('#/categories', categoriesController.load);
+		this.get('#/categories/:categoryName', categoriesController.load);
 
-		this.get('#/categories', function () {
-			categoriesController.load();
-		});
+		this.get('#/library', libraryController.load);
+		this.get('#/library/:bookId', libraryController.load);
 
-		this.get('#/categories/:categoryName', function () {
-			var category = this.params['categoryName'];
-			categoriesController.load(category);
-		});
+		this.get('#/search', searchController.load);
+		this.get('#/search/:string', searchController.load);
 
-		this.get('#/library', function () {
-			libraryController.load()
-		});
+		this.get('#/contact', contactController.load);
 
-		this.get('#/library/:bookId', function () {
-			var bookId = this.params['bookId'];
-			libraryController.load(bookId)
-		});
+		this.get('#/login', loginController.load);
 
-		this.get('#/search', function () {
-			searchController.load()
-		});
-
-		this.get('#/search/:string', function () {
-			var searchString = this.params['string'];
-			searchController.load(searchString);
-		});
-
-		this.get('#/contact', function () {
-			contactController.load()
-		});
-
-		this.get('#/login', function () {
-			loginController.load()
-		});
-
-		this.get('#/signup', function () {
-			signupController.load()
-		});
+		this.get('#/signup', signupController.load);
 	});
 
 	app.run('#/');
