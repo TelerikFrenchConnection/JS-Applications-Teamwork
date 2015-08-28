@@ -20,7 +20,7 @@ export function init($element) {
 		});
 
 		this.get('#/home', function () {
-            homeController.load();
+			homeController.load();
 		});
 
 		this.get('#/categories', function () {
@@ -29,7 +29,7 @@ export function init($element) {
 
 		this.get('#/categories/:categoryName', function () {
 			var category = this.params['categoryName'];
-            categoriesController.load(category);
+			categoriesController.load(category);
 		});
 
 		this.get('#/library', function () {
@@ -42,12 +42,12 @@ export function init($element) {
 		});
 
 		this.get('#/search', function () {
-            searchController.load()
+			searchController.load()
 		});
 
 		this.get('#/search/:string', function () {
 			var searchString = this.params['string'];
-            searchController.load(searchString);
+			searchController.load(searchString);
 		});
 
 		this.get('#/contact', function () {
