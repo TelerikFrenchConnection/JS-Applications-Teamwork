@@ -1,0 +1,14 @@
+{{#each book}}
+<div class="box">
+	<div class="inner">
+		<p>
+			<img alt="sample image" src="../assets/images/sample.jpg" width="200" height="300">
+		</p>
+		<div>
+			<h3>{{this.title}}</h3>
+			<h4>{{this.author}}</h4>
+			<p class="book-review">{{this.review}}</p>
+		</div>
+	</div>	
+</div>	
+{{/each}}
