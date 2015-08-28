@@ -14,7 +14,7 @@ export function init($element) {
 		});
 		
 		this.get('#/home', function () {
-			
+            homeController.load();
 		});
 
 		this.get('#/categories', function () {
@@ -35,7 +35,7 @@ export function init($element) {
 		});
 		
 		this.get('#/search', function() {
-			alert('it works!');
+
 		});
 		
 		this.get('#/search/:string', function() {

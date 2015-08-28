@@ -1,10 +1,9 @@
-
-
 function load() {
-	//let view = $.load('./views/home.html');
-	$('#content').load('./views/home.html');
+    $.get('./views/home.html', function(result) {
+        $('#content').append(result);
+    });
 }
 
 export default {
-	load: load
+    load: load
 }
