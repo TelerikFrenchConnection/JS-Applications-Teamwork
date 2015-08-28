@@ -3,47 +3,46 @@ import 'parse';
 
 Parse.initialize("QNCJAvVfAkxaHeSdMr0aB2rgIZrtn56qkeWavnKu", "7c8uGlEb0QURsxyTFyYgTKS7br4sb9cj4jpCTVcb");
 
-function addData(dataClass, dataObject) {
-    var DataClass = Parse.Object.extend(dataClass);
-    var data = new DataClass();
-    data.save(dataObject);
-}
+// For general data add/remove
+var data = {
+	add: function (dataClass, dataObject) {
+		var DataClass = Parse.Object.extend(dataClass);
+		var data = new DataClass();
+		data.save(dataObject);
+	},
+	get: function (dataClass, callback) {
+		var query = new Parse.Query(Parse.Object.extend(dataClass));
+		return query.find().then(callback);
+	},
+	getQuery: function(dataClass) {
+        // Allows usage of Parse sorting functions
+		return new Parse.Query(Parse.Object.extend(dataClass));
+	}
+};
 
-function getData() {
+var user = {
+	signUp: function(username, password, firstname, lastname, email) {
+		var newUser = new Parse.User;
 
-}
+		newUser.signUp({
+			username, password, firstname, lastname, email
+		}, {
+			success: function(user) {},
+			error: function(user, error) {}
+		});
+	},
+	login: function(username, password) {
+		Parse.User.logIn(username, password, {
+			success: function(user) {},
+			error: function(user, error) {}
+		})
+	},
+	logout: function() {
+		Parse.User.logOut();
+	}
+};
 
 export default {
-    addData,
-    getData
+	data,
+	user
 }
-
-/*
-### Testing different data structures ###
-
-var books = (function(){
-    var Book = Parse.Object.extend('Book');
-
-    return books = {
-        create: function(someParams) {
-            var testBook = new Book();
-            testBook.set('title', 'Book of tests');
-            testBook.set('category', 'horror');
-            //testBook.save() - saves to server, don't uncomment, spam hurts ;(
-        },
-        get: function(id) {
-
-        }
-    };
-})();
-
-var accounts = (function(){
-    var Account = Parse.Object.extend('Account');
-
-    return accounts = {
-        login: function(){},
-        signup: function(){}
-    };
-})();
-
-*/
