@@ -12,6 +12,7 @@ System.config({
 		q: 'lib/bower_components/q/q.js',
 		chai: 'lib/bower_components/chai/chai.js',
 		handlebars: 'lib/bower_components/handlebars/handlebars.min.js',
-		underscore: 'lib/bower_components/underscore/underscore-min.js'
+		underscore: 'lib/bower_components/underscore/underscore-min.js',
+		parse: 'lib/bower_components/parse-1.5.0/index.js'
 	}
 });

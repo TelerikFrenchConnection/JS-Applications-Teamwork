@@ -20,6 +20,7 @@
     "handlebars": "~3.0.3",
     "jquery": "~2.1.4",
     "normalize-css": "~3.0.3",
+    "parse-1.5.0": "http://www.parsecdn.com/js/parse-1.5.0.js",
     "q": "~2.0.2",
     "sammy": "~0.7.6",
     "system.js": "~0.18.17",
