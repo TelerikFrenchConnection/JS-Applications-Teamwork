@@ -17,7 +17,7 @@ var templatesHelper = (function() {
     function append(templateName, data, target) {
         return get(templateName).then(function(template) {
             var templateCompiled = Handlebars.compile(template);
-            var templateHTML = templateCompiled(data);
+            var templateHTML = templateCompiled(data.attributes);
             $(target).append(templateHTML);
         })
     }
