@@ -38,3 +38,15 @@ div#content .row .thumbnail #book-cover {
     height: 300px;
     margin-right: 0.5em;
 }
+.left {
+    float: left;
+}
+div.box {
+    margin-left: 5%;
+    margin-top: 2%;
+}
+div#library-content {
+    margin 0;
+    padding 0;
+    
+}

@@ -9,10 +9,10 @@ import exampleModel from 'models/exampleModel.js';
 var exampleController = (function(){
     function load() {
         pagesHelper.append('example');
-        var model = exampleModel.init('sdfsdf', 'Gosho');
+        var model = exampleModel.init('aaaa', 'Gosho');
 
 
-        //db.data.add('Example', model);
+        db.data.add('Example', model);
 
 
 

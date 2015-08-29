@@ -1,80 +1,78 @@
-var Book = (function() {
-    import validate from './helpers/validatorHelper.js';
+import './helpers/validatorHelper.js';
 
-    var Book = {
-        init: function(title, author, category, isbn, price, pictureURL, description) {
-            this.title = title;
-            this.author = author;
-            this.category = category;
-            this.isbn = isbn;
-            this.price = price;
-            this.pictureURL = pictureURL;
-            this.description = description;
-            return this;
-        },
+class Book {
+    constructor(title, author, category, isbn, price, pictureURL, description) {
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.isbn = isbn;
+        this.price = price;
+        this.pictureURL = pictureURL;
+        this.description = description;
+        return this;
+    }
 
-        get title() {
-            return this._title;
-        },
+    get titleProperty() {
+        return this.title;
+    }
 
-        set title(newTitle) {
-            validate.isString(newTitle, 'Title');
-            this._title = newTitle;
-        },
+    set titleProperty(newTitle) {
+        validate.isString(newTitle, 'Title');
+        this.title = newTitle;
+    }
 
-        get author() {
-            return this._author;
-        },
+    get authorProperty() {
+        return this.author;
+    }
 
-        set author(newAuthor) {
-            validate.isString(newAuthor, 'Author');
-            this._author = newAuthor;
-        },
+    set authorProperty(newAuthor) {
+        validate.isString(newAuthor, 'Author');
+        this.author = newAuthor;
+    }
 
-        get category() {
-            return this._category;
-        },
+    get categoryProperty() {
+        return this._category;
+    }
 
-        set category(newCategory) {
-            validate.isString(newCategory, 'Category');
-            this._category = newCategory;
-        },
+    set categoryProperty(newCategory) {
+        validate.isString(newCategory, 'Category');
+        this.category = newCategory;
+    }
 
-        get isbn() {
-            return this._isbn;
-        },
+    get isbnProperty() {
+        return this._isbn;
+    }
 
-        set isbn(newIsbn) {
-            validate.positiveNumber(newIsbn, 'Isbn');
-            this._isbn = newIsbn;
-        },
+    set isbnProperty(newIsbn) {
+        validate.isString(newIsbn, 'Isbn');
+        this.isbn = newIsbn;
+    }
 
-        get price() {
-            return this._price;
-        },
+    get priceProperty() {
+        return this.price;
+    }
 
-        set price(newPrice) {
-            validate.price(newPrice, 'Price');
-            this._price = newPrice;
-        },
+    set priceProperty(newPrice) {
+        validate.price(newPrice, 'Price');
+        this.price = newPrice;
+    }
 
-        get pictureURL() {
-            return this._pictureURL;
-        },
+    get pictureURLProperty() {
+        return this.pictureURL;
+    }
 
-        set pictureURL(newPictureUrl) {
-            this._pictureUrl = newPictureUrl;
-        },
+    set pictureURLProperty(newPictureUrl) {
+        this.pictureUrl = newPictureUrl;
+    }
 
-        get description() {
-            return this._description;
-        },
+    get descriptionProperty() {
+        return this.description;
+    }
 
-        set description(newDescription) {
-            validate.isString(newDescription, 'Description');
-            this._description = newDescription;
-        }
+    set descriptionProperty(newDescription) {
+        validate.isString(newDescription, 'Description');
+        this.description = newDescription;
+    }
+}
 
-    };
-    return Book;
-}());
+export default Book;
