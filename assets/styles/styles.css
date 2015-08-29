@@ -4,15 +4,12 @@ body,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,img,input,li,ol,p,textarea,ul{
     border:0
 }
 body .wrapper {
-    width: 920px;
+    width: 1200px;
     margin:0px auto;
 }
 body {
     font-family: Consolas;
     font-size: 18px;
-}
-#menu .nav .nav-pills{
-    color: black;
 }
 div#add-book {
     width: 240px;
@@ -21,10 +18,20 @@ div#add-book {
     border-radius: 10px;
     margin: 15px;
 }
-#add-book h3 {
+div#add-book h3 {
     padding-left: 24px;
 }
 .form-control{
     display: block;
     margin-bottom: 4px;
+}
+div#content {
+    display: inline-block;
+    font-size: 0.8em; 
+}
+div#content .row .thumbnail #book-cover {
+    float:left;
+    width:200px;
+    height: 300px;
+    margin-right: 0.5em;
 }
