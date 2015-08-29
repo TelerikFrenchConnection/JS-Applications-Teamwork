@@ -14,7 +14,7 @@ var Book = (function() {
         },
 
         get title() {
-            return this.title;
+            return this._title;
         },
 
         set title(newTitle) {
@@ -23,7 +23,7 @@ var Book = (function() {
         },
 
         get author() {
-            return this.author;
+            return this._author;
         },
 
         set author(newAuthor) {
@@ -32,7 +32,7 @@ var Book = (function() {
         },
 
         get category() {
-            return this.category;
+            return this._category;
         },
 
         set category(newCategory) {
@@ -41,7 +41,7 @@ var Book = (function() {
         },
 
         get isbn() {
-            return this.isbn;
+            return this._isbn;
         },
 
         set isbn(newIsbn) {
@@ -50,7 +50,7 @@ var Book = (function() {
         },
 
         get price() {
-            return this.price;
+            return this._price;
         },
 
         set price(newPrice) {
@@ -59,7 +59,7 @@ var Book = (function() {
         },
 
         get pictureURL() {
-            return this.pictureURL;
+            return this._pictureURL;
         },
 
         set pictureURL(newPictureUrl) {
@@ -67,7 +67,7 @@ var Book = (function() {
         },
 
         get description() {
-            return this.description;
+            return this._description;
         },
 
         set description(newDescription) {
