@@ -1,4 +1,5 @@
 var partialHelper = (function(){
+   'use strict';
     function get(partialName) {
         return new Promise(function(success){
             var path = 'partials/' + partialName + '.html';
