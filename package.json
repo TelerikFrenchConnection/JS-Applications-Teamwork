@@ -1,0 +1,21 @@
+{
+  "jspm": {
+    "directories": {
+      "packages": "lib"
+    },
+    "dependencies": {
+      "bootstrap": "github:twbs/bootstrap@^3.3.5",
+      "handlebars": "github:components/handlebars.js@^3.0.3",
+      "jquery": "github:components/jquery@^2.1.4",
+      "parse": "github:albemuth/parse-js-sdk@^1.4.2",
+      "sammy": "npm:knottie-sammy@^0.7.6",
+      "underscore": "npm:underscore@^1.8.3",
+      "viewer": "npm:viewer@^0.10.10"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
+  }
+}

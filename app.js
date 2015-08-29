@@ -10,7 +10,7 @@ import loginController from './controllers/loginController.js';
 import signupController from './controllers/signupController.js';
 
 export function init(element) {
-	var app = sammy(element, function () {
+	var app = Sammy(element, function () {
 		this.before({}, function () {
 			$(element).html('');
         });
