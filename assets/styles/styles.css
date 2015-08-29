@@ -4,12 +4,15 @@ body,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,img,input,li,ol,p,textarea,ul{
     border:0
 }
 body .wrapper {
-    width: 1200px;
+    width: 1000px;
     margin:0px auto;
 }
 body {
     font-family: Consolas;
     font-size: 18px;
+}
+div.jumbotron {
+    max-width: 1000px;
 }
 div#add-book {
     width: 240px;
