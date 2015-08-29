@@ -9,21 +9,21 @@
 };
 
 validate = {
-    IfUndefined: function (value, name) {
+    ifUndefined: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         if (value === undefined) {
             throw new Error(name + ' cannot be undefined');
         }
     },
 
-    IfNumber: function (value, name) {
+    ifNumber: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         if (typeof value !== 'number') {
             throw new Error(name + ' must be a number');
         }
     },
 
-    String: function (value, name) {
+    isString: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         this.IfUndefined(value, name);
 
@@ -38,7 +38,7 @@ validate = {
         }
     },
 
-    PositiveNumber: function (value, name) {
+    positiveNumber : function (value, name) {
         name = name || CONSTANTS.DEFALT;
         this.IfUndefined(value, name);
         this.IfNumber(value, name);
@@ -48,31 +48,21 @@ validate = {
         }
     },
 
-    Id: function (id) {
-        this.IfUndefined(id, 'Object id');
-        if (typeof id !== 'number') {
-            id = id.id;
-        }
 
-        this.IfUndefined(id, 'Object must have id');
-        return id;
-    },
-
-    Email: function (value, name) {
+    email: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         if (!CONSTANTS.EMAIL_PATTERN.test(value))
             throw new Error(name + ' is Invalid')
     },
 
-    Password: function (value, name) {
+    password: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         if (!CONSTANTS.PASSWORD_PATTERN.test(value)) {
             throw new Error(name + ' must be between 8-20 symbols and to contains at least one: Uppercase letter, lowcase letter, and number ')
         }
-
     },
 
-    UserName: function (value, name) {
+    userName: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         if (!CONSTANTS.USER_NAME_PATTERN(name)) {
             throw new Error(name + ' must be between 6-15 symbols and can contain only letters, numbers and underscore')
@@ -80,7 +70,3 @@ validate = {
     }
 };
 
-export default {
-    CONSTANTS,
-    validate
-}
