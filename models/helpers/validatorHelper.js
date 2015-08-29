@@ -8,24 +8,24 @@
     DEFALT: 'Value'
 };
 
-validator = {
-    validateIfUndefined: function (value, name) {
+validate = {
+    IfUndefined: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         if (value === undefined) {
             throw new Error(name + ' cannot be undefined');
         }
     },
 
-    validateIfNumber: function (value, name) {
+    IfNumber: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         if (typeof value !== 'number') {
             throw new Error(name + ' must be a number');
         }
     },
 
-    validateString: function (value, name) {
+    String: function (value, name) {
         name = name || CONSTANTS.DEFALT;
-        this.validateIfUndefined(value, name);
+        this.IfUndefined(value, name);
 
         if (typeof value !== 'string') {
             throw new Error(name + ' must be a string');
@@ -38,44 +38,49 @@ validator = {
         }
     },
 
-    validatePositiveNumber: function (value, name) {
+    PositiveNumber: function (value, name) {
         name = name || CONSTANTS.DEFALT;
-        this.validateIfUndefined(value, name);
-        this.validateIfNumber(value, name);
+        this.IfUndefined(value, name);
+        this.IfNumber(value, name);
 
         if (value <= 0) {
             throw new Error(name + ' must be positive number');
         }
     },
 
-    validateId: function (id) {
-        this.validateIfUndefined(id, 'Object id');
+    Id: function (id) {
+        this.IfUndefined(id, 'Object id');
         if (typeof id !== 'number') {
             id = id.id;
         }
 
-        this.validateIfUndefined(id, 'Object must have id');
+        this.IfUndefined(id, 'Object must have id');
         return id;
     },
 
-    validateEmail: function (value, name) {
+    Email: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         if (!CONSTANTS.EMAIL_PATTERN.test(value))
             throw new Error(name + ' is Invalid')
     },
 
-    validatePassword: function (value, name) {
+    Password: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         if (!CONSTANTS.PASSWORD_PATTERN.test(value)) {
-            throw new Error(name + ' must be between 8-20 symbols and to contains at least one: Uppercase letter,lowcase letter, and number ')
+            throw new Error(name + ' must be between 8-20 symbols and to contains at least one: Uppercase letter, lowcase letter, and number ')
         }
 
     },
 
-    validateUserName: function (value, name) {
+    UserName: function (value, name) {
         name = name || CONSTANTS.DEFALT;
         if (!CONSTANTS.USER_NAME_PATTERN(name)) {
             throw new Error(name + ' must be between 6-15 symbols and can contain only letters, numbers and underscore')
         }
     }
 };
+
+export default {
+    CONSTANTS,
+    validate
+}
