@@ -8,7 +8,7 @@ var templatesHelper = (function() {
             $.get(path).then(function(result){
                 success(result);
             }, function(error) {
-                onsole.log('Failed to load template ' + templateName);
+                console.log('Failed to load template ' + templateName);
                 console.log(error);
             })
         })
@@ -17,7 +17,8 @@ var templatesHelper = (function() {
     function append(templateName, data, target) {
         return get(templateName).then(function(template) {
             var templateCompiled = Handlebars.compile(template);
-            $(target).append(templateCompiled);
+            var templateHTML = templateCompiled(data);
+            $(target).append(templateHTML);
         })
     }
 

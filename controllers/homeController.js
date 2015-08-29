@@ -20,7 +20,7 @@ var homeController = (function () {
 
         db.data.get('Book', function (books) {
             books.forEach(function (book) {
-                console.log(book.get('title'));
+                console.log(book.attributes['category']);
             })
         })
     }
