@@ -8,6 +8,7 @@ import searchController from './controllers/searchController.js';
 import contactController from './controllers/contactController.js';
 import loginController from './controllers/loginController.js';
 import signupController from './controllers/signupController.js';
+import exampleController from './controllers/exampleController.js'
 
 export function init(element) {
 	var app = Sammy(element, function () {
@@ -32,6 +33,8 @@ export function init(element) {
 		this.get('#/login', loginController.load);
 
 		this.get('#/signup', signupController.load);
+
+        this.get('#/example', exampleController.load);
 	});
 
 	app.run('#/');
