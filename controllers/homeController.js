@@ -1,15 +1,14 @@
 import _ from 'underscore';
 import db from '../models/db.js';
 
+import templatesHelper from '../views/helpers/templatesHelper.js';
+import pagesHelper from '../views/helpers/pagesHelper.js';
+
 // import OOP models for home page
 
 var homeController = (function () {
     function load() {
-        $.get('./views/home.html', function (result) {
-            $('#content').append(result);
-        });
-
-        exampleBooks();
+        pagesHelper.append('home');
     }
 
     function exampleBooks() {
