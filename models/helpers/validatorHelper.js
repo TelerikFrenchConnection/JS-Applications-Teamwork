@@ -51,8 +51,9 @@ validate = {
 
     email: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
-        if (!CONSTANTS.EMAIL_PATTERN.test(value))
-            throw new Error(name + ' is Invalid')
+        if(!CONSTANTS.EMAIL_PATTERN.test(value)){
+            throw new Error(name + ' is Invalid');
+        }
     },
 
     password: function (value, name) {
