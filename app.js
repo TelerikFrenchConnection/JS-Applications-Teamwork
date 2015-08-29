@@ -9,6 +9,8 @@ import contactController from './controllers/contactController.js';
 import loginController from './controllers/loginController.js';
 import signupController from './controllers/signupController.js';
 import exampleController from './controllers/exampleController.js'
+import adminController from './controllers/adminController.js';
+
 
 export function init(element) {
 	var app = Sammy(element, function () {
@@ -35,6 +37,9 @@ export function init(element) {
 		this.get('#/signup', signupController.load);
 
         this.get('#/example', exampleController.load);
+
+        this.get('#/admin', adminController.load);
+        this.get('#/admin/addBook', adminController.addBook);
 	});
 
 	app.run('#/');

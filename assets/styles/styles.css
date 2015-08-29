@@ -248,3 +248,18 @@ body {background-color:black}
     -o-transition-delay: 0s;
     transition-delay: 0s;
 }
+div#add-book {
+    font-family: Consolas;
+    width: 240px;
+    height: 340px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 15px;
+}
+#add-book h3 {
+    padding-left: 24px;
+}
+.form-control{
+    display: block;
+    margin-bottom: 4px;
+}
