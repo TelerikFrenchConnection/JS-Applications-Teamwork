@@ -2,12 +2,13 @@
 	<h3>Add new book</h3>
 	<form class="navbar-form navbar-left" id="admin-book-form" role="search" method="post">
 	  <div class="form-group">
-	    <input type="text" class="form-control" placeholder="add Book Title">
-	    <input type="text" class="form-control" placeholder="add Book Author">
-	    <input type="text" class="form-control" placeholder="add Book Category">
-	    <input type="text" class="form-control" placeholder="add ISBN number">
-	    <input type="text" class="form-control" placeholder="add Book Cover URL">
-	    <input type="textarea" class="form-control" placeholder="add Book Description">
+	    <input type="text" class="form-control" name="book-title" placeholder="add Book Title">
+	    <input type="text" class="form-control" name="book-author" placeholder="add Book Author">
+	    <input type="text" class="form-control" name="book-category" placeholder="add Book Category">
+	    <input type="text" class="form-control" name="book-isbn" placeholder="add ISBN number">
+	    <input type="text" class="form-control" name="book-price" placeholder="add Price">
+	    <input type="text" class="form-control" name="book-image-url" placeholder="add Book Cover URL">
+	    <input type="textarea" class="form-control" name="book-description" placeholder="add Book Description">
 	  </div>
 	  <button type="submit" class="btn btn-default">Submit</button>
 	  <button type="button" class="btn btn-default" onClick="$('#admin-book-form').trigger('reset')">Clear</button>
