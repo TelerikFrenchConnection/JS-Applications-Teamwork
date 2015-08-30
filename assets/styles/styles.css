@@ -7,3 +7,13 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 .login-form {
     max-width : 70%;
 }
+#library-content .inner {
+	margin-left: 5%;
+	margin-top: 5%;
+}
+#library-content .inner #book-cover {
+	cursor: pointer;
+}
+.left {
+	float: left;
+}
