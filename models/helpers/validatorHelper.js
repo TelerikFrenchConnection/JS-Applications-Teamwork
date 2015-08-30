@@ -2,10 +2,12 @@
     TEXT_MIN_LENGTH: 2,
     TEXT_MAX_LENGTH: 30,
     PASSWORD_PATTERN: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/,
-    USER_NAME_PATTERN: /(^\w+$).{6,15}/,
+    USER_NAME_PATTERN: /\S[_a-zA-Z0-9]{6,15}/,
     EMAIL_PATTERN: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
+    SPECIAL_SYMBOLS_PATTERN: /[^.%a-zA-Z0-9 ]/g,
     MAX_NUMBER: 9007199254740992,
-    DEFAULT: 'Value'
+    DEFAULT: 'Value',
+    SPECIAL_SYMBOLS_MESSAGE:' -special characters not allowed except . and % '
 };
 
 validate = {
@@ -59,14 +61,14 @@ validate = {
     password: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (!CONSTANTS.PASSWORD_PATTERN.test(value)) {
-            throw new Error(name + ' must be between 8-20 symbols and to contains at least one: Uppercase letter, lowcase letter, and number ')
+            throw new Error(name + ' must contain one Uppercase, lowcase or number, 8-20 symbols ')
         }
     },
 
     userName: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
-        if (!CONSTANTS.USER_NAME_PATTERN(name)) {
-            throw new Error(name + ' must be between 6-15 symbols and can contain only letters, numbers and underscore')
+        if (!CONSTANTS.USER_NAME_PATTERN.test(name)) {
+            throw new Error(name + ' must contain only letters, numbers and underscore 6-15 symbols')
         }
     },
 
@@ -74,6 +76,13 @@ validate = {
         name = name || CONSTANTS.DEFAULT;
         this.ifUndefined(value, name);
         this.ifNumber(value, name);
+    },
+
+    safeText: function (value, name){
+        name = name || CONSTANTS.DEFAULT;
+        if(CONSTANTS.SPECIAL_SYMBOLS_PATTERN.test(value)){
+            throw new Error(name, CONSTANTS.SPECIAL_SYMBOLS_MESSAGE)
+        }
     }
 };
 

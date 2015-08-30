@@ -13,7 +13,7 @@ class Contact {
     }
 
     set emailProperty(newEmail) {
-        validate.email(newEmail, 'email');
+        validate.email(newEmail, 'Email');
         this.email = newEmail;
     }
 
@@ -22,7 +22,7 @@ class Contact {
     }
 
     set nameProperty(newName) {
-        validate.isString(newName, 'title');
+        validate.isString(newName, 'Name');
         this.name = newName;
     }
 
@@ -31,7 +31,7 @@ class Contact {
     }
 
     set titleProperty(newTitle) {
-        validate.isString(newTitle, 'title');
+        validate.isString(newTitle, 'Title');
         this.title = newTitle;
     }
 
@@ -40,7 +40,7 @@ class Contact {
     }
 
     set textProperty(newText) {
-        //TODO: validation against harmfull script
+        validate.safeText(newText, 'Text');
         this.text = newText;
     }
 }
