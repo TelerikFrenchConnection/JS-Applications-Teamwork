@@ -8,7 +8,6 @@ import accountController from './controllers/accountController.js';
 import exampleController from './controllers/exampleController.js';
 import adminController from './controllers/adminController.js';
 
-
 export function init(element) {
 	var app = Sammy(element, function () {
 		this.before({}, function () {
