@@ -8,9 +8,9 @@ System.config({
     ]
   },
   paths: {
-      "github:*": "lib/github/*",
-      "npm:*": "lib/npm/*",
-      "dbContext": "./models/database/dbContext.js"
+    "github:*": "lib/github/*",
+    "npm:*": "lib/npm/*",
+    "dbContext": "./models/database/dbContext.js"
   },
 
   map: {
