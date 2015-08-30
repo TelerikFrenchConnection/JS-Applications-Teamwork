@@ -2,9 +2,7 @@ import $ from 'jquery';
 import sammy from 'sammy';
 
 import homeController from './controllers/homeController.js';
-import categoriesController from './controllers/categoriesController.js';
 import libraryController from './controllers/libraryController.js';
-import searchController from './controllers/searchController.js';
 import contactController from './controllers/contactController.js';
 import accountController from './controllers/accountController.js';
 import exampleController from './controllers/exampleController.js'
@@ -19,17 +17,13 @@ export function init(element) {
 
 		this.get('#/', homeController.load);
 		this.get('#/home', homeController.load);
-
-		this.get('#/categories', categoriesController.load);
-		this.get('#/categories/:categoryName', categoriesController.load);
+        this.get('#/contact', contactController.load);
 
 		this.get('#/library', libraryController.load);
-		this.get('#/library/:bookId', libraryController.load);
-
-		this.get('#/search', searchController.load);
-		this.get('#/search/:string', searchController.load);
-
-		this.get('#/contact', contactController.load);
+		this.get('#/library/detailed/:bookId', libraryController.detailed);
+        this.get('#/library/categories', libraryController.categories);
+        this.get('#/library/search', libraryController.search);
+        this.get('#/library/top', libraryController.top);
 
         this.get('#/account', accountController.load);
 		this.get('#/account/login', accountController.login);

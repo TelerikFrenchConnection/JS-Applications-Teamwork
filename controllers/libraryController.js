@@ -8,30 +8,40 @@ import pagesHelper from '../views/helpers/pagesHelper.js';
 
 import Book from '../models/bookModel.js';
 
-var libraryController = (function() {
-	function load() {
-		pagesHelper.append('library');
+var libraryController = (function () {
+    function load() {
+        pagesHelper.append('library');
 
-		// var someBook = new Book('Warcraft',
-		// 	 'BlizzardGuy',
-		//  	 'Fantasy',
-		// 	 '1235623',
-		// 	 52,
-		// 	 '../assets/images/warcraftCover.jpg',
-		// 	 'cool book');
+        db.data.get('Book', function (allBooks) {
+            allBooks.forEach(function (currentBook) {
+                templatesHelper.append('libraryBookTemplate', currentBook, '#library-content');
+            });
+        });
+    }
 
-		// db.data.add('Book', someBook);
+    function categories() {
 
-		db.data.get('Book', function(allBooks) {
-			allBooks.forEach(function(currentBook) {
-				templatesHelper.append('libraryBookTemplate', currentBook, '#library-content');
-			});
-		});
-	}
+    }
 
-	return load;
+    function detailed() {
+
+    }
+
+    function search() {
+
+    }
+
+    function top() {
+
+    }
+
+    return {
+        load,
+        categories,
+        detailed,
+        search,
+        top
+    };
 })();
 
-export default {
-	load: libraryController
-}
+export default libraryController;
