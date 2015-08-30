@@ -15,7 +15,7 @@ var accountController = (function() {
     }
 
     function signup() {
-
+        pagesHelper.append('accountSignup');
     }
 
     function logout() {

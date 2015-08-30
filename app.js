@@ -8,7 +8,6 @@ import accountController from './controllers/accountController.js';
 import exampleController from './controllers/exampleController.js';
 import adminController from './controllers/adminController.js';
 
-
 export function init(element) {
 	var app = Sammy(element, function () {
 		this.before({}, function () {
@@ -22,7 +21,8 @@ export function init(element) {
 		this.get('#/library', libraryController.load);
 		this.get('#/library/detailed/:bookId', libraryController.detailed);
         this.get('#/library/categories', libraryController.categories);
-        this.get('#/library/search', libraryController.search);
+        this.get('#/library/search', libraryController.search);        
+        this.get('#/library/search/:string', libraryController.search);
         this.get('#/library/top', libraryController.top);
 
         this.get('#/account', accountController.load);
