@@ -62,6 +62,17 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 	margin: 0 auto;
 }
 
+.contact-screen {
+	padding: 80px 0;
+}
+
+.contact-form {
+	max-width: 90%;
+	width: 500px;
+	margin: 0 auto;
+}
+
+
 @media screen and (max-width: 930px) {
   .wrapper-nav {
 	width: 100%;

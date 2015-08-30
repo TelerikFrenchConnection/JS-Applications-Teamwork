@@ -1,24 +1,20 @@
-<div id="wrapperContactForm" class="wrapper">
-    <form class="form-inline">
+<div class="contact login">
+  <div class="contact-screen">
+      <div class="contact-form">
         <div class="form-group">
-            <label for="exampleInputName2" required>Name</label><br>
-            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe" size="30" required="true">
+          <input type="text" class="form-control contact-field" value="" placeholder="Enter your name" id="contact-name">
+          <label class="contact-field-icon fui-user" for="contact-name"></label>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail2">Email</label><br>
-            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"
-                   size="30" required="true">
+          <input type="text" class="form-control contact-field" value="" placeholder="Enter your email" id="contact-name">
+          <label class="contact-field-icon fui-user" for="contact-email"></label>
         </div>
-    </form>
-    <form id="contact_form" action="#" method="POST">
-        <div class="row">
-            <label for="title">Subject</label>
-            <input id="title" class="form-control" name="title" type="text" placeholder="What about" value="" size="60"/>
+        <div class="form-group">
+          <input type="textarea" class="form-control contact-field" value="" placeholder="Enter your queries here" id="contact-name">
+          <label class="contact-field-icon fui-user" for="contact-textarea"></label>
         </div>
-        <div class="row">
-            <label for="text">Text</label>
-            <textarea id="text" class="form-control" placeholder="Your message here" rows="7" cols="60"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send</button>
-    </form>
+        <a class="btn btn-primary btn-lg btn-block" href="#">Send</a>
+        <a class="contact-link" href="#">FAQ</a>
+      </div>
+    </div>
 </div>
