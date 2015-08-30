@@ -1,7 +1,7 @@
 <div class="inner left">
 	<div>
-		<h3>Title: {{this.title}}</h3>
-		<h4>Author: {{this.author}}</h4>
+		<h3>Title: {{this.attributes.title}}</h3>
+		<h4>Author: {{this.attributes.author}}</h4>
 	</div>
-	<img alt="book cover" id="book-cover" src="{{this.pictureURL}}" width="200" height="300">
+	<img alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}" data-id="{{this.id}}" width="200" height="300">
 </div>

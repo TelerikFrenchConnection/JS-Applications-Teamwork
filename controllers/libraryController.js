@@ -8,14 +8,19 @@ import pagesHelper from '../views/helpers/pagesHelper.js';
 
 import Book from '../models/bookModel.js';
 
-var libraryController = (function () {
-    function load() {
+var libraryController = (function() {
+    function load() {        
+        var sammy = this;
         pagesHelper.append('library');
 
-        db.data.get('Book', function (allBooks) {
+        db.data.get('Book', function(allBooks) {
             return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
-        }).then(function(){
-            console.log($('div').html())
+        }).then(function() {
+            var libraryBookContent = $('#library-content div.inner img');
+            libraryBookContent.on('click', function() {
+                var id = $(this).attr('data-id');
+                sammy.redirect('#/library/detailed/' + id);
+            });
         });
     }
 
@@ -24,6 +29,18 @@ var libraryController = (function () {
     }
 
     function detailed() {
+        pagesHelper.append('libraryDetailed');
+        var id = this.params['bookId'];
+        console.log(id);
+
+        var selectedBook = db.data.getQuery('Book').get(id, {
+            success: function(result) {
+                templatesHelper.append('bookDetailedTemplate', [result], '#library-content');
+            },
+            error: function(object, error) {
+                console.log('Cannot access the given book');
+            }
+        });
 
     }
 
