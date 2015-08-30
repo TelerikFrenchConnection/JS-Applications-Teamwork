@@ -12,9 +12,7 @@ var exampleController = (function(){
         var model = exampleModel.init('aaaa', 'Gosho');
 
 
-        db.data.add('Example', model);
-
-
+        // db.data.add('Example', model);
 
         db.data.get('Example', function(allExamples){
             allExamples.forEach(function(example){

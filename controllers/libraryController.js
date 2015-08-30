@@ -38,7 +38,8 @@ var libraryController = (function() {
                 templatesHelper.append('bookDetailedTemplate', [result], '#library-content');
             },
             error: function(object, error) {
-                console.log('Cannot access the given book');
+                console.log('Cannot access the given book' + object);
+                console.log(error);
             }
         });
 

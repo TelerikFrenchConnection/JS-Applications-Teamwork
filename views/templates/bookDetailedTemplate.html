@@ -1,7 +1,32 @@
-<div class="inner left">
-	<div>
-		<h3>Title: {{this.attributes.title}}</h3>
-		<h4>Author: {{this.attributes.author}}</h4>
+<div class="detail-wrapper">
+	<div class="col-md-6">
+		<h4>
+			Title:<span class="pull-right">{{this.attributes.title}}</span>
+		</h4>
+		<div>
+			<p>
+				<strong>Author:</strong>
+				<span class="pull-right">{{this.attributes.author}}</span>
+			</p>
+			<p>
+				<strong>Category:</strong>
+				<span class="pull-right">{{this.attributes.category}}</span>
+			</p>
+			<p>
+				<strong>Price:</strong>
+				<span class="pull-right">{{this.attributes.price}}</span>
+			</p>
+			<p>
+				<strong>Isbn:</strong>
+				<span class="pull-right">{{this.attributes.isbn}}</span>
+			</p>
+			<p>
+				<strong>Description:</strong>
+				<span class="pull-right">{{this.attributes.description}}</span>
+			</p>
+		</div>
 	</div>
-	<img alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}" width="200" height="300">
+	<div class="col-md-6">
+		<img alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}" width="200" height="300">
+	</div>
 </div>

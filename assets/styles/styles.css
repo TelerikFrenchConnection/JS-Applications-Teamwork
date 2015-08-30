@@ -84,10 +84,13 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 #library-content .inner {
 	margin-left: 5%;
 	margin-top: 5%;
+	display: inline-block;
+	width: 20%;
 }
 #library-content .inner #book-cover {
 	cursor: pointer;
 }
-.left {
-	float: left;
+
+.detail-wrapper {
+	padding: 48px 60px;
 }
