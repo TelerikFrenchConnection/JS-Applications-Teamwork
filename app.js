@@ -12,7 +12,7 @@ import adminController from './controllers/adminController.js';
 export function init(element) {
 	var app = Sammy(element, function () {
 		this.before({}, function () {
-			$(element).html('');
+            $(element).html('');
         });
 
 		this.get('#/', homeController.load);
