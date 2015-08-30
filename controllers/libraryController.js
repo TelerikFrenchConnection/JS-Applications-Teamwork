@@ -12,28 +12,21 @@ var libraryController = (function() {
 	function load() {
 		pagesHelper.append('library');
 
-		var someBook = new Book('Warcraft',
-			 'BlizzardGuy',
-		 	 'Fantasy',
-			 '1235623',
-			 52,
-			 '../assets/images/warcraftCover.jpg',
-			 'cool book');
+		// var someBook = new Book('Warcraft',
+		// 	 'BlizzardGuy',
+		//  	 'Fantasy',
+		// 	 '1235623',
+		// 	 52,
+		// 	 '../assets/images/warcraftCover.jpg',
+		// 	 'cool book');
 
 		// db.data.add('Book', someBook);
 
 		db.data.get('Book', function(allBooks) {
 			allBooks.forEach(function(currentBook) {
 				templatesHelper.append('libraryBookTemplate', currentBook, '#library-content');
-			})
+			});
 		});
-
-		/*
-		var query = db.data.getQuery('Book');
-		query.limit(1);
-		query.find().then(function(result){
-		    console.log(result);
-		})*/
 	}
 
 	return load;
