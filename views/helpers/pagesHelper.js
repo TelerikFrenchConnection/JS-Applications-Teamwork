@@ -14,7 +14,7 @@ var pagesHelper = (function(){
 
     function append(pageName) {
         get(pageName).then(function(page) {
-            $('#content').html(page)
+            $('#content').html(page);
         });
     }
 

@@ -13,9 +13,9 @@ var libraryController = (function () {
         pagesHelper.append('library');
 
         db.data.get('Book', function (allBooks) {
-            allBooks.forEach(function (currentBook) {
-                templatesHelper.append('libraryBookTemplate', currentBook, '#library-content');
-            });
+            return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
+        }).then(function(){
+            console.log($('div').html())
         });
     }
 
