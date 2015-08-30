@@ -65,8 +65,9 @@ div#library-content {
 #wrapperContactForm div {
     margin-top: 25px;
     margin-left: 3px;
+    margin-right: 3px;
     margin-bottom: -5px;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+   /// font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 15px;
     color: #337AB7;
 
