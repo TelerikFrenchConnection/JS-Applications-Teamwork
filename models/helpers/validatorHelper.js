@@ -4,10 +4,10 @@
     PASSWORD_PATTERN: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/,
     USER_NAME_PATTERN: /\S[_a-zA-Z0-9]{6,15}/,
     EMAIL_PATTERN: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
-    SPECIAL_SYMBOLS_PATTERN: /[^.%a-zA-Z0-9 ]/g,
+    SPECIAL_SYMBOLS_PATTERN: /[^.%,!?a-zA-Z0-9 ]/g,
     MAX_NUMBER: 9007199254740992,
     DEFAULT: 'Value',
-    SPECIAL_SYMBOLS_MESSAGE:' -special characters not allowed except . and % '
+    SPECIAL_SYMBOLS_MESSAGE:' special characters are not allowed except . and % '
 };
 
 validate = {
@@ -81,7 +81,7 @@ validate = {
     safeText: function (value, name){
         name = name || CONSTANTS.DEFAULT;
         if(CONSTANTS.SPECIAL_SYMBOLS_PATTERN.test(value)){
-            throw new Error(name, CONSTANTS.SPECIAL_SYMBOLS_MESSAGE)
+            throw new Error(name+ CONSTANTS.SPECIAL_SYMBOLS_MESSAGE)
         }
     }
 };
