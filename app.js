@@ -5,9 +5,8 @@ import homeController from './controllers/homeController.js';
 import libraryController from './controllers/libraryController.js';
 import contactController from './controllers/contactController.js';
 import accountController from './controllers/accountController.js';
-import exampleController from './controllers/exampleController.js'
+import exampleController from './controllers/exampleController.js';
 import adminController from './controllers/adminController.js';
-
 
 export function init(element) {
 	var app = Sammy(element, function () {

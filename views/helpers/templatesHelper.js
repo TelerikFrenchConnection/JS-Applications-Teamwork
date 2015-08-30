@@ -17,10 +17,14 @@ var templatesHelper = (function() {
     function append(templateName, data, target) {
         return get(templateName).then(function(template) {
             var templateCompiled = Handlebars.compile(template);
+            var $bookContainer = $('<div/>');
+
             data.forEach(function(item){
                 var templateHTML = templateCompiled(item.attributes);
-                $(target).append(templateHTML);
+                $bookContainer.append(templateHTML);
             });
+
+            $(target).append($bookContainer.html());
         })
     }
 
