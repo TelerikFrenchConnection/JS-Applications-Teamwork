@@ -1,12 +1,12 @@
 import _ from 'underscore';
-import db from '../models/db.js';
+import db from 'dbContext';
 
 // import OOP models for library page
 
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
-import Book from '../models/book.js';
+import Book from '../models/bookModel.js';
 
 var libraryController = (function() {
 	function load() {
