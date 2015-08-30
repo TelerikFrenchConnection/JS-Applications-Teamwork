@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import db from '../models/db.js';
+import db from 'dbContext';
 
 // import OOP models for categories page
 

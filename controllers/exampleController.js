@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import db from '../models/db.js';
+import db from 'dbContext';
 
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';

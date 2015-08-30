@@ -31,7 +31,7 @@ class Book {
     }
 
     get categoryProperty() {
-        return this._category;
+        return this.category;
     }
 
     set categoryProperty(newCategory) {
@@ -40,7 +40,7 @@ class Book {
     }
 
     get isbnProperty() {
-        return this._isbn;
+        return this.isbn;
     }
 
     set isbnProperty(newIsbn) {
