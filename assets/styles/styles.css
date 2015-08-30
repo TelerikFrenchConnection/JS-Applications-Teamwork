@@ -1,19 +1,23 @@
-body,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,img,input,li,ol,p,textarea,ul{
-    margin:0;
-    padding:0;
-    border:0
+body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, ol, p, textarea, ul {
+    margin: 0;
+    padding: 0;
+    border: 0
 }
+
 body .wrapper {
     width: 1000px;
-    margin:0px auto;
+    margin: 0px auto;
 }
+
 body {
     font-family: Consolas;
     font-size: 18px;
 }
+
 div.jumbotron {
     max-width: 1000px;
 }
+
 div#add-book {
     width: 240px;
     height: 340px;
@@ -21,32 +25,54 @@ div#add-book {
     border-radius: 10px;
     margin: 15px;
 }
+
 div#add-book h3 {
     padding-left: 24px;
 }
-.form-control{
+
+.form-control {
     display: block;
     margin-bottom: 4px;
 }
+
 div#content {
     display: inline-block;
-    font-size: 0.8em; 
+    font-size: 0.8em;
 }
+
 div#content .row .thumbnail #book-cover {
-    float:left;
-    width:200px;
+    float: left;
+    width: 200px;
     height: 300px;
     margin-right: 0.5em;
 }
+
 .left {
     float: left;
 }
+
 div.box {
     margin-left: 5%;
     margin-top: 2%;
 }
+
 div#library-content {
     margin 0;
     padding 0;
-    
+
+}
+
+#wrapperContactForm div {
+    margin-top: 25px;
+    margin-left: 3px;
+    margin-bottom: -5px;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 15px;
+    color: #337AB7;
+
+
+}
+
+textarea#text {
+    margin-bottom: 15px;
 }
