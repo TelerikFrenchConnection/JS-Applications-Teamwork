@@ -17,11 +17,24 @@ var templatesHelper = (function() {
     function append(templateName, data, target) {
         return get(templateName).then(function(template) {
             var templateCompiled = Handlebars.compile(template);
+            var $templateHolder = $('<div/>');
+
             data.forEach(function(item){
                 var templateHTML = templateCompiled(item);
-                $(target).append(templateHTML);
+                $templateHolder.append(templateHTML);
             });
+
+            $(target).append($templateHolder.html());
         })
+    }
+
+    function appendSingle(templateName, data, target) {
+        return get(templateName)
+            .then(function(template) {
+                var templateCompiled = Handlebars.compile(template);
+                var templateHTML = templateCompiled(data);
+                $(target).append(templateHTML);
+            })
     }
 
     return {
