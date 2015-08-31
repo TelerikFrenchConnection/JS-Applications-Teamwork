@@ -19,17 +19,28 @@ class accountController {
     loginPost(sammy) {
         var username = sammy.params['username'];
         var password = sammy.params['password'];
-        userModel.login(username, password);
-
-        sammy.redirect('#/home');
+        userModel.login(username, password)
+            .then(function(user) {
+                sammy.redirect('#/home');
+            }, function(user, error, storage) {
+                pagesHelper.append('accountLogin').then(function(){
+                    $('.warning').append($('<h1/>').html('Invalid login credentials!').css('color', 'black'));
+                });
+            })
     }
 
     signup() {
         pagesHelper.append('accountSignup');
     }
 
-    signupPost() {
+    signupPost(sammy) {
+        var username = sammy.params['username'];
+        var password = sammy.params['password'];
+        var email = sammy.params['email'];
+        var firstName = sammy.params['fname'];
+        var lastName = sammy.params['lname'];
 
+        userModel.signup(username, password, firstName, lastName, email);
     }
 
     logout(sammy) {
