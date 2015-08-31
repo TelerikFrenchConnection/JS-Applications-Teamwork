@@ -1,8 +1,6 @@
-﻿import 'storageHelpers.js'
+﻿import './storageHelpers.js'
 
-
-
-CONSTANTS = {
+var CONSTANTS = {
     TEXT_MIN_LENGTH: 2,
     TEXT_MAX_LENGTH: 30,
     PASSWORD_PATTERN: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/,
@@ -14,7 +12,7 @@ CONSTANTS = {
     SPECIAL_SYMBOLS_MESSAGE:' special characters are not allowed except .,!? and % '
 };
 
-validate = {
+var validate = {
     ifUndefined: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (value === undefined) {
