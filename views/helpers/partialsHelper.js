@@ -14,7 +14,7 @@ var partialHelper = (function(){
     }
 
     function append(partialName, target) {
-        get(partialName).then(function(partial) {
+        return get(partialName).then(function(partial) {
             $(target).html(partial)
         });
     }
