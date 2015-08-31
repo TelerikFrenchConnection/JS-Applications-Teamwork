@@ -5,6 +5,7 @@ import partialHelper from '../views/helpers/partialsHelper.js';
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
+import headerController from './headerController.js';
 import userModel from '../models/userModel.js'
 
 class accountController {
@@ -21,6 +22,7 @@ class accountController {
         var password = sammy.params['password'];
         userModel.login(username, password)
             .then(function(user) {
+                headerController.loggedIn();
                 sammy.redirect('#/home');
             }, function(user, error, storage) {
                 pagesHelper.append('accountLogin').then(function(){
@@ -62,7 +64,9 @@ class accountController {
     }
 
     logout(sammy) {
-
+        userModel.logout().then(function(){
+            headerController.loggedOut();
+        });
         sammy.redirect('#/home');
     }
 }

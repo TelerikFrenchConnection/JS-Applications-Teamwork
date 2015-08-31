@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import sammy from 'sammy';
-import 'parse';
 
 import './extentions/storageExtentions.js';
 
+import headerController from './controllers/headerController.js';
 import homeController from './controllers/homeController.js';
 import libraryController from './controllers/libraryController.js';
 import contactController from './controllers/contactController.js';
@@ -12,7 +12,13 @@ import adminController from './controllers/adminController.js';
 
 export function init(element) {
 	var app = Sammy(element, function () {
-		this.before({}, function () {
+        if (Parse.User.current()) {
+            headerController.loggedIn();
+        } else {
+            headerController.loggedOut();
+        }
+
+        this.before({}, function () {
             $(element).html('');
         });
 
@@ -30,6 +36,7 @@ export function init(element) {
         this.get('#/account', accountController.load);
 		this.get('#/account/login', accountController.login);
 		this.get('#/account/signup', accountController.signup);
+        this.get('#/account/logout', accountController.logout);
 
         this.get('#/admin', adminController.load);
         this.get('#/admin/addbook', adminController.addBook);

@@ -71,6 +71,9 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 	margin: 0 auto;
 }
 
+.navbar-nav > li > a {
+    padding: 15px 13px;
+}
 
 @media screen and (max-width: 930px) {
   .wrapper-nav {
