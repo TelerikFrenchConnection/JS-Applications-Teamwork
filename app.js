@@ -2,6 +2,8 @@ import $ from 'jquery';
 import sammy from 'sammy';
 import 'parse';
 
+import './extentions/storageExtentions.js';
+
 import homeController from './controllers/homeController.js';
 import libraryController from './controllers/libraryController.js';
 import contactController from './controllers/contactController.js';

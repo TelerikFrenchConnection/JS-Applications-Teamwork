@@ -1,6 +1,4 @@
-﻿import './storageHelpers.js'
-
-var CONSTANTS = {
+﻿var CONSTANTS = {
     TEXT_MIN_LENGTH: 2,
     TEXT_MAX_LENGTH: 30,
     PASSWORD_PATTERN: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/,

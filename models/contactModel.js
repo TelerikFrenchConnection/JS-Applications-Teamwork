@@ -7,7 +7,9 @@ class contactModel {
 
         // Add error handling logic
 
-        db.add('Contact', contact);
+        ses
+
+        // db.add('Contact', contact);
     }
 
     getContacts() {
