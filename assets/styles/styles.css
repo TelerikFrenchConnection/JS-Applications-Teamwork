@@ -61,7 +61,14 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 	width: 500px;
 	margin: 0 auto;
 }
-
+.library-wrapper {
+	padding: 0px 80px;
+}
+.library-content {
+	max-width: 90%;
+	width: 500px;
+	margin: 0 auto;
+}
 .contact-screen {
 	padding: 80px 0;
 }
@@ -81,13 +88,13 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 	}
 }
 
-#library-content .inner {
+#content .inner {
 	margin-left: 5%;
 	margin-top: 5%;
 	display: inline-block;
-	width: 20%;
+
 }
-#library-content .inner #book-cover {
+#content .inner .gallery-image {
 	cursor: pointer;
 }
 

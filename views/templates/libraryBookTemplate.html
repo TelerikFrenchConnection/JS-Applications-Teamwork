@@ -1,7 +1,9 @@
-<div class="inner pull-left">
-	<div>
-		<h3>Title: {{this.attributes.title}}</h3>
-		<h4>Author: {{this.attributes.author}}</h4>
+<div class="inner container-fluid">
+	<div class="row">
+		<div class="col-xs-4 col-sm-8">
+			<h3>{{this.attributes.title}}</h3>
+			<h5>{{this.attributes.author}}</h5>
+			<img src="{{this.attributes.pictureURL}}" class="img-rounded img-responsive gallery-image" alt="{this.attributes.title}} cover" data-id="{{this.id}}">
+		</div>	
 	</div>
-	<img alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}" data-id="{{this.id}}" width="200" height="300">
 </div>
