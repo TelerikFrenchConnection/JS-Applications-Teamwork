@@ -79,17 +79,19 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 	margin: 0 auto;
 	}
 }
-.library-wrapper #library-content {
+#library-content {
 	max-width: 90%;
 	margin: 0 auto;
 }
-.library-wrapper #library-content .inner {
-	margin-left: 5%;
-	margin-top: 5%;
+#library-content .inner {
 	display: inline-block;
-
+	text-align: center;
+	margin-top: 3%;
+	width: 30%;
+	height: 30%;
 }
-.library-wrapper #library-content .inner .gallery-image {
+#library-content .inner .gallery-image {
+	margin: 0 auto;
 	cursor: pointer;
 }
 
