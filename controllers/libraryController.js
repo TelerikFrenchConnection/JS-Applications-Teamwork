@@ -16,8 +16,8 @@ class libraryController {
                 return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
             })
             .then(function() {
-                var libraryBookContent = $('#library-content div.inner img');
-                libraryBookContent.on('click', function() {
+                var libraryBookContent = $('#library-content');
+                libraryBookContent.on('click', 'div.inner img', function() {
                     var id = $(this).attr('data-id');
                     sammy.redirect('#/library/detailed/' + id);
                 });
@@ -53,8 +53,8 @@ class libraryController {
                 return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
             })
             .then(function() {
-                var libraryBookContent = $('#library-content div.inner img');
-                libraryBookContent.on('click', function() {
+                var libraryBookContent = $('#library-content');
+                libraryBookContent.on('click', 'div.inner img', function() {
                     var id = $(this).attr('data-id');
                     sammy.redirect('#/library/detailed/' + id);
                 });
