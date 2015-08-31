@@ -11,21 +11,6 @@ class homeController {
         pagesHelper.append('home');
         console.log(Parse.User.current());
     }
-
-    exampleBooks() {
-        /*
-         db.data.add('Book', {
-         title: 'Configurating Parse backend',
-         category: 'Horror'
-         });
-
-        db.data.get('Book', function (books) {
-            books.forEach(function (book) {
-                console.log(book.attributes['category']);
-            })
-        })
-        */
-    }
 }
 
 export default new homeController();

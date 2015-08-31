@@ -9,39 +9,10 @@ var data = {
         var data = new DataClass();
         data.save(dataObject);
     },
-    get: function (dataClass, callback) {
+    get: function (dataClass) {
         var query = new Parse.Query(Parse.Object.extend(dataClass));
-        return query.find().then(callback);
-    },
-    getQuery: function(dataClass) {
-        // Allows usage of Parse sorting functions
-        return new Parse.Query(Parse.Object.extend(dataClass));
+        return query;
     }
 };
 
-var user = {
-    signUp: function(username, password, firstname, lastname, email) {
-        var newUser = new Parse.User;
-
-        newUser.signUp({
-            username, password, firstname, lastname, email
-        }, {
-            success: function(user) {},
-            error: function(user, error) {}
-        });
-    },
-    login: function(username, password) {
-        Parse.User.logIn(username, password, {
-            success: function(user) {},
-            error: function(user, error) {}
-        })
-    },
-    logout: function() {
-        Parse.User.logOut();
-    }
-};
-
-export default {
-    data,
-    user
-}
+export default data;

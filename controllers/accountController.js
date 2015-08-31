@@ -5,6 +5,8 @@ import partialHelper from '../views/helpers/partialsHelper.js';
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
+import userModel from '../models/userModel.js'
+
 class accountController {
     load(sammy) {
         sammy.redirect('#/account/login')
@@ -17,7 +19,7 @@ class accountController {
     loginPost(sammy) {
         var username = sammy.params['username'];
         var password = sammy.params['password'];
-        db.user.login(username, password);
+        userModel.login(username, password);
 
         sammy.redirect('#/home');
     }
@@ -31,7 +33,7 @@ class accountController {
     }
 
     logout(sammy) {
-        db.user.logout();
+
         sammy.redirect('#/home');
     }
 }
