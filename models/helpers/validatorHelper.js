@@ -1,4 +1,8 @@
-﻿CONSTANTS = {
+﻿import 'storageHelpers.js'
+
+
+
+CONSTANTS = {
     TEXT_MIN_LENGTH: 2,
     TEXT_MAX_LENGTH: 30,
     PASSWORD_PATTERN: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/,
@@ -7,21 +11,21 @@
     SPECIAL_SYMBOLS_PATTERN: /[^.%,!?a-zA-Z0-9 ]/g,
     MAX_NUMBER: 9007199254740992,
     DEFAULT: 'Value',
-    SPECIAL_SYMBOLS_MESSAGE:' special characters are not allowed except . and % '
+    SPECIAL_SYMBOLS_MESSAGE:' special characters are not allowed except .,!? and % '
 };
 
 validate = {
     ifUndefined: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (value === undefined) {
-            throw new Error(name + ' cannot be undefined');
+            sessionStorage.setObject(new Error(name, 'cannot be empty'));
         }
     },
 
     ifNumber: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (typeof value !== 'number') {
-            throw new Error(name + ' must be a number');
+            sessionStorage.setObject(new Error(name, ' must be a number'));
         }
     },
 
@@ -30,13 +34,13 @@ validate = {
         this.ifUndefined(value, name);
 
         if (typeof value !== 'string') {
-            throw new Error(name + ' must be a string');
+            sessionStorage.setObject(new Error(name, ' must contain only letters'));
         }
 
-        if (value.length < CONSTANTS.TEXT_MIN_LENGTH
+        if (value.length < CONSTANTS.TEXT_MIN_LENGT
             || CONSTANTS.TEXT_MAX_LENGTH < value.length) {
-            throw new Error(name + ' must be between ' + CONSTANTS.TEXT_MIN_LENGTH +
-                ' and ' + CONSTANTS.TEXT_MAX_LENGTH + ' symbols');
+            sessionStorage.setObject( new Error(name + ' must be between ' + CONSTANTS.TEXT_MIN_LENGTH +
+                ' and ' + CONSTANTS.TEXT_MAX_LENGTH + ' symbols'));
         }
     },
 
@@ -46,29 +50,28 @@ validate = {
         this.ifNumber(value, name);
 
         if (value <= 0) {
-            throw new Error(name + ' must be positive number');
+            sessionStorage.setObject( new Error(name, ' must be positive number'));
         }
     },
-
 
     email: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if(!CONSTANTS.EMAIL_PATTERN.test(value)){
-            throw new Error(name + ' is Invalid');
+            sessionStorage.setObject( new Error(name,' is Invalid'));
         }
     },
 
     password: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (!CONSTANTS.PASSWORD_PATTERN.test(value)) {
-            throw new Error(name + ' must contain one Uppercase, lowcase or number, 8-20 symbols ')
+            sessionStorage.setObject(new Error(name , ' must contain one Uppercase, lowcase or number, 8-20 symbols '))
         }
     },
 
     userName: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (!CONSTANTS.USER_NAME_PATTERN.test(name)) {
-            throw new Error(name + ' must contain only letters, numbers and underscore 6-15 symbols')
+            sessionStorage.setObject( new Error(name , ' must contain only letters, numbers and underscore 6-15 symbols'))
         }
     },
 
@@ -81,7 +84,7 @@ validate = {
     safeText: function (value, name){
         name = name || CONSTANTS.DEFAULT;
         if(CONSTANTS.SPECIAL_SYMBOLS_PATTERN.test(value)){
-            throw new Error(name+ CONSTANTS.SPECIAL_SYMBOLS_MESSAGE)
+            sessionStorage.setObject( new Error(name, CONSTANTS.SPECIAL_SYMBOLS_MESSAGE))
         }
     }
 };
