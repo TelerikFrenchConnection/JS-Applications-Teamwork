@@ -53,18 +53,10 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 }
 
 .login-screen {
-	padding: 80px 0;
+	padding: 60px 0;
 }
 
 .login-form {
-	max-width: 90%;
-	width: 500px;
-	margin: 0 auto;
-}
-.library-wrapper {
-	padding: 0px 80px;
-}
-.library-content {
 	max-width: 90%;
 	width: 500px;
 	margin: 0 auto;
@@ -87,14 +79,17 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 	margin: 0 auto;
 	}
 }
-
-#content .inner {
+.library-wrapper #library-content {
+	max-width: 90%;
+	margin: 0 auto;
+}
+.library-wrapper #library-content .inner {
 	margin-left: 5%;
 	margin-top: 5%;
 	display: inline-block;
 
 }
-#content .inner .gallery-image {
+.library-wrapper #library-content .inner .gallery-image {
 	cursor: pointer;
 }
 
