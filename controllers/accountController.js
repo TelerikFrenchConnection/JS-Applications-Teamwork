@@ -5,31 +5,11 @@ import partialHelper from '../views/helpers/partialsHelper.js';
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
-import headerController from './headerController.js';
 import userModel from '../models/userModel.js'
 
 class accountController {
     load(sammy) {
         sammy.redirect('#/account/login')
-    }
-
-    login() {
-        pagesHelper.append('accountLogin');
-    }
-
-    loginPost(sammy) {
-        var username = sammy.params['username'];
-        var password = sammy.params['password'];
-        userModel.login(username, password)
-            .then(function(user) {
-                headerController.loggedIn();
-                sammy.redirect('#/home');
-            }, function(user, error, storage) {
-                pagesHelper.append('accountLogin').then(function(){
-                    var errorObject = {name:"your login details", message: "are invalid"};
-                    templatesHelper.appendSingle('warningTemplate', errorObject, '.warning');
-                });
-            })
     }
 
     signup() {
@@ -63,9 +43,27 @@ class accountController {
             });*/
     }
 
+    login() {
+        pagesHelper.append('accountLogin');
+    }
+
+    loginPost(sammy) {
+        var username = sammy.params['username'];
+        var password = sammy.params['password'];
+        userModel.login(username, password)
+            .then(function(user) {
+                sammy.redirect('#/home');
+            }, function(user, error, storage) {
+                pagesHelper.append('accountLogin').then(function(){
+                    var errorObject = {name:"your login details", message: "are invalid"};
+                    templatesHelper.appendSingle('warningTemplate', errorObject, '.warning');
+                });
+            })
+    }
+
     logout(sammy) {
         userModel.logout().then(function(){
-            headerController.loggedOut();
+            $('.nav-header li').last().remove();
         });
         sammy.redirect('#/home');
     }

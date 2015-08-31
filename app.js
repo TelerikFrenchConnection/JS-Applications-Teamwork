@@ -3,22 +3,24 @@ import sammy from 'sammy';
 
 import './extentions/storageExtentions.js';
 
-import headerController from './controllers/headerController.js';
 import homeController from './controllers/homeController.js';
 import libraryController from './controllers/libraryController.js';
 import contactController from './controllers/contactController.js';
 import accountController from './controllers/accountController.js';
 import adminController from './controllers/adminController.js';
 
+import headerHelper from './views/helpers/headerHelper.js';
+
 export function init(element) {
 	var app = Sammy(element, function () {
-        if (Parse.User.current()) {
-            headerController.loggedIn();
-        } else {
-            headerController.loggedOut();
-        }
 
         this.before({}, function () {
+            if (Parse.User.current()) {
+                headerHelper.loginChangeHeader();
+            } else {
+                headerHelper.logoutChangeHeader();
+            }
+
             $(element).html('');
         });
 
