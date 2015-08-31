@@ -1,33 +1,26 @@
 import _ from 'underscore';
 import db from 'dbContext';
 
+import partialHelper from '../views/helpers/partialsHelper.js';
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
-// import OOP models for login page
 
-var accountController = (function() {
-    function load() {
+class accountController {
+    load() {
+        this.redirect('#/account/login')
+    }
+
+    login() {
         pagesHelper.append('accountLogin');
     }
 
-    function login() {
-        pagesHelper.append('accountLogin');
-    }
-
-    function signup() {
+    signup() {
         pagesHelper.append('accountSignup');
     }
 
-    function logout() {
-
+    logout() {
+        db.data.add()
     }
+}
 
-    return {
-        load,
-        login,
-        signup,
-        logout
-    }
-})();
-
-export default accountController;
+export default new accountController();

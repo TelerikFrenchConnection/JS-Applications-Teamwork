@@ -1,15 +1,14 @@
 import _ from 'underscore';
 import db from 'dbContext';
 
-// import OOP models for library page
-
+import partialHelper from '../views/helpers/partialsHelper.js';
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
 import Book from '../models/bookModel.js';
 
-var libraryController = (function() {
-    function load() {        
+class libraryController {
+    load() {
         var sammy = this;
         pagesHelper.append('library');
 
@@ -24,14 +23,13 @@ var libraryController = (function() {
         });
     }
 
-    function categories() {
+    categories() {
 
     }
 
-    function detailed() {
+    detailed() {
         pagesHelper.append('libraryDetailed');
         var id = this.params['bookId'];
-        console.log(id);
 
         var selectedBook = db.data.getQuery('Book').get(id, {
             success: function(result) {
@@ -45,21 +43,13 @@ var libraryController = (function() {
 
     }
 
-    function search() {
+    search() {
 
     }
 
-    function top() {
+    top() {
 
     }
+}
 
-    return {
-        load,
-        categories,
-        detailed,
-        search,
-        top
-    };
-})();
-
-export default libraryController;
+export default new libraryController;

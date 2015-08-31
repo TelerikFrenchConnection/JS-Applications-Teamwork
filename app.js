@@ -5,7 +5,6 @@ import homeController from './controllers/homeController.js';
 import libraryController from './controllers/libraryController.js';
 import contactController from './controllers/contactController.js';
 import accountController from './controllers/accountController.js';
-import exampleController from './controllers/exampleController.js';
 import adminController from './controllers/adminController.js';
 
 export function init(element) {
@@ -14,7 +13,7 @@ export function init(element) {
             $(element).html('');
         });
 
-		this.get('#/', homeController.load);
+		this.get('#/', function() { this.redirect('#/home')});
 		this.get('#/home', homeController.load);
         this.get('#/contact', contactController.load);
 
@@ -30,9 +29,11 @@ export function init(element) {
 		this.get('#/account/signup', accountController.signup);
 
         this.get('#/admin', adminController.load);
-        this.get('#/admin/addBook', adminController.addBook);
+        this.get('#/admin/addbook', adminController.addBook);
 
-        // this.get('#/example', exampleController.load);
+        this.get(/.*/, function() {
+            // load 404 Page
+        });
 	});
 
 	app.run('#/');

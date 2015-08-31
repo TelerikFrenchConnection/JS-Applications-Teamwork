@@ -1,14 +1,14 @@
 import _ from 'underscore';
 import db from 'dbContext';
 
+import partialHelper from '../views/helpers/partialsHelper.js';
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
+
 import Contact from '../models/contactModel.js'
 
-// import OOP models for contacts page
-
-var contactsController = (function() {
-    function load() {
+class contactsController {
+    load() {
         pagesHelper.append('contact');
 
        //try
@@ -16,12 +16,7 @@ var contactsController = (function() {
 
         console.log(model);
         db.data.add('test', model);
-
     }
-
-    return load;
-})();
-
-export default {
-    load: contactsController
 }
+
+export default new contactsController();
