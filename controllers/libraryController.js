@@ -8,8 +8,7 @@ import pagesHelper from '../views/helpers/pagesHelper.js';
 import Book from '../models/bookModel.js';
 
 class libraryController {
-    load() {
-        var sammy = this;
+    load(sammy) {
         pagesHelper.append('library');
 
         db.data.get('Book', function(allBooks) {
@@ -27,9 +26,9 @@ class libraryController {
 
     }
 
-    detailed() {
+    detailed(sammy) {
         pagesHelper.append('libraryDetailed');
-        var id = this.params['bookId'];
+        var id = sammy.params['bookId'];
 
         var selectedBook = db.data.getQuery('Book').get(id, {
             success: function(result) {
