@@ -29,17 +29,17 @@ var templatesHelper = (function() {
     }
 
     function appendSingle(templateName, data, target) {
-        return get(templateName)
-            .then(function(template) {
-                var templateCompiled = Handlebars.compile(template);
-                var templateHTML = templateCompiled(data);
-                $(target).append(templateHTML);
-            })
+        return get(templateName).then(function(template) {
+            var templateCompiled = Handlebars.compile(template);
+            var templateHTML = templateCompiled(data);
+            $(target).append(templateHTML);
+        })
     }
 
     return {
         get,
-        append
+        append,
+        appendSingle
     }
 })();
 

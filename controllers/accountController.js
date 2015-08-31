@@ -24,7 +24,8 @@ class accountController {
                 sammy.redirect('#/home');
             }, function(user, error, storage) {
                 pagesHelper.append('accountLogin').then(function(){
-                    $('.warning').append($('<h1/>').html('Invalid login credentials!').css('color', 'black'));
+                    var errorObject = {name:"your login details", message: "are invalid"};
+                    templatesHelper.appendSingle('warningTemplate', errorObject, '.warning');
                 });
             })
     }

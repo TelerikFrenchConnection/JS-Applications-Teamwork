@@ -7,12 +7,10 @@ class userModel {
         var storage = sessionStorage;
         var parseUser = new Parse.User;
 
-
-
         return parseUser.signUp(user).then(function() {
 
         }, function() {
-            
+
         })
     }
 
