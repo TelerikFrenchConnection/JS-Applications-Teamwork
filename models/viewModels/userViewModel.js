@@ -11,13 +11,13 @@
         }
 
         get userNameProperty() {
-            return this.userName;
+            return this.username;
         }
 
         set userNameProperty(newName) {
 
             validate.userName(newName, 'User name');
-            this.userName = newName;
+            this.username = newName;
 
         }
 
@@ -31,7 +31,7 @@
         }
 
         get lastNameProperty() {
-            return this._lastName;
+            return this.lastName;
         }
 
         set lastNameProperty(newName) {
@@ -49,7 +49,7 @@
         }
 
         get emailProperty() {
-            return this._email
+            return this.email
         }
 
         set emailProperty(newEmail) {
