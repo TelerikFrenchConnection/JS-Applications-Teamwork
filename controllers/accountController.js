@@ -6,20 +6,33 @@ import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
 class accountController {
-    load() {
-        this.redirect('#/account/login')
+    load(sammy) {
+        sammy.redirect('#/account/login')
     }
 
     login() {
         pagesHelper.append('accountLogin');
     }
 
+    loginPost(sammy) {
+        var username = sammy.params['username'];
+        var password = sammy.params['password'];
+        db.user.login(username, password);
+
+        sammy.redirect('#/home');
+    }
+
     signup() {
         pagesHelper.append('accountSignup');
     }
 
-    logout() {
-        db.data.add()
+    signupPost() {
+
+    }
+
+    logout(sammy) {
+        db.user.logout();
+        sammy.redirect('#/home');
     }
 }
 

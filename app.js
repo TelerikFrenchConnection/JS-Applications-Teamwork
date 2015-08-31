@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import sammy from 'sammy';
+import 'parse';
 
 import homeController from './controllers/homeController.js';
 import libraryController from './controllers/libraryController.js';
@@ -30,6 +31,9 @@ export function init(element) {
 
         this.get('#/admin', adminController.load);
         this.get('#/admin/addbook', adminController.addBook);
+
+        this.post('#/account/login', accountController.loginPost);
+        this.post('#/account/signup', accountController.signupPost);
 
         this.get(/.*/, function() {
             // load 404 Page
