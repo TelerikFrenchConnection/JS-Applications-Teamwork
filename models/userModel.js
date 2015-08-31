@@ -4,14 +4,11 @@ import User from './viewModels/userViewModel.js';
 class userModel {
     signup(userName, password, firstName, lastName, email) {
         var user = new User(userName, password, firstName, lastName, email);
+        console.log(user);
         var storage = sessionStorage;
         var parseUser = new Parse.User;
 
-        return parseUser.signUp(user).then(function() {
-
-        }, function() {
-
-        })
+        return parseUser.signUp(user);
     }
 
     login(username, password) {
