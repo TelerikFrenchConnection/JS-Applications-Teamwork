@@ -6,14 +6,24 @@ import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
 class adminController {
-	load() {
+	load(sammy) {
+        isUserAuthorized(sammy);
 
+        // show all contact form entires
 	}
 
-	addBook() {
+	addBook(sammy) {
+        isUserAuthorized(sammy);
+
 		pagesHelper.append('adminAddbook');
 	}
 
+}
+
+function isUserAuthorized(sammy) {
+    if(!Parse.User.current()) {
+        sammy.redirect('#/404');
+    }
 }
 
 export default new adminController;
