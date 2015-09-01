@@ -6,7 +6,7 @@ import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
 import bookModel from '../models/bookModel.js';
-import librarySearchModel from '../models/librarySearchModel.js';
+import searchModel from '../models/searchModel.js';
 
 class libraryController {
     load(sammy) {
@@ -86,8 +86,11 @@ class libraryController {
         bookModel.getBooks().find()
             .then(function(allBooks) {
                 var result = [];
-                if (sammy.params['prop'] && sammy.params['search']) {
-                    result = librarySearchModel.filterBy(allBooks, sammy.params['prop'], sammy.params['search']);
+                var filterProperty = sammy.params['prop'];
+                var searchValue = sammy.params['search'];
+
+                if (filterProperty && searchValue) {
+                    result = searchModel.filterBy(allBooks, filterProperty, searchValue);
                 }
                 else {
                     result = allBooks;
