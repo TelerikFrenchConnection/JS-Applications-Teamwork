@@ -29,29 +29,30 @@ class libraryController {
 
         pagesHelper.append('libraryCategories')
 
-        db.data.get('Book', function(allBooks) {
-            allBooksRetrieved = allBooks;
-            return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
-        }).then(function() {
-            var booksToAdd = [];
+        bookModel.getBooks().find()
+            .then(function(allBooks) {
+                allBooksRetrieved = allBooks;
+                return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
+            }).then(function() {
+                var booksToAdd = [];
 
-            $('#book-category').change(function() {
-                var category = $(this).find(':selected').attr('value');
+                $('#book-category').change(function() {
+                    var category = $(this).find(':selected').attr('value');
 
-                $(this).parent().nextAll().remove();
+                    $(this).parent().nextAll().remove();
 
-                allBooksRetrieved.forEach(function(book) {
-                    if (book.attributes.category === category) {
-                        booksToAdd.push(book);
-                    }
+                    allBooksRetrieved.forEach(function(book) {
+                        if (book.attributes.category === category) {
+                            booksToAdd.push(book);
+                        }
 
+                    });
+
+                    templatesHelper.append('libraryBookTemplate', booksToAdd, '#library-content');
+
+                    booksToAdd = [];
                 });
-
-                templatesHelper.append('libraryBookTemplate', booksToAdd, '#library-content');
-
-                booksToAdd = [];
             });
-        });
     }
 
     detailed(sammy) {
