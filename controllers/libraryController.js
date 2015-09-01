@@ -24,7 +24,7 @@ class libraryController {
             });
     }
 
-    categories() {
+    categories(sammy) {
         var allBooksRetrieved = [];
 
         pagesHelper.append('libraryCategories')
@@ -33,7 +33,8 @@ class libraryController {
             .then(function(allBooks) {
                 allBooksRetrieved = allBooks;
                 return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
-            }).then(function() {
+            })
+            .then(function() {
                 var booksToAdd = [];
 
                 $('#book-category').change(function() {
@@ -52,7 +53,14 @@ class libraryController {
 
                     booksToAdd = [];
                 });
-            });
+            })
+            .then(function() {
+                var libraryBookContent = $('#library-content');
+                libraryBookContent.on('click', 'div.inner img', function() {
+                    var id = $(this).attr('data-id');
+                    sammy.redirect('#/library/detailed/' + id);
+                });
+            });;
     }
 
     detailed(sammy) {
