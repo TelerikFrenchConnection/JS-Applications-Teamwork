@@ -55,7 +55,7 @@ class Book {
 
     set priceProperty(newPrice) {
         validate.price(newPrice, 'Price');
-        this.price = newPrice;    // need to be parsed to number?
+        this.price = newPrice;
     }
 
     get pictureURLProperty() {

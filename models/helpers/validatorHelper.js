@@ -6,10 +6,10 @@
     PASSWORD_PATTERN: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/,
     USER_NAME_PATTERN:/\S[_a-zA-Z0-9]{6,15}/ ,
     EMAIL_PATTERN: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
-    RESTRICTED_SYMBOLS_PATTERN: /[^\.%,!\?a-zA-Z0-9 ]/g,
+    RESTRICTED_SYMBOLS_PATTERN:/[<>$@#&]/gm,             ///[^\.%,!\?a-zA-Z0-9 ]/g,
     DEFAULT: 'Value',
     INVALID_MESSAGE:'is Invalid',
-    SPECIAL_SYMBOLS_MESSAGE: 'special characters as <, > and $ are not allowed'
+    RESTRICTED_SYMBOLS_MESSAGE: 'special characters as <, > and $ are not allowed'
 };
 
 
@@ -26,9 +26,11 @@ var validate = {
         return isNaN(+symbol)
     },
 
+    //TODO
     isUndefined: function (value) {
         return (value === undefined)
     },
+
 
      isNumber: function (value) {
 
@@ -39,9 +41,12 @@ var validate = {
 
     price: function (value, name) {
      name = name || CONSTANTS.DEFAULT;
-       // var currentValue=+value;
-        var isInRange=(value>=0&&value<=CONSTANTS.MAX_NUMBER);
-        if (this.isUndefined||!this.isNumber||!isInRange) {
+
+        var isInRange=false;
+        if (!this.isUndefined(value)&&!isNaN(+value)) {
+            isInRange = (0>=value && value <= CONSTANTS.MAX_NUMBER)
+        }
+        if(!isInRange){
             sessionStorage.setObject('Error', {
                 name: name,
                 message: CONSTANTS.INVALID_MESSAGE
