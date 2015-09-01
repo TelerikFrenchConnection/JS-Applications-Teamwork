@@ -1,4 +1,3 @@
-
 Storage.prototype.setObject =
     function setObject(key, obj){
         this.setItem(key, JSON.stringify(obj));

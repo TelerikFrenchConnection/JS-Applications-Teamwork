@@ -1,7 +1,7 @@
 var pagesHelper = (function(){
     function get(pageName) {
         return new Promise(function(success){
-            var path = 'views/' + pageName + '.html';
+            var path = 'views/' + pageName + '.page';
 
             $.get(path).then(function(result){
                 success(result);
@@ -18,9 +18,14 @@ var pagesHelper = (function(){
         });
     }
 
+    function appendHTML(HTML, target) {
+        $(target).html(HTML);
+    }
+
     return {
         get,
-        append
+        append,
+        appendHTML
     }
 })();
 
