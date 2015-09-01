@@ -2,7 +2,7 @@ var partialHelper = (function(){
    'use strict';
     function get(partialName) {
         return new Promise(function(success){
-            var path = 'partials/' + partialName + '.html';
+            var path = 'views/partials/' + partialName + '.html';
 
             $.get(path).then(function(result){
                 success(result);
@@ -14,7 +14,7 @@ var partialHelper = (function(){
     }
 
     function append(partialName, target) {
-        get(partialName).then(function(partial) {
+        return get(partialName).then(function(partial) {
             $(target).html(partial)
         });
     }

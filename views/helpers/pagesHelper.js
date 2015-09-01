@@ -13,7 +13,7 @@ var pagesHelper = (function(){
     }
 
     function append(pageName) {
-        get(pageName).then(function(page) {
+        return get(pageName).then(function(page) {
             $('#content').html(page);
         });
     }

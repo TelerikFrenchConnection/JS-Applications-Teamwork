@@ -16,8 +16,8 @@ class libraryController {
                 return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
             })
             .then(function() {
-                var libraryBookContent = $('#library-content div.inner img');
-                libraryBookContent.on('click', function() {
+                var libraryBookContent = $('#library-content');
+                libraryBookContent.on('click', 'div.inner img', function() {
                     var id = $(this).attr('data-id');
                     sammy.redirect('#/library/detailed/' + id);
                 });
@@ -44,8 +44,21 @@ class libraryController {
 
     }
 
-    search() {
+    search(sammy) {
+        pagesHelper.append('librarySearch');
 
+        // TODO: Extract common functions from promises?
+        bookModel.getBooks().find()
+            .then(function(allBooks) {
+                return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
+            })
+            .then(function() {
+                var libraryBookContent = $('#library-content');
+                libraryBookContent.on('click', 'div.inner img', function() {
+                    var id = $(this).attr('data-id');
+                    sammy.redirect('#/library/detailed/' + id);
+                });
+            });
     }
 
     top() {

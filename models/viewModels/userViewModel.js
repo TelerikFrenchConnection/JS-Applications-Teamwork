@@ -11,12 +11,14 @@
         }
 
         get userNameProperty() {
-            return this.userName;
+            return this.username;
         }
 
         set userNameProperty(newName) {
+
             validate.userName(newName, 'User name');
-            this.userName = newName;
+            this.username = newName;
+
         }
 
         get firstNameProperty() {
@@ -24,16 +26,16 @@
         }
 
         set firstNameProperty(newName) {
-            validate.name(newName, 'First name');
+            validate.isString(newName, 'First name');
             this.firstName = newName;
         }
 
         get lastNameProperty() {
-            return this._lastName;
+            return this.lastName;
         }
 
         set lastNameProperty(newName) {
-            validate.name(newName, 'Last name');
+            validate.isString(newName, 'Last name');
             this.lastName = newName;
         }
 
@@ -47,7 +49,7 @@
         }
 
         get emailProperty() {
-            return this._email
+            return this.email
         }
 
         set emailProperty(newEmail) {

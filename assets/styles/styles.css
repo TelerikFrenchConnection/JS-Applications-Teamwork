@@ -47,6 +47,10 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 	text-align: center;
 }
 
+.jumbotron p {
+    margin: 10px 0;
+}
+
 .footer-bar {
 	color: #34495E;
 	padding: 13px;
@@ -71,6 +75,13 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 	margin: 0 auto;
 }
 
+.navbar-nav > li > a {
+    padding: 15px 13px;
+}
+
+.footer-link {
+    padding: 0 3px;
+}
 
 @media screen and (max-width: 930px) {
   .wrapper-nav {

@@ -9,7 +9,6 @@ import pagesHelper from '../views/helpers/pagesHelper.js';
 class homeController {
     load() {
         pagesHelper.append('home');
-        console.log(Parse.User.current());
     }
 }
 
