@@ -109,3 +109,20 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 .detail-wrapper {
 	padding: 48px 60px;
 }
+.contact {
+	background-color: #1abc9c;
+}
+.contact-screen {
+	padding: 0px;
+}
+.contact-form {
+    position: relative;
+    padding: 20px;
+    background-color: #edeff1;
+    border-radius: 6px;
+}
+.contact-field {
+	font-size: 17px;
+	text-indent: 3px;
+	border-color: transparent;
+}
