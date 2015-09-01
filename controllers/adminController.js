@@ -21,7 +21,7 @@ class adminController {
 }
 
 function isUserAuthorized(sammy) {
-    if(!Parse.User.current()) {
+    if(!Parse.User.current().attributes.isAdmin) {
         sammy.redirect('#/404');
     }
 }

@@ -15,13 +15,7 @@ export function init(element) {
 	var app = Sammy(element, function () {
 
         this.before({}, function () {
-            if (Parse.User.current()) {
-                headerHelper.loginChangeHeader();
-            } else {
-                headerHelper.logoutChangeHeader();
-            }
-
-            $(element).html('');
+            headerHelper.updateHeader();
         });
 
 		this.get('#/', function() { this.redirect('#/home')});
