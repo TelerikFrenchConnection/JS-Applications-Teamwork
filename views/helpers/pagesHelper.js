@@ -1,7 +1,7 @@
 var pagesHelper = (function(){
     function get(pageName) {
         return new Promise(function(success){
-            var path = 'views/' + pageName + '.page';
+            var path = 'views/' + pageName + '.html';
 
             $.get(path).then(function(result){
                 success(result);
