@@ -1,48 +1,23 @@
-import './helpers/validatorHelper.js'
+import db from './database/dbContext.js';
+import Contact from './viewModels/contactViewModel.js';
 
-class Contact {
-    constructor(email, name, title, text) {
-        this.emailProperty = email;
-        this.nameProperty = name;
-        this.titleProperty = title;
-        this.textProperty = text;
+class contactModel {
+    addContact(email, name, title, text) {
+        var contact = new Contact(email, name, title, text);
+
+        // Add error handling logic
+
+    if(sessionStorage.getObject(this.email)!==0){
+
     }
 
-    get emailProperty() {
-        return this.email
+
+        // db.add('Contact', contact);
     }
 
-    set emailProperty(newEmail) {
-        validate.email(newEmail, 'Email');
-        this.email = newEmail;
-    }
-
-    get nameProperty() {
-        return this.name
-    }
-
-    set nameProperty(newName) {
-        validate.isString(newName, 'Name');
-        this.name = newName;
-    }
-
-    get titleProperty() {
-        return this.title
-    }
-
-    set titleProperty(newTitle) {
-        validate.isString(newTitle, 'Title');
-        this.title = newTitle;
-    }
-
-    get textProperty() {
-        return this.text
-    }
-
-    set textProperty(newText) {
-        validate.safeText(newText, 'Text');
-        this.text = newText;
+    getContacts() {
+        return db.get('Contact');
     }
 }
 
-export default Contact;
+export default new contactModel();

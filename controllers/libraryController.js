@@ -5,22 +5,23 @@ import partialHelper from '../views/helpers/partialsHelper.js';
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
-import Book from '../models/bookModel.js';
+import bookModel from '../models/bookModel.js';
 
 class libraryController {
-    load() {
-        var sammy = this;
+    load(sammy) {
         pagesHelper.append('library');
 
-        db.data.get('Book', function(allBooks) {
-            return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
-        }).then(function() {
-            var libraryBookContent = $('#library-content div.inner img');
-            libraryBookContent.on('click', function() {
-                var id = $(this).attr('data-id');
-                sammy.redirect('#/library/detailed/' + id);
+        bookModel.getBooks().find()
+            .then(function(allBooks) {
+                return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
+            })
+            .then(function() {
+                var libraryBookContent = $('#library-content');
+                libraryBookContent.on('click', 'div.inner img', function() {
+                    var id = $(this).attr('data-id');
+                    sammy.redirect('#/library/detailed/' + id);
+                });
             });
-        });
     }
 
     categories() {
@@ -53,11 +54,11 @@ class libraryController {
         });
     }
 
-    detailed() {
+    detailed(sammy) {
         pagesHelper.append('libraryDetailed');
-        var id = this.params['bookId'];
+        var id = sammy.params['bookId'];
 
-        var selectedBook = db.data.getQuery('Book').get(id, {
+        var selectedBook = bookModel.getBooks().get(id, {
             success: function(result) {
                 templatesHelper.append('bookDetailedTemplate', [result], '#library-content');
             },
@@ -68,8 +69,21 @@ class libraryController {
         });
     }
 
-    search() {
+    search(sammy) {
+        pagesHelper.append('librarySearch');
 
+        // TODO: Extract common functions from promises?
+        bookModel.getBooks().find()
+            .then(function(allBooks) {
+                return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
+            })
+            .then(function() {
+                var libraryBookContent = $('#library-content');
+                libraryBookContent.on('click', 'div.inner img', function() {
+                    var id = $(this).attr('data-id');
+                    sammy.redirect('#/library/detailed/' + id);
+                });
+            });
     }
 
     top() {

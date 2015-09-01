@@ -1,61 +1,23 @@
-﻿import './helpers/validatorHelper.js'
+﻿import db from './database/dbContext.js';
+import User from './viewModels/userViewModel.js';
 
-    class User {
-        constructor(userName, password, firstName, lastName, email) {
-            this.userNameProperty = userName;
-            this.passwordProperty = password;
-            this.firstNameProperty = firstName;
-            this.lastNameProperty = lastName;
-            this.emailProperty = email;
-            return this;
-        }
+class userModel {
+    signup(userName, password, firstName, lastName, email) {
+        var user = new User(userName, password, firstName, lastName, email);
+        console.log(user);
+        var storage = sessionStorage;
+        var parseUser = new Parse.User;
 
-        get userNameProperty() {
-            return this.userName;
-        }
-
-        set userNameProperty(newName) {
-
-            validate.userName(newName, 'User name');
-            this.userName = newName;
-
-        }
-
-        get firstNameProperty() {
-            return this.firstName;
-        }
-
-        set firstNameProperty(newName) {
-            validate.isString(newName, 'First name');
-            this.firstName = newName;
-        }
-
-        get lastNameProperty() {
-            return this._lastName;
-        }
-
-        set lastNameProperty(newName) {
-            validate.isString(newName, 'Last name');
-            this.lastName = newName;
-        }
-
-        get passwordProperty() {
-            return this.password;
-        }
-
-        set passwordProperty(newPassword) {
-            validate.password(newPassword, 'Password');
-            this.password = newPassword;
-        }
-
-        get emailProperty() {
-            return this._email
-        }
-
-        set emailProperty(newEmail) {
-            validate.email(newEmail);
-            this.email = newEmail;
-        }
+        return parseUser.signUp(user);
     }
 
-export default User;
+    login(username, password) {
+        return Parse.User.logIn(username, password);
+    }
+
+    logout() {
+        return Parse.User.logOut();
+    }
+}
+
+export default new userModel;
