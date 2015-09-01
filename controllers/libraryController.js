@@ -6,6 +6,7 @@ import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
 import bookModel from '../models/bookModel.js';
+import librarySearchModel from '../models/librarySearchModel.js';
 
 class libraryController {
     load(sammy) {
@@ -60,7 +61,7 @@ class libraryController {
                     var id = $(this).attr('data-id');
                     sammy.redirect('#/library/detailed/' + id);
                 });
-            });;
+            });
     }
 
     detailed(sammy) {
@@ -84,7 +85,15 @@ class libraryController {
         // TODO: Extract common functions from promises?
         bookModel.getBooks().find()
             .then(function(allBooks) {
-                return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
+                var result = [];
+                if (sammy.params['prop'] && sammy.params['search']) {
+                    result = librarySearchModel.filterBy(allBooks, sammy.params['prop'], sammy.params['search']);
+                }
+                else {
+                    result = allBooks;
+                }
+
+                return templatesHelper.append('libraryBookTemplate', result, '#library-content');
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');

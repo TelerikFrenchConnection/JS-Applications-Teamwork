@@ -32,7 +32,7 @@ export function init(element) {
 		this.get('#/library/detailed/:bookId', libraryController.detailed);
         this.get('#/library/categories', libraryController.categories);
         this.get('#/library/search', libraryController.search);        
-        this.get('#/library/search/:string', libraryController.search);
+        this.get('#/library/search/:prop/:search', libraryController.search);
         this.get('#/library/top', libraryController.top);
 
         this.get('#/account', accountController.load);
