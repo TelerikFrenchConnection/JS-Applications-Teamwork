@@ -1,4 +1,5 @@
 var category = {
+	All: 'All',
     SciFi: 'Science-Fiction',
     Fantasy: 'Fantasy',
     Action: 'Action',

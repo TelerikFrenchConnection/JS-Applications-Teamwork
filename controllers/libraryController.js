@@ -24,7 +24,33 @@ class libraryController {
     }
 
     categories() {
+        var allBooksRetrieved = [];
 
+        pagesHelper.append('libraryCategories')
+
+        db.data.get('Book', function(allBooks) {
+            allBooksRetrieved = allBooks;
+            return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
+        }).then(function() {
+            var booksToAdd = [];
+
+            $('#book-category').change(function() {
+                var category = $(this).find(':selected').attr('value');
+
+                $(this).parent().nextAll().remove();
+
+                allBooksRetrieved.forEach(function(book) {
+                    if (book.attributes.category === category) {
+                        booksToAdd.push(book);
+                    }
+
+                });
+
+                templatesHelper.append('libraryBookTemplate', booksToAdd, '#library-content');
+
+                booksToAdd = [];
+            });
+        });
     }
 
     detailed() {
@@ -40,7 +66,6 @@ class libraryController {
                 console.log(error);
             }
         });
-
     }
 
     search() {
