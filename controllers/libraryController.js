@@ -93,6 +93,15 @@ class libraryController {
                     result = allBooks;
                 }
 
+                $('#search-form button').on('click', function() {
+                    var $searchForm = $(this).parent();
+                    var searchFilterValue = $searchForm.find('#search-filter :selected').val();
+                    var searchInputValue = $searchForm.find('#search-term').val();
+                    
+                    var searchParams = searchFilterValue + '/' + searchInputValue;
+                    $searchForm.attr('action', '#/library/search/' + searchParams);
+                });
+
                 return templatesHelper.append('libraryBookTemplate', result, '#library-content');
             })
             .then(function() {
