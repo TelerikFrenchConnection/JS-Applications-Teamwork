@@ -34,9 +34,7 @@ var validate = {
 
      isNumber: function (value) {
 
-        return ( value !== 'number') {
-
-       }
+        return ( value !== 'number')
     },
 
     price: function (value, name) {
