@@ -8,7 +8,7 @@ var pagesHelper = (function(){
             }, function(error) {
                 console.log('Failed to load page ' + pageName);
                 console.log(error);
-            })
+            });
         });
     }
 
