@@ -4,8 +4,8 @@ class searchModel {
 		searchValue = searchValue.toLowerCase();
 
 		booksCollection.forEach(function(book) {
-			var selectedCategory = book.attributes[prop].toLowerCase();
-			if (selectedCategory.indexOf(searchValue) > -1) {
+			var selectedProperty = book.attributes[prop].toLowerCase();
+			if (selectedProperty.indexOf(searchValue) > -1) {
 		 		filteredBooks.push(book);
 			}
 		});
