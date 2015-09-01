@@ -55,7 +55,7 @@ class accountController {
             }, function(user, error, storage) {
                 pagesHelper.append('accountLogin').then(function(){
                     var errorObject = {name:"your login details", message: "are invalid"};
-                    templatesHelper.appendSingle('warningTemplate', errorObject, '.warning');
+                    templatesHelper.appendSingle('warning', errorObject, '.warning');
                 });
             })
     }
