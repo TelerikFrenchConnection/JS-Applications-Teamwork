@@ -17,7 +17,7 @@ class Book {
     }
 
     set titleProperty(newTitle) {
-        validate.isString(newTitle, 'Title');
+        validate.safeText(newTitle, 'Title');
         this.title = newTitle;
     }
 
@@ -26,7 +26,7 @@ class Book {
     }
 
     set authorProperty(newAuthor) {
-        validate.isString(newAuthor, 'Author');
+        validate.safeText(newAuthor, 'Author');
         this.author = newAuthor;
     }
 
@@ -34,17 +34,18 @@ class Book {
         return this.category;
     }
 
-    set categoryProperty(newCategory) {
-        validate.isString(newCategory, 'Category');
-        this.category = newCategory;
-    }
+    // How we crete Category?
+    //set categoryProperty(newCategory) {
+    //    validate.ifString(newCategory, 'Category');
+    //    this.category = newCategory;
+    //}
 
     get isbnProperty() {
         return this.isbn;
     }
 
     set isbnProperty(newIsbn) {
-        validate.isString(newIsbn, 'Isbn');
+        validate.ISBN(newIsbn, 'Isbn');
         this.isbn = newIsbn;
     }
 
@@ -54,7 +55,7 @@ class Book {
 
     set priceProperty(newPrice) {
         validate.price(newPrice, 'Price');
-        this.price = newPrice;
+        this.price = newPrice;    // need to be parsed to number?
     }
 
     get pictureURLProperty() {
@@ -70,7 +71,7 @@ class Book {
     }
 
     set descriptionProperty(newDescription) {
-        validate.isString(newDescription, 'Description');
+        validate.safeText(newDescription, 'Description');
         this.description = newDescription;
     }
 }

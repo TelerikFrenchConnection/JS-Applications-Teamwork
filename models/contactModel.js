@@ -7,7 +7,10 @@ class contactModel {
 
         // Add error handling logic
 
-        ses
+    if(sessionStorage.getObject(this.email)!==0){
+
+    }
+
 
         // db.add('Contact', contact);
     }

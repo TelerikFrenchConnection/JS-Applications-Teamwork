@@ -21,8 +21,8 @@ class Contact {
         return this.name
     }
 
-    set nameProperty(newName) {
-        validate.isString(newName, 'Name');
+    set nameProperty(newName) {   //name to be only
+        validate.name(newName, 'Name');
         this.name = newName;
     }
 
@@ -31,7 +31,7 @@ class Contact {
     }
 
     set titleProperty(newTitle) {
-        validate.isString(newTitle, 'Title');
+        validate.safeText(newTitle, 'Title');
         this.title = newTitle;
     }
 
