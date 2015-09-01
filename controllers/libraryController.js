@@ -1,7 +1,6 @@
 import _ from 'underscore';
 import db from 'dbContext';
 
-import partialHelper from '../views/helpers/partialsHelper.js';
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
@@ -14,7 +13,7 @@ class libraryController {
 
         bookModel.getBooks().find()
             .then(function(allBooks) {
-                return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
+                return templatesHelper.append('libraryBook', allBooks, '#library-content');
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
@@ -33,7 +32,7 @@ class libraryController {
         bookModel.getBooks().find()
             .then(function(allBooks) {
                 allBooksRetrieved = allBooks;
-                return templatesHelper.append('libraryBookTemplate', allBooks, '#library-content');
+                return templatesHelper.append('libraryBook', allBooks, '#library-content');
             })
             .then(function() {
                 var booksToAdd = [];
@@ -50,7 +49,7 @@ class libraryController {
 
                     });
 
-                    templatesHelper.append('libraryBookTemplate', booksToAdd, '#library-content');
+                    templatesHelper.append('libraryBook', booksToAdd, '#library-content');
 
                     booksToAdd = [];
                 });
@@ -70,7 +69,7 @@ class libraryController {
 
         var selectedBook = bookModel.getBooks().get(id, {
             success: function(result) {
-                templatesHelper.append('bookDetailedTemplate', [result], '#library-content');
+                templatesHelper.append('bookDetailed', [result], '#library-content');
             },
             error: function(object, error) {
                 console.log('Cannot access the given book' + object);
@@ -105,7 +104,7 @@ class libraryController {
                     $searchForm.attr('action', '#/library/search/' + searchParams);
                 });
 
-                return templatesHelper.append('libraryBookTemplate', result, '#library-content');
+                return templatesHelper.append('libraryBook', result, '#library-content');
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
