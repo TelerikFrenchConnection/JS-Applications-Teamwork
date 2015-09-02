@@ -40,6 +40,8 @@ class libraryController {
                 $('#book-category').change(function() {
                     var category = $(this).find(':selected').attr('value');
 
+                    var emptyCategory = [{category: category}];
+
                     $(this).parent().nextAll().remove();
 
                     allBooksRetrieved.forEach(function(book) {
@@ -49,7 +51,13 @@ class libraryController {
 
                     });
 
-                    templatesHelper.append('libraryBook', booksToAdd, '#library-content');
+                    if (booksToAdd.length) {
+                        templatesHelper.append('libraryBook', booksToAdd, '#library-content');    
+                    }
+                    else {
+                        templatesHelper.append('libraryEmptyCategory', emptyCategory, '#library-content');      
+                    }
+                    
 
                     booksToAdd = [];
                 });
