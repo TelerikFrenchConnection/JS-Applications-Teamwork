@@ -129,8 +129,27 @@ class libraryController {
             });
     }
 
-    top() {
+    top(sammy) {
+        pagesHelper.append('libraryTop');
 
+        bookModel.getBooks().find()
+            .then(function(allBooks) {
+                var sortedBooks = _.chain(allBooks)
+                    .sortBy(function(book) {
+                        return book.attributes.views;
+                    })
+                    .reverse();
+
+                return templatesHelper.append('libraryBook', sortedBooks._wrapped, '#library-content');
+
+            })
+            .then(function() {
+                var libraryBookContent = $('#library-content');
+                libraryBookContent.on('click', 'div img', function() {
+                    var id = $(this).attr('data-id');
+                    sammy.redirect('#/library/detailed/' + id);
+                });
+            });
     }
 }
 
