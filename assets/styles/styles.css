@@ -132,7 +132,11 @@ h5 {
 }
 
 #library-content .library-item {
-    margin: 10px 0;
+    margin: 20px 0;
+}
+
+#library-content .library-item h6{
+    font-weight: bold;
 }
 
 #library-content .library-item .library-header {
@@ -142,13 +146,25 @@ h5 {
 #library-content .library-item .img-responsive {
     width: 200px;
     max-width: 200px;
-    height: 300px;
-    max-height: 300px;
+    height: 2850px;
+    max-height: 285px;
     cursor: pointer;
 }
 
 .detail-wrapper {
     padding: 48px 60px;
+}
+
+.latest-books {
+    text-align: center;
+}
+
+.latest-books h4 {
+    margin-top: 18px;
+}
+
+.latest-books hr {
+    border-bottom: 1px solid #eee;
 }
 
 .contact {
