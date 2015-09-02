@@ -1,7 +1,6 @@
 import _ from 'underscore';
 import db from 'dbContext';
 
-import partialHelper from '../views/helpers/partialsHelper.js';
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
@@ -56,7 +55,7 @@ class accountController {
             }, function(user, error, storage) {
                 pagesHelper.append('accountLogin').then(function(){
                     var errorObject = {name:"your login details", message: "are invalid"};
-                    templatesHelper.appendSingle('warningTemplate', errorObject, '.warning');
+                    templatesHelper.appendSingle('warning', errorObject, '.warning');
                 });
             })
     }

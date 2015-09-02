@@ -4,6 +4,19 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
     border: 0
 }
 
+@media (max-width: @screen-xs) {
+    body{font-size: 10px;}
+}
+
+@media (max-width: @screen-sm) {
+    body{font-size: 14px;}
+}
+
+
+h5{
+    font-size: 1.4em;
+}
+
 .wrapper {
 	width: 1100px;
 	max-width: 75%;
@@ -93,18 +106,31 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
 #library-content {
 	max-width: 90%;
 	margin: 0 auto;
+	padding-left: 5%;
 }
 #library-content .inner {
 	display: inline-block;
-	text-align: center;
-	margin-top: 3%;
+	margin-top: 4%;
+	margin-left: 1%;
 	width: 30%;
-	height: 30%;
+	min-width: 100px;
+	padding: 0px;
+	border: 1px solid gray;
+	border-radius: 5px;
 }
 #library-content .inner .gallery-image {
 	margin: 0 auto;
 	cursor: pointer;
+	min-width: 100px;
+	max-width: 150px;
+	min-height: 150px;
+	max-height: 225px;
 }
+
+#library-content .inner .row {
+	border: 1px solid black;
+}
+
 
 .detail-wrapper {
 	padding: 48px 60px;
