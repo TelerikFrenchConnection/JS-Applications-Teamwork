@@ -8,15 +8,40 @@ import libraryController from './controllers/libraryController.js';
 import contactController from './controllers/contactController.js';
 import accountController from './controllers/accountController.js';
 import adminController from './controllers/adminController.js';
+import notFoundController from './controllers/adminController.js';
+import pagesHelper from '../views/helpers/pagesHelper.js';
 
 import headerHelper from './views/helpers/headerHelper.js';
 
 export function init(element) {
+
+
+
 	var app = Sammy(element, function () {
 
         this.before({}, function () {
             headerHelper.updateHeader();
         });
+
+            /* this.notFound({}, function(verb, path) {
+             path='#/404';
+             var ret = this.error  ( this.redirect(path));
+             return (verb === 'get') ? ret : true;
+             });*/
+
+          /*  notFound: function(verb, path) {
+                    var ret = this.error(['404 Not Found', verb, path].join(' '));
+                    return (verb === 'get') ? ret : true;
+            }*/
+
+         /*   var app = $.sammy('#app', function() {
+                    this.notFound = function(){
+                            // do something
+                    }
+            });*/
+
+
+
 
 		this.get('#/', function() { this.redirect('#/home')});
 		this.get('#/home', homeController.load);
@@ -40,14 +65,12 @@ export function init(element) {
         this.post('#/account/login', accountController.loginPost);
         this.post('#/account/signup', accountController.signupPost);
 
-        this.get('.*', function() {
 
-                pagesHelper.append('404')
-            // load 404 Page
-               // '#/404'
-
+        this.get('#/404', function() {
+                pagesHelper.append('404');
         });
 	});
 
 	app.run('#/');
 }
+
