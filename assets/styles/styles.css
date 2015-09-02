@@ -10,7 +10,7 @@ h5 {
 
 .wrapper {
     width: 1100px;
-    max-width: 75%;
+    max-width: 85%;
     margin: 0 auto;
 }
 
@@ -109,43 +109,19 @@ h5 {
 }
 
 #library-content {
-    max-width: 90%;
-    margin: 0 auto;
-    padding-left: 5%;
+    text-align: center;
+    max-width: 97%;
+    margin: 25px auto;
 }
 
-#library-content .inner {
-    display: inline-block;
-    margin-top: 4%;
-    margin-left: 1%;
-    width: 30%;
-    min-width: 100px;
-    padding: 0;
-    border: 1px solid gray;
-    border-radius: 5px;
+#library-content .library-item {
+    margin: 10px 0;
 }
 
-#library-content .inner .gallery-image {
-    margin: 0 auto;
+#library-content .library-item .img-responsive {
+    max-width: 170px;
+    max-height: 240px;
     cursor: pointer;
-    display: inline;
-    text-align: left;
-    width: 50%;
-    max-width: 120px;
-    min-width: 80px;
-}
-
-#library-content .inner .row {
-    border: 1px solid black;
-}
-
-#library-content .inner.book-col {
-    display: inline;
-    width: 95%;
-}
-
-#library-content .inner .book-desc {
-    display: inline;
 }
 
 .detail-wrapper {
