@@ -11,23 +11,7 @@ class libraryController {
     load(sammy) {
         pagesHelper.append('library');
 
-        bookModel.getBooks().find()
-            .then(function(allBooks) {
-                return templatesHelper.append('libraryBook', allBooks, '#library-content');
-            })
-            .then(function() {
-                var libraryBookContent = $('#library-content');
-                libraryBookContent.on('click', 'div img', function() {
-                    var id = $(this).attr('data-id');
-                    sammy.redirect('#/library/detailed/' + id);
-                });
-            });
-    }
-
-    categories(sammy) {
         var allBooksRetrieved = [];
-
-        pagesHelper.append('libraryCategories')
 
         bookModel.getBooks().find()
             .then(function(allBooks) {
@@ -94,15 +78,15 @@ class libraryController {
         // TODO: Extract common functions from promises?
         bookModel.getBooks().find()
             .then(function(allBooks) {
-                var newBooksCollection = [];
-                var searchFilter = sammy.params['prop'];
-                var searchTerm = sammy.params['search'];
+                var result = [];
+                var filterProperty = sammy.params['prop'];
+                var searchValue = sammy.params['search'];
 
-                if (searchFilter && searchTerm) {
-                    newBooksCollection = searchModel.filterBy(allBooks, searchFilter, searchTerm);
+                if (filterProperty && searchValue) {
+                    result = searchModel.filterBy(allBooks, filterProperty, searchValue);
                 }
                 else {
-                    newBooksCollection = allBooks;
+                    result = allBooks;
                 }
 
                 $('#search-form button').on('click', function() {
@@ -114,21 +98,11 @@ class libraryController {
                     $searchForm.attr('action', '#/library/search/' + searchParams);
                 });
 
-                if (newBooksCollection.length > 0) {
-                    return templatesHelper.append('libraryBook', newBooksCollection, '#library-content');
-                }
-                else {
-                    var emptySearch = {
-                        searchFilter: searchFilter.capitalizeFirst(),
-                        searchTerm: searchTerm
-                    };
-
-                    return templatesHelper.appendSingle('libraryEmptySearch', emptySearch, '#library-content');
-                }
+                return templatesHelper.append('libraryBook', result, '#library-content');
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
-                libraryBookContent.on('click', 'div img', function() {
+                libraryBookContent.on('click', 'div.inner img', function() {
                     var id = $(this).attr('data-id');
                     sammy.redirect('#/library/detailed/' + id);
                 });
