@@ -2,6 +2,7 @@ import $ from 'jquery';
 import sammy from 'sammy';
 
 import './extentions/storageExtentions.js';
+import './extentions/stringExtensions.js';
 
 import homeController from './controllers/homeController.js';
 import libraryController from './controllers/libraryController.js';
