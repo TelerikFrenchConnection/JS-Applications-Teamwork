@@ -8,11 +8,11 @@
     EMAIL_PATTERN: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
     RESTRICTED_SYMBOLS_PATTERN: /[<>$@#&]/gm,             ///[^\.%,!\?a-zA-Z0-9 ]/g,
     DEFAULT: 'Value',
-    INVALID_VALUE_MESSAGE: 'must be valid',
+    INVALID_VALUE_MESSAGE: 'must be filled and in valid format',
     INVALID_ISBN_MESSAGE: 'must contain exactly 10 or 13 digits',
     INVALID_SYMBOLS_MESSAGE: 'must not contain special characters as <, > and $',
-    INVALID_PASSWORD_MESSAGE: 'must contain one Uppercase, lowcase or number and length 8-20',
-    INVALID_USERNAME_MESSAGE: 'must contain only letters, numbers or underscore and length 6-15'
+    INVALID_PASSWORD_MESSAGE: 'must contain at last one uppercase, lowcase or number and be 8-20 symbols long',
+    INVALID_USERNAME_MESSAGE: 'must contain only letters, numbers or underscore and be 6-15 symbols'
 };
 
 var validate = {
@@ -34,7 +34,7 @@ var validate = {
         }
 
         if (!isInRange) {
-            sessionStorage.setObject('ErrorPrice', {
+            sessionStorage.setObject(name, {
                 name: name,
                 message: CONSTANTS.INVALID_VALUE_MESSAGE
             });
@@ -46,7 +46,7 @@ var validate = {
         var hasCorrectLength = value.length === 10 || value.length === 13;
         var hasOnlyDigits = !(value.split('').some(this.isChar));
         if (!isString || !hasCorrectLength || !hasOnlyDigits) {
-            sessionStorage.setObject('ErrorISBN', {
+            sessionStorage.setObject(name, {
                 name: name,
                 message: CONSTANTS.INVALID_ISBN_MESSAGE
             });
@@ -58,7 +58,7 @@ var validate = {
         var isInRange = value.length > CONSTANTS.TEXT_MIN_LENGTH && value.length <= CONSTANTS.TEXT_MAX_LENGTH;
         var hasOnlyLetters = !CONSTANTS.NAME_PATTERN.test(value);
         if (!isInRange || !hasOnlyLetters) {
-            sessionStorage.setObject('ErrorName', {
+            sessionStorage.setObject(name, {
                 name: name,
                 message: CONSTANTS.INVALID_VALUE_MESSAGE
             });
@@ -68,7 +68,7 @@ var validate = {
     email: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (!CONSTANTS.EMAIL_PATTERN.test(value)) {
-            sessionStorage.setObject('ErrorEmail', {
+            sessionStorage.setObject(name, {
                 name: name,
                 message: CONSTANTS.INVALID_VALUE_MESSAGE
             });
@@ -78,7 +78,7 @@ var validate = {
     password: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (!CONSTANTS.PASSWORD_PATTERN.test(value)) {
-            sessionStorage.setObject('ErrorPassword', {
+            sessionStorage.setObject(name, {
                 name: name,
                 message: CONSTANTS.INVALID_PASSWORD_MESSAGE
             });
@@ -88,7 +88,7 @@ var validate = {
     userName: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (!CONSTANTS.USER_NAME_PATTERN.test(name)) {
-            sessionStorage.setObject('ErrorUsername', {
+            sessionStorage.setObject(name, {
                 name: name,
                 message: CONSTANTS.INVALID_USERNAME_MESSAGE
             });
@@ -98,7 +98,7 @@ var validate = {
     safeText: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (CONSTANTS.RESTRICTED_SYMBOLS_PATTERN.test(value)) {
-            sessionStorage.setObject('Error', {
+            sessionStorage.setObject(name, {
                 name: name,
                 message: CONSTANTS.INVALID_SYMBOLS_MESSAGE
             });
