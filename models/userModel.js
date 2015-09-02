@@ -8,7 +8,12 @@ class userModel {
         var storage = sessionStorage;
         var parseUser = new Parse.User;
 
-        return parseUser.signUp(user);
+        var promise = new Promise(function(resolve, reject) {
+
+        });
+
+        console.log(storage);
+        //return parseUser.signUp(user);
     }
 
     login(username, password) {

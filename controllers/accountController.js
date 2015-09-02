@@ -22,14 +22,16 @@ class accountController {
         var firstName = sammy.params['fname'];
         var lastName = sammy.params['lname'];
 
-        var signupResult = userModel.signup(username, password, firstName, lastName, email)
-            .then(function(user){
+        var signupResult = userModel.signup(username, password, firstName, lastName, email);
+        console.log(signupResult);
+
+        /*.then(function(user){
                 console.log('success');
                 console.log(user);
             }, function(user) {
                 console.log('failed');
                 console.log(user);
-            });
+            });*/
 
        /* pagesHelper.append('accountSignup')
             .then(function(user){

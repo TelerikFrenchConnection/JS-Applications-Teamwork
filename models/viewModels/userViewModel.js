@@ -15,8 +15,7 @@
         }
 
         set userNameProperty(newName) {
-
-            validate.userName(newName, 'User name');
+            validate.userName(newName, 'user name');
             this.username = newName;
 
         }
@@ -26,7 +25,7 @@
         }
 
         set firstNameProperty(newName) {
-            validate.name(newName, 'First name');
+            validate.name(newName, 'first name');
             this.firstName = newName;
         }
 
@@ -35,7 +34,7 @@
         }
 
         set lastNameProperty(newName) {
-            validate.name(newName, 'Last name');
+            validate.name(newName, 'past name');
             this.lastName = newName;
         }
 
@@ -44,7 +43,7 @@
         }
 
         set passwordProperty(newPassword) {
-            validate.password(newPassword, 'Password');
+            validate.password(newPassword, 'password');
             this.password = newPassword;
         }
 
@@ -53,7 +52,7 @@
         }
 
         set emailProperty(newEmail) {
-            validate.email(newEmail);
+            validate.email(newEmail, 'email');
             this.email = newEmail;
         }
     }
