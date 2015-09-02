@@ -12,9 +12,20 @@ class libraryController {
         pagesHelper.append('library');
 
         var allBooksRetrieved = [];
+        var categories = [];
 
         bookModel.getBooks().find()
             .then(function(allBooks) {
+                allBooks.forEach(function(book){
+                    if (!categories.some(function(category){
+                        return category === book.attributes.category;
+                    })) {
+                        categories.push(book.attributes.category);
+                    }
+                });
+
+                templatesHelper.append('categoriesTemplate', categories, '#book-category');
+
                 allBooksRetrieved = allBooks;
                 return templatesHelper.append('libraryBook', allBooks, '#library-content');
             })
