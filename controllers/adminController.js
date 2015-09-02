@@ -6,25 +6,26 @@ import pagesHelper from '../views/helpers/pagesHelper.js';
 
 class adminController {
 	load(sammy) {
-        isUserAuthorized(sammy);
-
-        pagesHelper.append('admin');
-        // show all contact form entires
+        if(isUserAuthorized(sammy)){
+            pagesHelper.append('admin');
+            // show all contact form entires
+        }
 	}
 
 	addBook(sammy) {
-        isUserAuthorized(sammy);
-
-		pagesHelper.appendTo('adminAddbook', '#admin-forms-container');
+        if(isUserAuthorized(sammy)){
+            pagesHelper.appendTo('adminAddbook', '#admin-forms-container');
+        }
 	}
-
 }
 
 function isUserAuthorized(sammy) {
     if(!Parse.User.current()) {
-        sammy.redirect('#/oops');
+        sammy.redirect('#/404');
+        return false;
     } else if (!Parse.User.current().attributes.isAdmin) {
-        sammy.redirect('#/oops');
+        sammy.redirect('#/404');
+        return false;
     }
 }
 
