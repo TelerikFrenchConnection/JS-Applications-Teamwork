@@ -26,6 +26,8 @@ function isUserAuthorized(sammy) {
     } else if (!Parse.User.current().attributes.isAdmin) {
         sammy.redirect('#/404');
         return false;
+    } else {
+        return true;
     }
 }
 
