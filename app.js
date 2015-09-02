@@ -37,10 +37,13 @@ export function init(element) {
 
         this.get('#/admin', adminController.load);
         this.get('#/admin/addbook', adminController.addBook);
+        this.get('#/admin/removebook', adminController.removeBook);
 
         this.post('#/account/login', accountController.loginPost);
         this.post('#/account/signup', accountController.signupPost);
+
         this.post('#/admin/addbook', adminController.addBookPost);
+        this.post('#/admin/removebook', adminController.removeBookPost);
 
         this.get('#/404', function() {
             pagesHelper.append('404');
