@@ -1,3 +1,7 @@
+textarea:focus, input:focus, select:focus{
+    outline: 0;
+}
+
 body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, ol, p, textarea, ul {
     margin: 0;
     padding: 0;
@@ -9,14 +13,14 @@ h5 {
 }
 
 .wrapper {
-    width: 1100px;
+    width: 1200px;
     max-width: 85%;
     margin: 0 auto;
 }
 
 .wrapper-nav {
-    width: 1100px;
-    max-width: 75%;
+    width: 1200px;
+    max-width: 85%;
     margin: 0 auto;
 }
 
@@ -111,16 +115,34 @@ h5 {
 #library-content {
     text-align: center;
     max-width: 97%;
-    margin: 25px auto;
+    margin: 20px auto;
+}
+
+#library-content .category-select {
+    margin-bottom: 15px;
+}
+
+#library-content .category-select select {
+    border-color: #ddd;
+}
+
+#library-content .category-select hr {
+    border-bottom: 1px solid #eee;
 }
 
 #library-content .library-item {
     margin: 10px 0;
 }
 
+#library-content .library-item .library-header {
+    height: 55px;
+}
+
 #library-content .library-item .img-responsive {
-    max-width: 170px;
-    max-height: 240px;
+    width: 200px;
+    max-width: 200px;
+    height: 300px;
+    max-height: 300px;
     cursor: pointer;
 }
 
