@@ -90,9 +90,12 @@ class libraryController {
                 $('#search-form button').on('click', function() {
                     var $searchForm = $(this).parent();
                     var searchFilterValue = $searchForm.find('#search-filter :selected').val();
-                    var searchInputValue = $searchForm.find('#search-term').val();
+                    var searchTermValue = $searchForm.find('#search-term').val();
+
+                    searchFilterValue = searchFilterValue || 'empty';
+                    searchTermValue = searchTermValue || 'empty';
                     
-                    var searchParams = searchFilterValue + '/' + searchInputValue;
+                    var searchParams = searchFilterValue + '/' + searchTermValue;
                     $searchForm.attr('action', '#/library/search/' + searchParams);
                 });
 
