@@ -4,62 +4,51 @@
     MAX_NUMBER: 9007199254740992,
     NAME_PATTERN: /[^a-zA-Z]/,
     PASSWORD_PATTERN: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/,
-    USER_NAME_PATTERN:/\S[_a-zA-Z0-9]{6,15}/ ,
+    USER_NAME_PATTERN: /\S[_a-zA-Z0-9]{6,15}/,
     EMAIL_PATTERN: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
-    RESTRICTED_SYMBOLS_PATTERN:/[<>$@#&]/gm,             ///[^\.%,!\?a-zA-Z0-9 ]/g,
+    RESTRICTED_SYMBOLS_PATTERN: /[<>$@#&]/gm,             ///[^\.%,!\?a-zA-Z0-9 ]/g,
     DEFAULT: 'Value',
-    INVALID_MESSAGE:'is Invalid',
-    RESTRICTED_SYMBOLS_MESSAGE: 'special characters as <, > and $ are not allowed'
+    INVALID_VALUE_MESSAGE: 'is Invalid',
+    INVALID_ISBN_MESSAGE: 'must contain exactly 10 or 13 digits',
+    INVALID_SYMBOLS_MESSAGE: 'special characters as <, > and $ are not allowed',
+    INVALID_PASSWORD_MESSAGE: 'must contain one Uppercase, lowcase or number and length 8-20',
+    INVALID_USERNAME_MESSAGE: 'must contain only letters, numbers or underscore and length 6-15'
 };
 
-
-//function isString(str, min, max) {
-//    if (typeof (str) !== 'string' ||
-//        str.length < min ||
-//        str.length > max) {
-//        return ('The string must have between ' + min + ' and ' + max + ' characters');
-//    }
-//}
-
 var validate = {
-    isChar: function(symbol) {
+    isChar: function (symbol) {
         return isNaN(+symbol)
     },
 
-    //TODO
     isUndefined: function (value) {
         return (value === undefined)
     },
 
-
-     isNumber: function (value) {
-
-        return ( value !== 'number')
-    },
-
     price: function (value, name) {
-     name = name || CONSTANTS.DEFAULT;
+        name = name || CONSTANTS.DEFAULT;
 
-        var isInRange=false;
-        if (!this.isUndefined(value)&&!isNaN(+value)) {
-            isInRange = (0>=value && value <= CONSTANTS.MAX_NUMBER)
+        var isInRange = false;
+
+        if (!this.isUndefined(value) && !isNaN(+value)) {
+            isInRange = (0 >= value && value <= CONSTANTS.MAX_NUMBER)
         }
-        if(!isInRange){
+
+        if (!isInRange) {
             sessionStorage.setObject('Error', {
                 name: name,
-                message: CONSTANTS.INVALID_MESSAGE
+                message: CONSTANTS.INVALID_VALUE_MESSAGE
             });
         }
-     },
+    },
 
-    ISBN: function (value,name) {
+    ISBN: function (value, name) {
         var isString = typeof (value) === 'string';
         var hasCorrectLength = value.length === 10 || value.length === 13;
         var hasOnlyDigits = !(value.split('').some(this.isChar));
-        if (!isString || !hasCorrectLength || !hasOnlyDigits){
+        if (!isString || !hasCorrectLength || !hasOnlyDigits) {
             sessionStorage.setObject('Error', {
                 name: name,
-                message: ' The ISBN must contain exactly 10 or 13 digits'
+                message: CONSTANTS.INVALID_ISBN_MESSAGE
             });
         }
     },
@@ -71,7 +60,7 @@ var validate = {
         if (!isInRange || !hasOnlyLetters) {
             sessionStorage.setObject('Error', {
                 name: name,
-                message: CONSTANTS.INVALID_MESSAGE
+                message: CONSTANTS.INVALID_VALUE_MESSAGE
             });
         }
     },
@@ -81,7 +70,8 @@ var validate = {
         if (!CONSTANTS.EMAIL_PATTERN.test(value)) {
             sessionStorage.setObject('Error', {
                 name: name,
-                message: CONSTANTS.INVALID_MESSAGE});
+                message: CONSTANTS.INVALID_VALUE_MESSAGE
+            });
         }
     },
 
@@ -90,28 +80,28 @@ var validate = {
         if (!CONSTANTS.PASSWORD_PATTERN.test(value)) {
             sessionStorage.setObject('Error', {
                 name: name,
-                message: ' must contain one Uppercase, lowcase or number and length 8-20 '
-        });
+                message: CONSTANTS.INVALID_PASSWORD_MESSAGE
+            });
         }
     },
 
-   userName: function (value, name) {
+    userName: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
         if (!CONSTANTS.USER_NAME_PATTERN.test(name)) {
             sessionStorage.setObject('Error', {
                 name: name,
-                message: 'must contain only letters, numbers or underscore and length 6-15'
+                message: CONSTANTS.INVALID_USERNAME_MESSAGE
             });
         }
     },
 
     safeText: function (value, name) {
-       name = name || CONSTANTS.DEFAULT;
+        name = name || CONSTANTS.DEFAULT;
         if (CONSTANTS.RESTRICTED_SYMBOLS_PATTERN.test(value)) {
-           sessionStorage.setObject('Error', {
-               name: name,
-               message: CONSTANTS.SPECIAL_SYMBOLS_MESSAGE
-           });
+            sessionStorage.setObject('Error', {
+                name: name,
+                message: CONSTANTS.INVALID_SYMBOLS_MESSAGE
+            });
         }
     }
 }
