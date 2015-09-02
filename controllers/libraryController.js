@@ -138,9 +138,10 @@ class libraryController {
                     .sortBy(function(book) {
                         return book.attributes.views;
                     })
-                    .reverse();
+                    .reverse()
+                    .value();
 
-                return templatesHelper.append('libraryBook', sortedBooks._wrapped, '#library-content');
+                return templatesHelper.append('libraryBook', sortedBooks, '#library-content');
 
             })
             .then(function() {
