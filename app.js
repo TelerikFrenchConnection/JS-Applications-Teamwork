@@ -2,21 +2,18 @@ import $ from 'jquery';
 import sammy from 'sammy';
 
 import './extentions/storageExtentions.js';
+import './extentions/stringExtensions.js';
 
 import homeController from './controllers/homeController.js';
 import libraryController from './controllers/libraryController.js';
 import contactController from './controllers/contactController.js';
 import accountController from './controllers/accountController.js';
 import adminController from './controllers/adminController.js';
-import notFoundController from './controllers/adminController.js';
-import pagesHelper from '../views/helpers/pagesHelper.js';
 
+import pagesHelper from '../views/helpers/pagesHelper.js';
 import headerHelper from './views/helpers/headerHelper.js';
 
 export function init(element) {
-
-
-
 	var app = Sammy(element, function () {
 
         this.before({}, function () {
@@ -29,7 +26,6 @@ export function init(element) {
 
 		this.get('#/library', libraryController.load);
 		this.get('#/library/detailed/:bookId', libraryController.detailed);
-        this.get('#/library/categories', libraryController.categories);
         this.get('#/library/search', libraryController.search);        
         this.get('#/library/search/:prop/:search', libraryController.search);
         this.get('#/library/top', libraryController.top);
@@ -46,8 +42,12 @@ export function init(element) {
         this.post('#/account/signup', accountController.signupPost);
         this.post('#/admin/addbook', adminController.addBookPost);
 
+        this.get('#/404', function() {
+            pagesHelper.append('404');
+        });
+
         this.get(/.*/, function() {
-                pagesHelper.append('404');
+            this.redirect('#/404');
         });
 	});
 

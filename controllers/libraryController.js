@@ -11,23 +11,7 @@ class libraryController {
     load(sammy) {
         pagesHelper.append('library');
 
-        bookModel.getBooks().find()
-            .then(function(allBooks) {
-                return templatesHelper.append('libraryBook', allBooks, '#library-content');
-            })
-            .then(function() {
-                var libraryBookContent = $('#library-content');
-                libraryBookContent.on('click', 'div.inner img', function() {
-                    var id = $(this).attr('data-id');
-                    sammy.redirect('#/library/detailed/' + id);
-                });
-            });
-    }
-
-    categories(sammy) {
         var allBooksRetrieved = [];
-
-        pagesHelper.append('libraryCategories')
 
         bookModel.getBooks().find()
             .then(function(allBooks) {
@@ -66,7 +50,7 @@ class libraryController {
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
-                libraryBookContent.on('click', 'div.inner img', function() {
+                libraryBookContent.on('click', 'div img', function() {
                     var id = $(this).attr('data-id');
                     sammy.redirect('#/library/detailed/' + id);
                 });

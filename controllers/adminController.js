@@ -8,17 +8,19 @@ import bookModel from '../models/bookModel.js';
 
 class adminController {
 	load(sammy) {
-        isUserAuthorized(sammy);
-
-        pagesHelper.append('admin');
-        // show all contact form entires
+        if(isUserAuthorized(sammy)){
+            pagesHelper.append('admin');
+            // show all contact form entires
+        }
 	}
 
 	addBook(sammy) {
         isUserAuthorized(sammy);
 		pagesHelper.appendTo('adminAddbook', '#admin-forms-container');
+        if(isUserAuthorized(sammy)){
+            pagesHelper.appendTo('adminAddbook', '#admin-forms-container');
+        }
 	}
-
     addBookPost(sammy) {
         var title = sammy.params['book-title'];
         var author = sammy.params['book-author'];
@@ -39,8 +41,14 @@ class adminController {
 }
 
 function isUserAuthorized(sammy) {
-    if(!Parse.User.current().attributes.isAdmin) {
+    if(!Parse.User.current()) {
         sammy.redirect('#/404');
+        return false;
+    } else if (!Parse.User.current().attributes.isAdmin) {
+        sammy.redirect('#/404');
+        return false;
+    } else {
+        return true;
     }
 }
 
