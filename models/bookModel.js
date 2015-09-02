@@ -3,11 +3,11 @@ import Book from './viewModels/bookViewModel.js';
 
 class bookModel {
     addBook(title, author, category, isbn, price, pictureURL, description) {
-        var book = new Book(title, author, category, isbn, price, pictureURL, description);
+        var book = new Book(title, author, category, isbn, +price, pictureURL, description);
 
         // Add error handling logic
 
-        db.add('Book', book);
+        return db.add('Book', book);
     }
 
     getBooks() {
