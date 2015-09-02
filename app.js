@@ -2,6 +2,7 @@ import $ from 'jquery';
 import sammy from 'sammy';
 
 import './extentions/storageExtentions.js';
+import './extentions/stringExtensions.js';
 
 import homeController from './controllers/homeController.js';
 import libraryController from './controllers/libraryController.js';
@@ -25,7 +26,6 @@ export function init(element) {
 
 		this.get('#/library', libraryController.load);
 		this.get('#/library/detailed/:bookId', libraryController.detailed);
-        this.get('#/library/categories', libraryController.categories);
         this.get('#/library/search', libraryController.search);        
         this.get('#/library/search/:prop/:search', libraryController.search);
         this.get('#/library/top', libraryController.top);
@@ -40,6 +40,7 @@ export function init(element) {
 
         this.post('#/account/login', accountController.loginPost);
         this.post('#/account/signup', accountController.signupPost);
+        this.post('#/admin/addbook', adminController.addBookPost);
 
         this.get('#/404', function() {
             pagesHelper.append('404');

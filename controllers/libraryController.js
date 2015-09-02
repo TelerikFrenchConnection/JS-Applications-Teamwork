@@ -11,23 +11,7 @@ class libraryController {
     load(sammy) {
         pagesHelper.append('library');
 
-        bookModel.getBooks().find()
-            .then(function(allBooks) {
-                return templatesHelper.append('libraryBook', allBooks, '#library-content');
-            })
-            .then(function() {
-                var libraryBookContent = $('#library-content');
-                libraryBookContent.on('click', 'div.inner img', function() {
-                    var id = $(this).attr('data-id');
-                    sammy.redirect('#/library/detailed/' + id);
-                });
-            });
-    }
-
-    categories(sammy) {
         var allBooksRetrieved = [];
-
-        pagesHelper.append('libraryCategories')
 
         bookModel.getBooks().find()
             .then(function(allBooks) {
@@ -38,8 +22,8 @@ class libraryController {
                 var booksToAdd = [];
 
                 $('#book-category').change(function() {
-                    var category = $(this).find(':selected').attr('value');
-
+                    var optionSelected = $(this).find(':selected');
+                    var category = optionSelected.attr('value');
                     var emptyCategory = {category: category};
 
                     $(this).parent().nextAll().remove();
@@ -52,12 +36,10 @@ class libraryController {
                     });
 
                     if (booksToAdd.length) {
-                        templatesHelper.append('libraryBook', booksToAdd, '#library-content');   
-                        console.log(booksToAdd); 
+                        templatesHelper.append('libraryBook', booksToAdd, '#library-content');
                     }
                     else {
-                        templatesHelper.appendSingle('libraryEmptyCategory', emptyCategory, '#library-content'); 
-                        console.log(emptyCategory);  
+                        templatesHelper.appendSingle('libraryEmptyCategory', emptyCategory, '#library-content');
                     }
                     
 
@@ -66,7 +48,7 @@ class libraryController {
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
-                libraryBookContent.on('click', 'div.inner img', function() {
+                libraryBookContent.on('click', 'div img', function() {
                     var id = $(this).attr('data-id');
                     sammy.redirect('#/library/detailed/' + id);
                 });

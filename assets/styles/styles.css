@@ -4,60 +4,51 @@ body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, o
     border: 0
 }
 
-@media (max-width: @screen-xs) {
-    body{font-size: 10px;}
-}
-
-@media (max-width: @screen-sm) {
-    body{font-size: 14px;}
-}
-
-
-h5{
+h5 {
     font-size: 1.4em;
 }
 
 .wrapper {
-	width: 1100px;
-	max-width: 75%;
-	margin: 0 auto;
+    width: 1100px;
+    max-width: 85%;
+    margin: 0 auto;
 }
 
 .wrapper-nav {
-	width: 1100px;
-	max-width: 75%;
-	margin: 0 auto;
+    width: 1100px;
+    max-width: 75%;
+    margin: 0 auto;
 }
 
 #content {
-	margin: 0px auto;
+    margin: 0 auto;
 }
 
 .login {
-	padding : 0;
-	margin-bottom: 0;
+    padding: 0;
+    margin-bottom: 0;
 }
 
 .navbar {
-	margin-bottom: 0;
-	border-radius: 0;
+    margin-bottom: 0;
+    border-radius: 0;
 }
 
 .navbar-brand {
-	margin-right: 15px;
+    margin-right: 15px;
 }
 
 .btn-lg, .btn-group-lg > .btn {
-	margin: 5px;
+    margin: 5px;
 }
 
 .demo-row {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .jumbotron {
-	margin-bottom: 0;
-	text-align: center;
+    margin-bottom: 0;
+    text-align: center;
 }
 
 .jumbotron p {
@@ -65,27 +56,28 @@ h5{
 }
 
 .footer-bar {
-	color: #34495E;
-	padding: 13px;
+    color: #34495E;
+    padding: 13px;
 }
 
 .login-screen {
-	padding: 60px 0;
+    padding: 60px 0;
 }
 
 .login-form {
-	max-width: 90%;
-	width: 500px;
-	margin: 0 auto;
+    max-width: 90%;
+    width: 500px;
+    margin: 0 auto;
 }
+
 .contact-screen {
-	padding: 80px 0;
+    padding: 80px 0;
 }
 
 .contact-form {
-	max-width: 90%;
-	width: 500px;
-	margin: 0 auto;
+    max-width: 90%;
+    width: 500px;
+    margin: 0 auto;
 }
 
 .navbar-nav > li > a {
@@ -96,127 +88,131 @@ h5{
     padding: 0 3px;
 }
 
+#not-found {
+    text-align: center;
+}
+
+#not-found h2 {
+    margin: 15px 15px 0 15px;
+}
+
+#not-found h4 {
+    margin-bottom: 25px;
+}
+
 @media screen and (max-width: 930px) {
-  .wrapper-nav {
-	width: 100%;
-	max-width: 100%;
-	margin: 0 auto;
-	}
+    .wrapper-nav {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
 }
+
 #library-content {
-	max-width: 90%;
-	margin: 0 auto;
-	padding-left: 5%;
-}
-#library-content .inner {
-	display: inline-block;
-	margin-top: 4%;
-	margin-left: 1%;
-	width: 30%;
-	min-width: 100px;
-	padding: 0px;
-	border: 1px solid gray;
-	border-radius: 5px;
-}
-#library-content .inner .gallery-image {
-	margin: 0 auto;
-	cursor: pointer;
-	display: inline;
-	text-align: left;
-	width: 50%;
-	max-width: 120px;
-	min-width: 80px;
+    text-align: center;
+    max-width: 97%;
+    margin: 25px auto;
 }
 
-#library-content .inner .row {
-	border: 1px solid black;
+#library-content .library-item {
+    margin: 10px 0;
 }
 
-#library-content .inner.book-col {
-	display: inline;
-	width: 95%;
-}
-
-#library-content .inner .book-desc {
-	display: inline;
+#library-content .library-item .img-responsive {
+    max-width: 170px;
+    max-height: 240px;
+    cursor: pointer;
 }
 
 .detail-wrapper {
-	padding: 48px 60px;
+    padding: 48px 60px;
 }
+
 .contact {
-	background-color: #1abc9c;
+    background-color: #1abc9c;
 }
+
 .contact .contact-screen {
-	padding: 0px;
+    padding: 0;
 }
+
 .contact .contact-form {
     position: relative;
     padding: 20px;
     background-color: #edeff1;
     border-radius: 6px;
 }
+
 .contact .contact-form .contact-field {
-	font-size: 17px;
-	text-indent: 3px;
-	border-color: transparent;
+    font-size: 17px;
+    text-indent: 3px;
+    border-color: transparent;
 }
+
 .contact .contact-form .contact-field-icon {
-  position: absolute;
-  top: 3px;
-  right: 15px;
-  font-size: 16px;
-  color: #bfc9ca;
-  -webkit-transition: all .25s;
-          transition: all .25s;
-  }
-.add-book.login {
-	margin: 0;
-	padding: 0;
+    position: absolute;
+    top: 3px;
+    right: 15px;
+    font-size: 16px;
+    color: #bfc9ca;
+    -webkit-transition: all .25s;
+    transition: all .25s;
 }
+
+.add-book.login {
+    margin: 0;
+    padding: 0;
+}
+
 .add-book-screen.login-screen {
- 	background-color: white;
- 	padding-top: 2%;
- }
-.add-book-form.login-form{
- 	border: 1px solid #34495E;
- 	border-radius: 5px;
- 	margin: 0;
-	
- }
+    background-color: white;
+    padding-top: 2%;
+}
+
+.add-book-form.login-form {
+    border: 1px solid #34495E;
+    border-radius: 5px;
+    margin: 0;
+
+}
+
 .add-book.login .add-book-form .add-book-heading {
-	color: #34495E;
-}  
+    color: #34495E;
+}
 
 .add-book.login .add-book-form .form-control {
-	text-indent: 3px;
-	border: 1px solid #34495E;
+    text-indent: 3px;
+    border: 1px solid #34495E;
 }
 
 .admin-root {
-	display: inline-block;
-	width: 90%;
-	margin-left:15%;
+    display: inline-block;
+    width: 90%;
+    margin-left: 15%;
 }
+
 .admin-root .admin-controls {
-	display: inline-block;
-	width: 20%;
-	padding-right: 5px;
+    display: inline-block;
+    width: 20%;
+    padding-right: 5px;
 }
+
 .admin-root .admin-controls .btn {
-	padding: 3px;
-	overflow: hidden;
+    padding: 3px;
+    overflow: hidden;
 }
+
 .admin-root .admin-controls h6.text-center {
-	padding: 2%;
-	margin-left:5px;
-	margin-top:5px;
-	border: 1px solid #34495E;
-	border-radius: 5px;
-	overflow: hidden;
+    padding: 2%;
+    margin-left: 5px;
+    margin-top: 5px;
+    border: 1px solid #34495E;
+    border-radius: 5px;
+    overflow: hidden;
 }
+
 .admin-root .admin-forms-container {
-	display: inline-block;
-	width: 75%;
-	margin-left: 2%;
+    display: inline-block;
+    width: 75%;
+    margin-left: 2%;
 }

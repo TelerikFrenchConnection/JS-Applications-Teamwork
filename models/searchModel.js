@@ -1,11 +1,17 @@
+import './helpers/validatorHelper.js';
+
 class searchModel {
-	filterBy(booksCollection, prop, searchValue) {
+	filterBy(booksCollection, searchFilter, searchTerm) {
 		var filteredBooks = [];
-		searchValue = searchValue.toLowerCase();
+
+		validate.safeText(searchTerm);
+		validate.safeText(searchFilter);
+
+		searchTerm = searchTerm.toLowerCase();
 
 		booksCollection.forEach(function(book) {
-			var selectedProperty = book.attributes[prop].toLowerCase();
-			if (selectedProperty.indexOf(searchValue) > -1) {
+			var selectedFilter = book.attributes[searchFilter].toLowerCase();
+			if (selectedFilter.indexOf(searchTerm) > -1) {
 		 		filteredBooks.push(book);
 			}
 		});

@@ -4,11 +4,11 @@ import db from 'dbContext';
 import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
-import userModel from '../models/userModel.js'
+import userModel from '../models/userModel.js';
 
 class accountController {
     load(sammy) {
-        sammy.redirect('#/account/login')
+        sammy.redirect('#/account/login');
     }
 
     signup() {
@@ -21,7 +21,6 @@ class accountController {
         var email = sammy.params['email'];
         var firstName = sammy.params['fname'];
         var lastName = sammy.params['lname'];
-
 
         var signupResult = userModel.signup(username, password, firstName, lastName, email)
             .then(function(user){
