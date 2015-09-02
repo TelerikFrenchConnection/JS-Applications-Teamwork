@@ -65,7 +65,8 @@ h5 {
 }
 
 .login-screen {
-    padding: 60px 0;
+    padding: 70px 0;
+    min-height: 200px;
 }
 
 .login-form {

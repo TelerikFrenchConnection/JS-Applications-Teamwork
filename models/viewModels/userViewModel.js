@@ -15,7 +15,7 @@
         }
 
         set userNameProperty(newName) {
-            validate.userName(newName, 'user name');
+            validate.userName(newName, 'username');
             this.username = newName;
 
         }
@@ -34,7 +34,7 @@
         }
 
         set lastNameProperty(newName) {
-            validate.name(newName, 'past name');
+            validate.name(newName, 'last name');
             this.lastName = newName;
         }
 

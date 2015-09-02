@@ -28,6 +28,20 @@ var templatesHelper = (function() {
         })
     }
 
+    function set(templateName, data, target) {
+        return get(templateName).then(function(template) {
+            var templateCompiled = Handlebars.compile(template);
+            var $templateHolder = $('<div/>');
+
+            data.forEach(function(item){
+                var templateHTML = templateCompiled(item);
+                $templateHolder.append(templateHTML);
+            });
+
+            $(target).html($templateHolder.html());
+        })
+    }
+
     function appendSingle(templateName, data, target) {
         return get(templateName).then(function(template) {
             var templateCompiled = Handlebars.compile(template);
@@ -36,10 +50,20 @@ var templatesHelper = (function() {
         })
     }
 
+    function setSingle(templateName, data, target) {
+        return get(templateName).then(function(template) {
+            var templateCompiled = Handlebars.compile(template);
+            var templateHTML = templateCompiled(data);
+            $(target).html(templateHTML);
+        })
+    }
+
     return {
         get,
         append,
-        appendSingle
+        appendSingle,
+        set,
+        setSingle
     }
 })();
 
