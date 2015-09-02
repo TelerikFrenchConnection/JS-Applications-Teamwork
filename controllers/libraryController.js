@@ -22,8 +22,8 @@ class libraryController {
                 var booksToAdd = [];
 
                 $('#book-category').change(function() {
-                    var category = $(this).find(':selected').attr('value');
-
+                    var optionSelected = $(this).find(':selected');
+                    var category = optionSelected.attr('value');
                     var emptyCategory = {category: category};
 
                     $(this).parent().nextAll().remove();
@@ -36,12 +36,10 @@ class libraryController {
                     });
 
                     if (booksToAdd.length) {
-                        templatesHelper.append('libraryBook', booksToAdd, '#library-content');   
-                        console.log(booksToAdd); 
+                        templatesHelper.append('libraryBook', booksToAdd, '#library-content');
                     }
                     else {
-                        templatesHelper.appendSingle('libraryEmptyCategory', emptyCategory, '#library-content'); 
-                        console.log(emptyCategory);  
+                        templatesHelper.appendSingle('libraryEmptyCategory', emptyCategory, '#library-content');
                     }
                     
 
