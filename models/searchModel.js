@@ -9,13 +9,20 @@ class searchModel {
 
 		searchTerm = searchTerm.toLowerCase();
 
-		booksCollection.forEach(function(book) {
-			var selectedFilter = book.attributes[searchFilter].toLowerCase();
-			if (selectedFilter.indexOf(searchTerm) > -1) {
-		 		filteredBooks.push(book);
-			}
-		});
+		for (let i = 0; i < booksCollection.length; i++) {
+			let book = booksCollection[i];
 
+			if (book.attributes.hasOwnProperty(searchFilter)) {
+				let selectedFilter = book.attributes[searchFilter].toLowerCase();
+
+				if (selectedFilter.indexOf(searchTerm) > -1) {
+					filteredBooks.push(book);
+				}
+			}
+			else {
+				break;
+			}
+		}
 		return filteredBooks;
 	};
 }

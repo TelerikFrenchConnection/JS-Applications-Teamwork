@@ -87,27 +87,40 @@ class libraryController {
         // TODO: Extract common functions from promises?
         bookModel.getBooks().find()
             .then(function(allBooks) {
-                var result = [];
-                var filterProperty = sammy.params['prop'];
-                var searchValue = sammy.params['search'];
+                var newBooksCollection = [];
+                var searchFilter = sammy.params['prop'];
+                var searchTerm = sammy.params['search'];
 
-                if (filterProperty && searchValue) {
-                    result = searchModel.filterBy(allBooks, filterProperty, searchValue);
+                if (searchFilter && searchTerm) {
+                    newBooksCollection = searchModel.filterBy(allBooks, searchFilter, searchTerm);
                 }
                 else {
-                    result = allBooks;
+                    newBooksCollection = allBooks;
                 }
 
                 $('#search-form button').on('click', function() {
                     var $searchForm = $(this).parent();
                     var searchFilterValue = $searchForm.find('#search-filter :selected').val();
-                    var searchInputValue = $searchForm.find('#search-term').val();
+                    var searchTermValue = $searchForm.find('#search-term').val();
+
+                    searchFilterValue = searchFilterValue || 'empty';
+                    searchTermValue = searchTermValue || 'empty';
                     
-                    var searchParams = searchFilterValue + '/' + searchInputValue;
+                    var searchParams = searchFilterValue + '/' + searchTermValue;
                     $searchForm.attr('action', '#/library/search/' + searchParams);
                 });
 
-                return templatesHelper.append('libraryBook', result, '#library-content');
+                if (newBooksCollection.length > 0) {
+                    return templatesHelper.append('libraryBook', newBooksCollection, '#library-content');
+                }
+                else {
+                    var emptySearch = {
+                        searchFilter: searchFilter.capitalizeFirst(),
+                        searchTerm: searchTerm
+                    };
+
+                    return templatesHelper.appendSingle('libraryEmptySearch', emptySearch, '#library-content');
+                }
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
