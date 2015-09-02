@@ -40,8 +40,12 @@ export function init(element) {
         this.post('#/account/login', accountController.loginPost);
         this.post('#/account/signup', accountController.signupPost);
 
-        this.get(/.*/, function() {
+        this.get('.*', function() {
+
+                pagesHelper.append('404')
             // load 404 Page
+               // '#/404'
+
         });
 	});
 
