@@ -23,26 +23,6 @@ export function init(element) {
             headerHelper.updateHeader();
         });
 
-            /* this.notFound({}, function(verb, path) {
-             path='#/404';
-             var ret = this.error  ( this.redirect(path));
-             return (verb === 'get') ? ret : true;
-             });*/
-
-          /*  notFound: function(verb, path) {
-                    var ret = this.error(['404 Not Found', verb, path].join(' '));
-                    return (verb === 'get') ? ret : true;
-            }*/
-
-         /*   var app = $.sammy('#app', function() {
-                    this.notFound = function(){
-                            // do something
-                    }
-            });*/
-
-
-
-
 		this.get('#/', function() { this.redirect('#/home')});
 		this.get('#/home', homeController.load);
         this.get('#/contact', contactController.load);
@@ -66,7 +46,7 @@ export function init(element) {
         this.post('#/account/signup', accountController.signupPost);
 
 
-        this.get('#/404', function() {
+        this.get(/.*/, function() {
                 pagesHelper.append('404');
         });
 	});
