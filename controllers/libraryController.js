@@ -17,9 +17,7 @@ class libraryController {
         bookModel.getBooks().find()
             .then(function(allBooks) {
                 allBooks.forEach(function(book){
-                    if (!categories.some(function(category){
-                        return category === book.attributes.category;
-                    })) {
+                    if (categories.indexOf(book.attributes.category) < 0) {
                         categories.push(book.attributes.category);
                     }
                 });
