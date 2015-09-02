@@ -1,6 +1,8 @@
-<div class="col-md-3 col-sm-4 col-xs-6 library-item">
-    <h6>{{this.attributes.title}}</h6>
-    <h7>{{this.attributes.author}}</h7>
+<div class="col-md-4 col-sm-4 col-xs-6 library-item">
+    <div class="library-header">
+        <h6>{{this.attributes.title}}</h6>
+        <h7>{{this.attributes.author}}</h7>
+    </div>
     <img src="{{this.attributes.pictureURL}}" class="img-responsive center-block" alt="{this.attributes.title}} cover" data-id="{{this.id}}">
-    <div class="text-info">Kindle price: {{this.attributes.price}}.00 Euro</div>
+    <div class="text-info">Price: {{this.attributes.price}} Euro</div>
 </div>
