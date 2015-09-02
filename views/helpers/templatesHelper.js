@@ -39,7 +39,7 @@ var templatesHelper = (function() {
     return {
         get,
         append,
-        appendSingle,
+        appendSingle
     }
 })();
 

@@ -8,13 +8,14 @@ class adminController {
 	load(sammy) {
         isUserAuthorized(sammy);
 
+        pagesHelper.append('admin');
         // show all contact form entires
 	}
 
 	addBook(sammy) {
         isUserAuthorized(sammy);
 
-		pagesHelper.append('adminAddbook');
+		pagesHelper.appendTo('adminAddbook', '#admin-forms-container');
 	}
 
 }
