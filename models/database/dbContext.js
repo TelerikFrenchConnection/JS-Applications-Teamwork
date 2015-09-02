@@ -7,7 +7,7 @@ var data = {
     add: function (dataClass, dataObject) {
         var DataClass = Parse.Object.extend(dataClass);
         var data = new DataClass();
-        data.save(dataObject);
+        return data.save(dataObject);
     },
     get: function (dataClass) {
         var query = new Parse.Query(Parse.Object.extend(dataClass));

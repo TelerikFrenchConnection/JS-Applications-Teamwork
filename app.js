@@ -44,7 +44,7 @@ export function init(element) {
 
         this.post('#/account/login', accountController.loginPost);
         this.post('#/account/signup', accountController.signupPost);
-
+        this.post('#/admin/addbook', adminController.addBookPost);
 
         this.get(/.*/, function() {
                 pagesHelper.append('404');
