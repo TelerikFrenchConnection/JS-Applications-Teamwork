@@ -55,7 +55,8 @@ var validate = {
 
     name: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
-        var isInRange = value.length > CONSTANTS.TEXT_MIN_LENGTH && value.length <= CONSTANTS.TEXT_MAX_LENGTH;
+        var isInRange = value.length > CONSTANTS.TEXT_MIN_LENGTH && value.length <=
+            CONSTANTS.TEXT_MAX_LENGTH;
         var hasOnlyLetters = !CONSTANTS.NAME_PATTERN.test(value);
         if (!isInRange || !hasOnlyLetters) {
             sessionStorage.setObject('Error', {
@@ -97,7 +98,7 @@ var validate = {
 
     safeText: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
-        if (CONSTANTS.RESTRICTED_SYMBOLS_PATTERN.test(value)) {
+        if (value.length<1 || CONSTANTS.RESTRICTED_SYMBOLS_PATTERN.test(value)) {
             sessionStorage.setObject('Error', {
                 name: name,
                 message: CONSTANTS.INVALID_SYMBOLS_MESSAGE

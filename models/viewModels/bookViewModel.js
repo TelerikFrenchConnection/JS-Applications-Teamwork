@@ -33,12 +33,10 @@ class Book {
     get categoryProperty() {
         return this.category;
     }
-
-    // How we crete Category?
-    //set categoryProperty(newCategory) {
-    //    validate.ifString(newCategory, 'Category');
-    //    this.category = newCategory;
-    //}
+    set categoryProperty(newDescription) {
+        validate.safeText(newDescription, 'Description');
+        this.description = newDescription;
+    }
 
     get isbnProperty() {
         return this.isbn;

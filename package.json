@@ -5,8 +5,11 @@
     },
     "dependencies": {
       "bootstrap": "github:twbs/bootstrap@^3.3.5",
+      "chai": "npm:chai@^3.2.0",
       "handlebars": "github:components/handlebars.js@^3.0.3",
       "jquery": "github:components/jquery@^2.1.4",
+      "jsdom": "npm:jsdom@^6.3.0",
+      "mocha": "npm:mocha@^2.3.0",
       "parse": "github:albemuth/parse-js-sdk@^1.4.2",
       "sammy": "npm:knottie-sammy@^0.7.6",
       "underscore": "npm:underscore@^1.8.3",
