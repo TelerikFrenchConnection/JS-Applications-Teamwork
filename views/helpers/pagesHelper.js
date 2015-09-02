@@ -18,6 +18,12 @@ var pagesHelper = (function(){
         });
     }
 
+    function appendTo(pageName, element) {
+        return get(pageName).then(function(page) {
+            $(element).html(page);
+        });
+    }
+
     function appendHTML(HTML, target) {
         $(target).html(HTML);
     }
@@ -25,6 +31,7 @@ var pagesHelper = (function(){
     return {
         get,
         append,
+        appendTo,
         appendHTML
     }
 })();

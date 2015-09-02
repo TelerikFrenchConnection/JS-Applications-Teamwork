@@ -170,7 +170,6 @@ h5{
   -webkit-transition: all .25s;
           transition: all .25s;
   }
-
 .add-book.login .add-book-form .add-book-heading {
 	color: #34495E;
 }  
@@ -178,4 +177,31 @@ h5{
 .add-book.login .add-book-form .form-control {
 	text-indent: 3px;
 	border-color: transparent;
+}
+
+.admin-root {
+	display: inline-block;
+	width: 90%;
+}
+.admin-root .admin-controls {
+	display: inline-block;
+	width: 20%;
+}
+.admin-root .admin-controls .btn {
+	padding: 5px;
+	overflow: hidden;
+}
+.admin-root .admin-controls h6.text-center {
+	padding: 2%;
+	margin-left:5px;
+	margin-top:5px;
+	border: 1px solid #34495E;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.admin-root .admin-forms-container {
+	display: inline-block;
+	border: 1px solid #34495E;
+	width: 75%;
+	margin-left: 2%;
 }
