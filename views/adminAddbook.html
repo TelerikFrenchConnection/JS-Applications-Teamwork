@@ -1,8 +1,8 @@
 <div class="add-book login">
     <div class="add-book-screen login-screen">
         <div class="add-book-form login-form">
-			<h3 class="add-book-heading">Add new book</h3>  
-			<form action="/#/admin/addbook" method="POST" id="admin-book-form">
+			<h5 class="add-book-heading">Add new book</h5><br/>  
+			<form action="/#/admin/addbook" method="POST" id="add-book-form">
 	              <div class="form-group">
 	                  <input type="text" class="form-control" name="book-title" placeholder="add Book Title">
 	              </div>
@@ -25,7 +25,7 @@
 	              	 <input type="textarea" class="form-control" name="book-description" placeholder="add Book Description">
 	              </div>
 	              <button type="submit" id='submit-new-book-button' class="btn btn-primary btn-lg btn-bloc">Submit</button>
-				<button type="button" class="btn btn-primary btn-lg btn-bloc" onClick="$('#admin-book-form').trigger('reset')">Clear</button>
+				<button type="button" class="btn btn-primary btn-lg btn-bloc" onClick="$('#add-book-form').trigger('reset')">Clear</button>
 		</div>
     </div>
 </div>

@@ -170,25 +170,41 @@ h5{
   -webkit-transition: all .25s;
           transition: all .25s;
   }
+.add-book.login {
+	margin: 0;
+	padding: 0;
+}
+.add-book-screen.login-screen {
+ 	background-color: white;
+ 	padding-top: 2%;
+ }
+.add-book-form.login-form{
+ 	border: 1px solid #34495E;
+ 	border-radius: 5px;
+ 	margin: 0;
+	
+ }
 .add-book.login .add-book-form .add-book-heading {
 	color: #34495E;
 }  
 
 .add-book.login .add-book-form .form-control {
 	text-indent: 3px;
-	border-color: transparent;
+	border: 1px solid #34495E;
 }
 
 .admin-root {
 	display: inline-block;
 	width: 90%;
+	margin-left:15%;
 }
 .admin-root .admin-controls {
 	display: inline-block;
 	width: 20%;
+	padding-right: 5px;
 }
 .admin-root .admin-controls .btn {
-	padding: 5px;
+	padding: 3px;
 	overflow: hidden;
 }
 .admin-root .admin-controls h6.text-center {
@@ -201,7 +217,6 @@ h5{
 }
 .admin-root .admin-forms-container {
 	display: inline-block;
-	border: 1px solid #34495E;
 	width: 75%;
 	margin-left: 2%;
 }
