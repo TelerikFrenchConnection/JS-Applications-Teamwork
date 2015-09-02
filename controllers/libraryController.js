@@ -40,7 +40,7 @@ class libraryController {
                 $('#book-category').change(function() {
                     var category = $(this).find(':selected').attr('value');
 
-                    var emptyCategory = [{category: category}];
+                    var emptyCategory = {category: category};
 
                     $(this).parent().nextAll().remove();
 
@@ -52,10 +52,12 @@ class libraryController {
                     });
 
                     if (booksToAdd.length) {
-                        templatesHelper.append('libraryBook', booksToAdd, '#library-content');    
+                        templatesHelper.append('libraryBook', booksToAdd, '#library-content');   
+                        console.log(booksToAdd); 
                     }
                     else {
-                        templatesHelper.append('libraryEmptyCategory', emptyCategory, '#library-content');      
+                        templatesHelper.appendSingle('libraryEmptyCategory', emptyCategory, '#library-content'); 
+                        console.log(emptyCategory);  
                     }
                     
 
