@@ -111,7 +111,7 @@ class libraryController {
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
-                libraryBookContent.on('click', 'div.inner img', function() {
+                libraryBookContent.on('click', 'div img', function() {
                     var id = $(this).attr('data-id');
                     sammy.redirect('#/library/detailed/' + id);
                 });
