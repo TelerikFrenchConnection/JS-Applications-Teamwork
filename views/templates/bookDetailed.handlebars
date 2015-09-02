@@ -1,3 +1,13 @@
+<div id="fb-root"></div>
+    <script id="the-script">
+        (function(d, s, id) {
+            var js, fjs = d.getElementById(s);
+            if (d.getElementById(id)) return;
+            js = d.createElement('script'); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'the-script', 'facebook-jssdk'));
+    </script>
 <div class="detail-wrapper">
 	<div class="col-md-6">
 		<h4>
@@ -29,6 +39,8 @@
 				<span class="pull-right">{{this.attributes.views}}</span>
 			</p>
 		</div>
+		<div class="fb-share-button" data-href="http://127.0.0.1:8080/#/library/detailed/{{id}}" data-layout="button_count" >
+</div>
 	</div>
 	<div class="col-md-6">
 		<img alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}" width="200" height="300">

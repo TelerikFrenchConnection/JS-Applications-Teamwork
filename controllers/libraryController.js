@@ -70,7 +70,9 @@ class libraryController {
 
         var selectedBook = bookModel.getBooks().get(id, {
             success: function(result) {
-                templatesHelper.append('bookDetailed', [result], '#library-content');
+                templatesHelper.appendSingle('headTest', result, 'head');
+                templatesHelper.appendSingle('bookDetailed', result, '#library-content');
+                
             },
             error: function(object, error) {
                 console.log('Cannot access the given book' + object);
