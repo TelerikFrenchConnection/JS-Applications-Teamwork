@@ -7,12 +7,9 @@ class contactModel {
 
         // Add error handling logic
 
-    if(sessionStorage.getObject(this.email)!==0){
+        if(sessionStorage.getObject(this.email)!==0){
 
-    }
-
-
-        // db.add('Contact', contact);
+        }
     }
 
     getContacts() {
