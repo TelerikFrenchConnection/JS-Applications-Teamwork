@@ -239,3 +239,31 @@ h5 {
     width: 75%;
     margin-left: 2%;
 }
+
+
+
+.remove-book.login {
+    margin: 0;
+    padding: 0;
+}
+
+.remove-book-screen.login-screen {
+    background-color: white;
+    padding-top: 2%;
+}
+
+.remove-book-form.login-form {
+    border: 1px solid #34495E;
+    border-radius: 5px;
+    margin: 0;
+
+}
+
+.remove-book.login .remove-book-form .remove-book-heading {
+    color: #34495E;
+}
+
+.remove-book.login .remove-book-form .remove-control {
+    text-indent: 3px;
+    border: 1px solid #34495E;
+}

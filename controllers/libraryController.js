@@ -13,7 +13,7 @@ class libraryController {
 
         var allBooksRetrieved = [];
         var categories = [];
-
+        console.log(bookModel.getBooks());
         bookModel.getBooks().find()
             .then(function(allBooks) {
                 allBooks.forEach(function(book){
