@@ -12,6 +12,11 @@ h5 {
     font-size: 1.4em;
 }
 
+html, body {
+    width: auto !important;
+    overflow-x: hidden !important;
+}
+
 .wrapper {
     width: 1200px;
     max-width: 85%;
@@ -112,6 +117,7 @@ h5 {
         margin: 0 auto;
     }
 }
+
 
 #library-content {
     text-align: center;
