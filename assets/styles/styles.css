@@ -14,6 +14,7 @@ h5 {
 
 hr {
     border-bottom: 2px solid #eee;
+    margin-bottom: 10px;
 }
 
 html, body {
@@ -132,6 +133,7 @@ html, body {
     text-align: center;
     max-width: 97%;
     margin: 20px auto;
+    margin-bottom: 0;
 }
 
 #library-content .category-select {
@@ -339,10 +341,10 @@ html, body {
     color: #2C3E50;
 }
 
+
 #categories-content {
     text-align: center;
     max-width: 97%;
-    margin: 20px auto;
 }
 
 #categories-content .category-item {
@@ -354,7 +356,7 @@ html, body {
 }
 
 #categories-content .category-item .category-header {
-    height: 45px;
+    height: 35px;
 }
 
 #categories-content .category-item .img-responsive {
