@@ -16,7 +16,7 @@ class libraryController {
 
         bookModel.getBooks().find()
             .then(function(allBooks) {
-                allBooks.forEach(function(book){
+                allBooks.forEach(function(book) {
                     if (categories.indexOf(book.attributes.category) < 0) {
                         categories.push(book.attributes.category);
                     }
@@ -33,29 +33,21 @@ class libraryController {
                 $('#book-category').change(function() {
                     var optionSelected = $(this).find(':selected');
                     var category = optionSelected.attr('value');
-                    var emptyCategory = {category: category};
 
                     $(this).parent().nextAll().remove();
 
                     if (category === 'All') {
                         booksToAdd = allBooksRetrieved;
-                    }
-                    else {
+                    } else {
                         allBooksRetrieved.forEach(function(book) {
-                        if (book.attributes.category === category) {
-                            booksToAdd.push(book);
-                        }
-                    });
-    
+                            if (book.attributes.category === category) {
+                                booksToAdd.push(book);
+                            }
+                        });
+
                     }
-                    
-                    if (booksToAdd.length) {
-                        templatesHelper.append('libraryBook', booksToAdd, '#library-content');
-                    }
-                    else {
-                        templatesHelper.appendSingle('libraryEmptyCategory', emptyCategory, '#library-content');
-                    }
-                    
+
+                    templatesHelper.append('libraryBook', booksToAdd, '#library-content');
 
                     booksToAdd = [];
                 });
@@ -80,7 +72,7 @@ class libraryController {
                 bookModel.updateBook(result);
 
                 templatesHelper.appendSingle('bookDetailed', result, '#library-content');
-                
+
             },
             error: function(object, error) {
                 console.log('Cannot access the given book' + object);
@@ -153,7 +145,7 @@ function changeFormActionAttribute() {
 
     searchFilterValue = searchFilterValue || 'empty';
     searchTermValue = searchTermValue || 'empty';
-    
+
     var searchParams = searchFilterValue + '/' + searchTermValue;
     $searchForm.attr('action', '#/library/search/' + searchParams);
 }
@@ -161,8 +153,7 @@ function changeFormActionAttribute() {
 function displaySearchResults(booksCollection, searchFilter, searchTerm) {
     if (booksCollection.length > 0) {
         return templatesHelper.append('libraryBook', booksCollection, '#library-content');
-    }
-    else {
+    } else {
         var emptySearch = {
             searchFilter: searchFilter.capitalizeFirst(),
             searchTerm: searchTerm
