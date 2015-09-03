@@ -149,13 +149,14 @@ function loadLibrary(promise, sammy) {
                 }
             });
 
+            templatesHelper.set('libraryBook', books, '.books-list');
             return templatesHelper.append('categories', categories, '#book-category');
         })
         .then(function() {
             $('#book-category').change(function() {
                 var optionSelected = $(this).find(':selected');
                 var category = optionSelected.attr('value');
-
+                
                 sammy.redirect('#/library/' + category.toLowerCase());
             });
         });
