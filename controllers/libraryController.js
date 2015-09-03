@@ -157,7 +157,7 @@ function loadLibrary(promise, sammy) {
                 var optionSelected = $(this).find(':selected');
                 var category = optionSelected.attr('value');
 
-                sammy.redirect('#/library/' + category.toLowerCase());
+                sammy.redirect('#/library/categories/' + category.toLowerCase());
             });
         });
 }
