@@ -241,12 +241,16 @@ html, body {
     border: 1px solid #34495E;
     border-radius: 5px;
     margin: 0;
-
 }
 
 .add-book.login .add-book-form .add-book-heading {
     color: #34495E;
 }
+
+.add-book.login.add-book-form.add-book-heading label{
+    color: #34495E;
+}
+
 
 .add-book.login .add-book-form .form-control {
     text-indent: 3px;
@@ -322,4 +326,10 @@ html, body {
 }
 .contact .contact-info .list-group .list-group-item p {
     font-size: 0.8em;
+}
+#frack-label {
+    color: #2C3E50;
+}
+#search-filter {
+    color: #2C3E50;
 }

@@ -16,12 +16,11 @@ class adminController {
 	}
 
 	addBook(sammy) {
-        isUserAuthorized(sammy);
-		pagesHelper.appendTo('adminAddbook', '#admin-forms-container');
         if(isUserAuthorized(sammy)){
-            pagesHelper.appendTo('adminAddbook', '#admin-forms-container');
+            pagesHelper.append('adminAddbook');
         }
 	}
+
     addBookPost(sammy) {
         var title = sammy.params['book-title'];
         var author = sammy.params['book-author'];
@@ -39,10 +38,8 @@ class adminController {
             });
     }
     removeBook(sammy) {
-        isUserAuthorized(sammy);
-        pagesHelper.appendTo('adminRemovebook', '#admin-forms-container');
         if(isUserAuthorized(sammy)){
-            pagesHelper.appendTo('adminRemovebook', '#admin-forms-container');
+            pagesHelper.append('adminRemovebook');
         }
     }
     removeBookPost(sammy) {
@@ -56,6 +53,12 @@ class adminController {
                     }
                 });
             });    
+    }
+
+    editBook(sammy) {
+        if(isUserAuthorized(sammy)){
+            pagesHelper.append('adminEditbook');
+        }
     }
 
 }
