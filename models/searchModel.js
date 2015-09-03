@@ -9,22 +9,21 @@ class searchModel {
 
 		searchTerm = searchTerm.toLowerCase();
 
-		for (let i = 0; i < booksCollection.length; i++) {
-			let book = booksCollection[i];
+		if (booksCollection.length > 0) {
+			let firstBook = booksCollection[0];
+			if (firstBook.attributes.hasOwnProperty(searchFilter)) {
+				booksCollection.forEach(function(book) {
+					var selectedFilter = book.attributes[searchFilter].toLowerCase();
 
-			if (book.attributes.hasOwnProperty(searchFilter)) {
-				let selectedFilter = book.attributes[searchFilter].toLowerCase();
-
-				if (selectedFilter.indexOf(searchTerm) > -1) {
-					filteredBooks.push(book);
-				}
-			}
-			else {
-				break;
+					if (selectedFilter.indexOf(searchTerm) > -1) {
+						filteredBooks.push(book);
+					}
+				});
 			}
 		}
+
 		return filteredBooks;
-	};
+	}
 }
 
 export default new searchModel();
