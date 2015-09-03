@@ -7,7 +7,6 @@ import jq from 'jquery';*/
 import Book from './viewModels/bookViewModel.js';
 import bookModel from '../models/bookModel.js';
 
-
 mocha.setup('bdd');
 var expect = chai.expect;
 
