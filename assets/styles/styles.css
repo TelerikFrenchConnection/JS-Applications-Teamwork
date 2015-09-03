@@ -158,7 +158,19 @@ html, body {
 }
 
 .detail-wrapper {
-    padding: 48px 60px;
+    padding: 20px 40px;
+}
+
+.book-details-title {
+    font-weight: normal;
+}
+
+.book-details-entry {
+    margin: 6px;
+}
+
+.book-details-hr {
+    border-bottom: 1px solid #eee;
 }
 
 .latest-books {
@@ -171,6 +183,15 @@ html, body {
 
 .latest-books hr {
     border-bottom: 1px solid #eee;
+}
+
+#book-cover {
+    float: right;
+    margin-right: 7px;
+}
+
+.book-details-entry {
+
 }
 
 .contact {

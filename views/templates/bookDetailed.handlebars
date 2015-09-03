@@ -10,51 +10,49 @@
         }(document, 'the-script', 'facebook-jssdk'));
     </script>
 
-
-    <div class="container detail-wrapper ">
-        <div class="col-md-4">
-
-            <div class="row">
-                <span></span>
-                <span class="pull-left">
-                   <h4>Title:</h4>
-                </span>
-                <span class="pull-right">{{this.attributes.title}} </span>
-            </div>
-
-            <div class="row">
-                <span class="pull-left"><strong>Author:</strong> </span>
-                <span class="pull-right">{{this.attributes.author}} </span>
-            </div>
-
-            <div class="row">
-                <span class="pull-left"><strong>Category:</strong> </span>
-                <span class="pull-right">{{this.attributes.category}} </span>
-            </div>
-
-            <div class="row">
-                <span class="pull-left"><strong>Price:</strong> </span>
-                <span class="pull-right">{{this.attributes.price}} Euro </span>
-            </div>
-
-            <div class="row">
-                <span class="pull-left"><strong>ISBN:</strong> </span>
-                <span class="pull-right">{{this.attributes.isbn}} </span>
-            </div>
-
-            <div class="row">
-                <span class="pull-left"><strong>Description:</strong> </span>
-                <span class="pull-right">{{this.attributes.description}} </span>
-            </div>
-
-            <div class="row">
-                <span class="pull-left"><strong>View:</strong> </span>
-                <span class="pull-right">{{this.attributes.views}} </span>
-            </div>
-
-        </div>
+    <div class="container detail-wrapper">
         <div class="col-md-4">
             <img class="img-responsive" alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}"
                  width="200" height="300">
         </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="">
+                   <h4 class="book-details-title">{{this.attributes.title}}</h4>
+                </div>
+                <hr class="book-details-hr"/>
+            </div>
+
+            <div class="row book-details-entry">
+                <span class="pull-left"><strong>Author:</strong> </span>
+                <span class="pull-right">{{this.attributes.author}} </span>
+            </div>
+
+            <div class="row book-details-entry">
+                <span class="pull-left"><strong>Category:</strong> </span>
+                <span class="pull-right">{{this.attributes.category}} </span>
+            </div>
+
+            <div class="row book-details-entry">
+                <span class="pull-left"><strong>Price:</strong> </span>
+                <span class="pull-right">{{this.attributes.price}} Euro </span>
+            </div>
+
+            <div class="row book-details-entry">
+                <span class="pull-left"><strong>ISBN:</strong> </span>
+                <span class="pull-right">{{this.attributes.isbn}} </span>
+            </div>
+
+            <div class="row book-details-entry">
+                <span class="pull-left"><strong>Description:</strong> </span>
+                <span class="pull-right">{{this.attributes.description}} </span>
+            </div>
+
+            <div class="row book-details-entry">
+                <span class="pull-left"><strong>View:</strong> </span>
+                <span class="pull-right">{{this.attributes.views}} </span>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
     </div>

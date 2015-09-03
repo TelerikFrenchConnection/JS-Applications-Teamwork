@@ -37,13 +37,18 @@ class libraryController {
 
                     $(this).parent().nextAll().remove();
 
-                    allBooksRetrieved.forEach(function(book) {
+                    if (category === 'All') {
+                        booksToAdd = allBooksRetrieved;
+                    }
+                    else {
+                        allBooksRetrieved.forEach(function(book) {
                         if (book.attributes.category === category) {
                             booksToAdd.push(book);
                         }
-
                     });
-
+    
+                    }
+                    
                     if (booksToAdd.length) {
                         templatesHelper.append('libraryBook', booksToAdd, '#library-content');
                     }
@@ -88,43 +93,16 @@ class libraryController {
     search(sammy) {
         pagesHelper.append('librarySearch');
 
-        // TODO: Extract common functions from promises?
         bookModel.getBooks().find()
             .then(function(allBooks) {
-                var newBooksCollection = [];
                 var searchFilter = sammy.params['prop'];
                 var searchTerm = sammy.params['search'];
 
-                if (searchFilter && searchTerm) {
-                    newBooksCollection = searchModel.filterBy(allBooks, searchFilter, searchTerm);
-                }
-                else {
-                    newBooksCollection = allBooks;
-                }
+                allBooks = handleSearchParameters(allBooks, searchFilter, searchTerm);
 
-                $('#search-form button').on('click', function() {
-                    var $searchForm = $(this).parent();
-                    var searchFilterValue = $searchForm.find('#search-filter :selected').val();
-                    var searchTermValue = $searchForm.find('#search-term').val();
+                $('#search-form button').on('click', changeFormActionAttribute);
 
-                    searchFilterValue = searchFilterValue || 'empty';
-                    searchTermValue = searchTermValue || 'empty';
-                    
-                    var searchParams = searchFilterValue + '/' + searchTermValue;
-                    $searchForm.attr('action', '#/library/search/' + searchParams);
-                });
-
-                if (newBooksCollection.length > 0) {
-                    return templatesHelper.append('libraryBook', newBooksCollection, '#library-content');
-                }
-                else {
-                    var emptySearch = {
-                        searchFilter: searchFilter.capitalizeFirst(),
-                        searchTerm: searchTerm
-                    };
-
-                    return templatesHelper.appendSingle('libraryEmptySearch', emptySearch, '#library-content');
-                }
+                return displaySearchResults(allBooks, searchFilter, searchTerm);
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
@@ -157,6 +135,41 @@ class libraryController {
                     sammy.redirect('#/library/detailed/' + id);
                 });
             });
+    }
+}
+
+function handleSearchParameters(initialBookCollection, searchFilter, searchTerm) {
+    if (searchFilter && searchTerm) {
+        let newBookCollection = searchModel.filterBy(initialBookCollection, searchFilter, searchTerm);
+        return newBookCollection;
+    }
+
+    return initialBookCollection;
+}
+
+function changeFormActionAttribute() {
+    var $searchForm = $(this).parent();
+    var searchFilterValue = $searchForm.find('#search-filter :selected').val();
+    var searchTermValue = $searchForm.find('#search-term').val();
+
+    searchFilterValue = searchFilterValue || 'empty';
+    searchTermValue = searchTermValue || 'empty';
+    
+    var searchParams = searchFilterValue + '/' + searchTermValue;
+    $searchForm.attr('action', '#/library/search/' + searchParams);
+}
+
+function displaySearchResults(booksCollection, searchFilter, searchTerm) {
+    if (booksCollection.length > 0) {
+        return templatesHelper.append('libraryBook', booksCollection, '#library-content');
+    }
+    else {
+        var emptySearch = {
+            searchFilter: searchFilter.capitalizeFirst(),
+            searchTerm: searchTerm
+        };
+
+        return templatesHelper.appendSingle('libraryEmptySearch', emptySearch, '#library-content');
     }
 }
 
