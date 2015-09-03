@@ -33,7 +33,7 @@ class adminController {
         bookModel.addBook(title, author, category, isbn, price, pictureURL, description)
             .then(function(book){
                 console.log('Success at adding new book entry');
-            }, function(book) {
+            }, function(err) {
                 console.log('Failed at adding new book entry');
             });
     }
@@ -44,8 +44,16 @@ class adminController {
     }
     removeBookPost(sammy) {
         if(isUserAuthorized(sammy)){
-            var idParam = sammy.params['id'];
-            bookModel.removeBookById(idParam);  
+            if (sammy.params['id']) {
+                var idParam = sammy.params['id'];
+                bookModel.removeBookById(idParam);  
+            } else if (sammy.params['title']) {
+                var titleParam = sammy.params['title'];
+                bookModel.removeBookByTitle(titleParam);  
+            } else if (sammy.params['isbn']) {
+                var isbnParam = sammy.params['isbn'];
+                bookModel.removeBookByISBN(isbnParam);  
+            }         
         }
         
     }
