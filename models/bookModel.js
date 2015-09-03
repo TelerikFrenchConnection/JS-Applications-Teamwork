@@ -1,6 +1,7 @@
 import db from './database/dbContext.js';
 import Book from './viewModels/bookViewModel.js';
 
+
 class bookModel {
     addBook(title, author, category, isbn, price, pictureURL, description) {
         var book = new Book(title, author, category, isbn, +price, pictureURL, description);
@@ -11,6 +12,10 @@ class bookModel {
 
     getBooks() {
         return db.get('Book');
+    }
+
+    removeBook(book) {
+    	return db.remove('Book', book);
     }
 }
 

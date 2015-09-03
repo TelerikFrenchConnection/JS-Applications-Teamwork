@@ -17,9 +17,7 @@ class libraryController {
         bookModel.getBooks().find()
             .then(function(allBooks) {
                 allBooks.forEach(function(book){
-                    if (!categories.some(function(category){
-                        return category === book.attributes.category;
-                    })) {
+                    if (categories.indexOf(book.attributes.category) < 0) {
                         categories.push(book.attributes.category);
                     }
                 });
@@ -72,7 +70,9 @@ class libraryController {
 
         var selectedBook = bookModel.getBooks().get(id, {
             success: function(result) {
-                templatesHelper.append('bookDetailed', [result], '#library-content');
+                templatesHelper.appendSingle('headTest', result, 'head');
+                templatesHelper.appendSingle('bookDetailed', result, '#library-content');
+                
             },
             error: function(object, error) {
                 console.log('Cannot access the given book' + object);
@@ -131,8 +131,28 @@ class libraryController {
             });
     }
 
-    top() {
+    top(sammy) {
+        pagesHelper.append('libraryTop');
 
+        bookModel.getBooks().find()
+            .then(function(allBooks) {
+                var sortedBooks = _.chain(allBooks)
+                    .sortBy(function(book) {
+                        return book.attributes.views;
+                    })
+                    .reverse()
+                    .value();
+
+                return templatesHelper.append('libraryBook', sortedBooks, '#library-content');
+
+            })
+            .then(function() {
+                var libraryBookContent = $('#library-content');
+                libraryBookContent.on('click', 'div img', function() {
+                    var id = $(this).attr('data-id');
+                    sammy.redirect('#/library/detailed/' + id);
+                });
+            });
     }
 }
 

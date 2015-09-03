@@ -9,6 +9,7 @@ class Book {
         this.price = price;
         this.pictureURL = pictureURL;
         this.description = description;
+        this.views = 0;
         return this;
     }
 
@@ -71,6 +72,14 @@ class Book {
     set descriptionProperty(newDescription) {
         validate.safeText(newDescription, 'Description');
         this.description = newDescription;
+    }
+
+    get viewsProperty() {
+        return this.views;
+    }
+
+    set viewsProperty(newViewsCount) {
+        this.views = newViewsCount;
     }
 }
 

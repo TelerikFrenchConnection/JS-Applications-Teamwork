@@ -11,8 +11,25 @@ class accountController {
         sammy.redirect('#/account/login');
     }
 
+    login() {
+        pagesHelper.append('accountLogin');
+    }
+
     signup() {
         pagesHelper.append('accountSignup');
+    }
+
+    loginPost(sammy) {
+        var username = sammy.params['username'];
+        var password = sammy.params['password'];
+
+        userModel.login(username, password)
+            .then(function(user) {
+                sammy.redirect('#/home');
+            }, function(user, error, storage) {
+                var errorObject = {name:"login credentials", message: "are invalid"};
+                templatesHelper.setSingle('warning', errorObject, '.warning');
+            });
     }
 
     signupPost(sammy) {
@@ -22,48 +39,20 @@ class accountController {
         var firstName = sammy.params['fname'];
         var lastName = sammy.params['lname'];
 
-        var signupResult = userModel.signup(username, password, firstName, lastName, email)
-            .then(function(user){
-                console.log('success');
-                console.log(user);
-            }, function(user) {
-                console.log('failed');
-                console.log(user);
+        userModel.signup(username, password, firstName, lastName, email)
+            .then(function(userPromise) {
+                return userPromise;
+            }).then(function(user) {
+                sammy.redirect('#/account/login');
+            }).catch(function(errors) {
+                templatesHelper.set('warning', errors, '.warning');
             });
-
-       /* pagesHelper.append('accountSignup')
-            .then(function(user){
-                console.log('success');
-                console.log(user);
-            }, function(user) {
-                console.log('failed');
-                console.log(user);
-            });*/
-    }
-
-    login() {
-        pagesHelper.append('accountLogin');
-    }
-
-    loginPost(sammy) {
-        var username = sammy.params['username'];
-        var password = sammy.params['password'];
-        userModel.login(username, password)
-            .then(function(user) {
-                sammy.redirect('#/home');
-            }, function(user, error, storage) {
-                pagesHelper.append('accountLogin').then(function(){
-                    var errorObject = {name:"your login details", message: "are invalid"};
-                    templatesHelper.appendSingle('warning', errorObject, '.warning');
-                });
-            })
     }
 
     logout(sammy) {
         userModel.logout().then(function(){
-            $('.nav-header li').last().remove();
+            sammy.redirect('#/home');
         });
-        sammy.redirect('#/home');
     }
 }
 

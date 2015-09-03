@@ -12,6 +12,11 @@ h5 {
     font-size: 1.4em;
 }
 
+html, body {
+    width: auto !important;
+    overflow-x: hidden !important;
+}
+
 .wrapper {
     width: 1200px;
     max-width: 85%;
@@ -65,7 +70,8 @@ h5 {
 }
 
 .login-screen {
-    padding: 60px 0;
+    padding: 70px 0;
+    min-height: 200px;
 }
 
 .login-form {
@@ -112,6 +118,7 @@ h5 {
     }
 }
 
+
 #library-content {
     text-align: center;
     max-width: 97%;
@@ -131,7 +138,11 @@ h5 {
 }
 
 #library-content .library-item {
-    margin: 10px 0;
+    margin: 20px 0;
+}
+
+#library-content .library-item h6{
+    font-weight: bold;
 }
 
 #library-content .library-item .library-header {
@@ -141,13 +152,25 @@ h5 {
 #library-content .library-item .img-responsive {
     width: 200px;
     max-width: 200px;
-    height: 300px;
-    max-height: 300px;
+    height: 2850px;
+    max-height: 285px;
     cursor: pointer;
 }
 
 .detail-wrapper {
     padding: 48px 60px;
+}
+
+.latest-books {
+    text-align: center;
+}
+
+.latest-books h4 {
+    margin-top: 18px;
+}
+
+.latest-books hr {
+    border-bottom: 1px solid #eee;
 }
 
 .contact {
@@ -237,4 +260,32 @@ h5 {
     display: inline-block;
     width: 75%;
     margin-left: 2%;
+}
+
+
+
+.remove-book.login {
+    margin: 0;
+    padding: 0;
+}
+
+.remove-book-screen.login-screen {
+    background-color: white;
+    padding-top: 2%;
+}
+
+.remove-book-form.login-form {
+    border: 1px solid #34495E;
+    border-radius: 5px;
+    margin: 0;
+
+}
+
+.remove-book.login .remove-book-form .remove-book-heading {
+    color: #34495E;
+}
+
+.remove-book.login .remove-book-form .remove-control {
+    text-indent: 3px;
+    border: 1px solid #34495E;
 }

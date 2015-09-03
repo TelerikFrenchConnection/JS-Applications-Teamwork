@@ -6,6 +6,7 @@ import pagesHelper from '../views/helpers/pagesHelper.js';
 
 import bookModel from '../models/bookModel.js';
 
+
 class adminController {
 	load(sammy) {
         if(isUserAuthorized(sammy)){
@@ -36,6 +37,25 @@ class adminController {
             }, function(book) {
                 console.log('Failed at adding new book entry');
             });
+    }
+    removeBook(sammy) {
+        isUserAuthorized(sammy);
+        pagesHelper.appendTo('adminRemovebook', '#admin-forms-container');
+        if(isUserAuthorized(sammy)){
+            pagesHelper.appendTo('adminRemovebook', '#admin-forms-container');
+        }
+    }
+    removeBookPost(sammy) {
+        var isbnParam = sammy.params['isbn'];
+
+        bookModel.getBooks().find()
+            .then(function(allBooks) {
+                allBooks.forEach(function(book){
+                    if (book.attributes.isbn === isbnParam) {
+                        bookModel.removeBook(book);
+                    }
+                });
+            });    
     }
 
 }
