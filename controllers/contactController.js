@@ -9,11 +9,9 @@ import contactModel from '../models/contactModel.js';
 class contactsController {
     load() {
         pagesHelper.append('contact');
-        //var model = new Contact('d.dragoeva@abv.bg', 'Dushka', 'Java Script','Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.');
     }
 
     contactPost(sammy){
-
             var name = sammy.params['name'];
             var email = sammy.params['email'];
             var title = sammy.params['title'];

@@ -7,11 +7,19 @@ class bookModel {
         var book = new Book(title, author, category, isbn, +price, pictureURL, description);
 
         var promise = new Promise(function (resolve, reject) {
-            db.add('Book', book);
-            resolve(book);
+            var errors = errorHelper.getErrors();
+            if (errors.length === 0) {
+                db.add('Book', book);
+                resolve()
+            } else {
+                reject(errors);
+            }
+
+            errors = [];
         });
 
-        return promise;
+        return promise
+
     }
 
     getBooks() {
