@@ -40,6 +40,7 @@ export function init(element) {
         this.get('#/admin', adminController.load);
         this.get('#/admin/addbook', adminController.addBook);
         this.get('#/admin/removebook', adminController.removeBook);
+        this.get('#/admin/editbook', adminController.editBook);
 
         this.get('#/testResults', function () {
             pagesHelper.append('testResults');
