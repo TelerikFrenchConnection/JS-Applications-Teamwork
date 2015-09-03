@@ -17,6 +17,18 @@ class bookModel {
     removeBook(book) {
     	return db.remove('Book', book);
     }
+
+    updateBook(book) {
+        book.save(null, {
+            success: function(bookObject) {
+                bookObject.save();
+            },
+            error: function(bookObject, error) {
+                console.log('Cannot access the given book' + object);
+                console.log(error);
+            }
+        });
+    }
 }
 
 export default new bookModel();

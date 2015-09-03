@@ -70,6 +70,10 @@ class libraryController {
 
         var selectedBook = bookModel.getBooks().get(id, {
             success: function(result) {
+                var bookViews = result.attributes.views;
+                result.set('views', ++bookViews);
+                bookModel.updateBook(result);
+
                 templatesHelper.appendSingle('headTest', result, 'head');
                 templatesHelper.appendSingle('bookDetailed', result, '#library-content');
                 
