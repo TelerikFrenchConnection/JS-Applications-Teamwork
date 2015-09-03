@@ -1,0 +1,105 @@
+{
+  "name": "htmlparser2",
+  "description": "Fast & forgiving HTML/XML/RSS parser",
+  "version": "3.8.3",
+  "author": {
+    "name": "Felix Boehm",
+    "email": "me@feedic.com"
+  },
+  "keywords": [
+    "html",
+    "parser",
+    "streams",
+    "xml",
+    "dom",
+    "rss",
+    "feed",
+    "atom"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fb55/htmlparser2.git"
+  },
+  "bugs": {
+    "url": "http://github.com/fb55/htmlparser2/issues"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "lcov": "istanbul cover _mocha --report lcovonly -- -R spec",
+    "coveralls": "npm run lint && npm run lcov && (cat coverage/lcov.info | coveralls || exit 0)",
+    "test": "mocha && npm run lint",
+    "lint": "jshint lib test && jscs lib test"
+  },
+  "devDependencies": {
+    "mocha": "1",
+    "mocha-lcov-reporter": "*",
+    "coveralls": "*",
+    "istanbul": "*",
+    "jscs": "1.5.8",
+    "jshint": "2"
+  },
+  "browser": {
+    "readable-stream": false
+  },
+  "license": "MIT",
+  "jshintConfig": {
+    "eqeqeq": true,
+    "freeze": true,
+    "latedef": "nofunc",
+    "noarg": true,
+    "nonbsp": true,
+    "quotmark": "double",
+    "undef": true,
+    "unused": true,
+    "trailing": true,
+    "eqnull": true,
+    "proto": true,
+    "smarttabs": true,
+    "node": true,
+    "globals": {
+      "describe": true,
+      "it": true
+    }
+  },
+  "gitHead": "44e48f58526de05d2639199f4baaaef235521f6b",
+  "homepage": "https://github.com/fb55/htmlparser2#readme",
+  "_id": "htmlparser2@3.8.3",
+  "_shasum": "996c28b191516a8be86501a7d79757e5c70c1068",
+  "_from": ".",
+  "_npmVersion": "2.11.1",
+  "_nodeVersion": "2.2.1",
+  "_npmUser": {
+    "name": "feedic",
+    "email": "me@feedic.com"
+  },
+  "maintainers": [
+    {
+      "name": "feedic",
+      "email": "me@feedic.com"
+    }
+  ],
+  "dist": {
+    "shasum": "996c28b191516a8be86501a7d79757e5c70c1068",
+    "tarball": "http://registry.npmjs.org/htmlparser2/-/htmlparser2-3.8.3.tgz"
+  },
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "map": {
+    "readable-stream": "@empty"
+  },
+  "registry": "npm",
+  "dependencies": {
+    "domhandler": "domhandler@~2.3.0",
+    "domutils": "domutils@~1.5.0",
+    "domelementtype": "domelementtype@^1.0.0",
+    "readable-stream": "readable-stream@~1.1.0",
+    "entities": "entities@~1.0.0",
+    "util": "github:jspm/nodelibs-util@^0.1.0",
+    "events": "github:jspm/nodelibs-events@^0.1.1",
+    "systemjs-json": "github:systemjs/plugin-json@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0",
+    "stream": "github:jspm/nodelibs-stream@^0.1.0"
+  }
+}
