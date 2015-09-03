@@ -19,16 +19,16 @@ class libraryController {
 
         pagesHelper.append('library');
         allBooks.find()
-            .then(function(books){
-                books.forEach(function(book){
+            .then(function(books) {
+                books.forEach(function(book) {
                     let category = book.attributes.category.capitalizeFirst();
-                    if(categories.indexOf(category) < 0) {
+                    if (categories.indexOf(category) < 0) {
                         categories.push(category);
                     }
                 });
 
-                return templatesHelper.append('categories', categories, '#book-category');
-             })
+                return templatesHelper.append('optionCategory', categories, '#book-category');
+            })
             .then(function() {
                 $('#book-category').change(function() {
                     var optionSelected = $(this).find(':selected');
@@ -37,7 +37,7 @@ class libraryController {
                     sammy.redirect('#/library/categories/' + category.toLowerCase());
                 });
             })
-            .then(function(){
+            .then(function() {
                 var libraryBookContent = $('#library-content');
 
                 $('select').val(category.capitalizeFirst());
@@ -54,9 +54,43 @@ class libraryController {
             allBooks = allBooks.equalTo('category', category).find();
         }
 
-        allBooks.then(function(books){
+        allBooks.then(function(books) {
             templatesHelper.set('libraryBook', books, '.books-list');
         })
+    }
+
+    loadCategories(sammy) {
+        pagesHelper.append('categories');
+
+        var allBooks = bookModel.getBooks(),
+            categories = [];
+
+        allBooks.find()
+            .then(function(books) {
+                _.each(books, function(book) {
+                    var hasThisCategory = _.find(categories, function(currentBook) {
+                        return currentBook.category === book.attributes.category.capitalizeFirst();
+                    });
+
+                    if (!hasThisCategory) {
+                        categories.push({
+                            category: book.attributes.category.capitalizeFirst(),
+                            picUrl: book.attributes.pictureURL
+                        });
+                    }
+                });
+
+                return templatesHelper.append('category', categories, '#categories-content');
+            })
+            .then(function() {
+                var imageInCategory = $('.category-img');
+
+                imageInCategory.on('click', function() {
+                    var category = $(this).attr('data-category');
+
+                    sammy.redirect('#/library/categories/' + category.toLowerCase());
+                });
+            });
     }
 
     detailed(sammy) {

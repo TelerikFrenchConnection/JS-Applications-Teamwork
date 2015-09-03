@@ -303,3 +303,7 @@ html, body {
 #search-filter {
     color: #2C3E50;
 }
+
+.category-img {
+    pointer: cursor;
+}
