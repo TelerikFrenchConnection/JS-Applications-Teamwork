@@ -8,10 +8,8 @@
     EMAIL_PATTERN: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
     RESTRICTED_SYMBOLS_PATTERN: /[<>$@#&]/gm,             ///[^\.%,!\?a-zA-Z0-9 ]/g,
     DEFAULT: 'Value',
-   
     INVALID_VALUE_MESSAGE: 'must be filled and in valid format',
     INVALID_ISBN_MESSAGE: 'must contain exactly 10 or 13 digits',
-
     INVALID_SYMBOLS_MESSAGE: 'must not contain special characters as <, > and $',
     INVALID_PASSWORD_MESSAGE: 'must contain at last one uppercase, lowcase or number and be 8-20 symbols long',
     INVALID_USERNAME_MESSAGE: 'must contain only letters, numbers or underscore and be 6-15 symbols'
@@ -118,4 +116,3 @@ var validate = {
     }
 
 };
-
