@@ -50,7 +50,7 @@ class adminController {
 
         bookModel.getBooks().find()
             .then(function(allBooks) {
-                allBooks.forEach(function(book){
+                _.each(allBooks, function(book){
                     if (book.attributes.isbn === isbnParam) {
                         bookModel.removeBook(book);
                     }

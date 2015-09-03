@@ -289,3 +289,14 @@ html, body {
     text-indent: 3px;
     border: 1px solid #34495E;
 }
+
+.contact .contact-info {
+    padding-top: 10px;
+    font-size: 0.8em;
+}
+.contact .contact-info .list-group .list-group-item {
+    overflow: hidden;
+}
+.contact .contact-info .list-group .list-group-item p {
+    font-size: 0.8em;
+}
