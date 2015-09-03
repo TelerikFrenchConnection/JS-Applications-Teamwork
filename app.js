@@ -51,6 +51,8 @@ export function init(element) {
         this.post('#/admin/addbook', adminController.addBookPost);
         this.post('#/admin/removebook', adminController.removeBookPost);
 
+        this.post('#/contact', contactController.contactPost);
+
 
         this.get('#/404', function () {
             pagesHelper.append('404');
