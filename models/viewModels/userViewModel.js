@@ -15,7 +15,7 @@
         }
 
         set userNameProperty(newName) {
-            validate.userName(newName, 'username');
+            validate.userName(newName, 'userName');
             this.username = newName;
 
         }

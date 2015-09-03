@@ -6,7 +6,7 @@
     PASSWORD_PATTERN: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/,
     USER_NAME_PATTERN: /\S[_a-zA-Z0-9]{6,15}/,
     EMAIL_PATTERN: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
-    RESTRICTED_SYMBOLS_PATTERN: /[<>$@#&]/gm,             ///[^\.%,!\?a-zA-Z0-9 ]/g,
+    RESTRICTED_SYMBOLS_PATTERN: /[<>$@#&]/gm,
     DEFAULT: 'Value',
     INVALID_VALUE_MESSAGE: 'must be filled and in valid format',
     INVALID_ISBN_MESSAGE: 'must contain exactly 10 or 13 digits',
@@ -94,8 +94,7 @@ var validate = {
 
     userName: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
-        if (!CONSTANTS.USER_NAME_PATTERN.test(name)) {
-
+        if (!CONSTANTS.USER_NAME_PATTERN.test(value)) {
             sessionStorage.setObject(name, {
                 name: name,
                 message: CONSTANTS.INVALID_USERNAME_MESSAGE
