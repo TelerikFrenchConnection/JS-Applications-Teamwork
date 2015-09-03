@@ -22,6 +22,7 @@ class libraryController {
             .then(function(books) {
                 _.each(books, function(book) {
                     let category = book.attributes.category.capitalizeFirst();
+                    
                     if (categories.indexOf(category) < 0) {
                         categories.push(category);
                     }
