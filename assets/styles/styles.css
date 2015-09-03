@@ -345,22 +345,22 @@ html, body {
     margin: 20px auto;
 }
 
-#library-content .category-item {
+#categories-content .category-item {
     margin: 20px 0;
 }
 
-#library-content .category-item h4{
+#categories-content .category-item h5{
     font-weight: bold;
 }
 
 #categories-content .category-item .category-header {
-    height: 55px;
+    height: 45px;
 }
 
 #categories-content .category-item .img-responsive {
-    width: 200px;
-    max-width: 200px;
-    height: 2850px;
-    max-height: 285px;
+    width: 190px;
+    max-width: 190px;
+    height: 275px;
+    max-height: 275px;
     cursor: pointer;
 }
