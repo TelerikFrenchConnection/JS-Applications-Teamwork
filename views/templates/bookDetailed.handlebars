@@ -1,58 +1,52 @@
-<div id="fb-root"></div>
-    <script id="the-script">
-        (function (d, s, id) {
-            var js, fjs = d.getElementById(s);
-            if (d.getElementById(id)) return;
-            js = d.createElement('script');
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'the-script', 'facebook-jssdk'));
-    </script>
-
-    <div class="container detail-wrapper">
-        <div class="col-md-4">
-            <img class="img-responsive" alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}"
-                 width="200" height="300">
-        </div>
-
-        <div class="col-md-6">
-            <div class="row">
-                <div class="">
-                   <h4 class="book-details-title">{{this.attributes.title}}</h4>
-                </div>
-                <hr class="book-details-hr"/>
-            </div>
-
-            <div class="row book-details-entry">
-                <span class="pull-left"><strong>Author:</strong> </span>
-                <span class="pull-right">{{this.attributes.author}} </span>
-            </div>
-
-            <div class="row book-details-entry">
-                <span class="pull-left"><strong>Category:</strong> </span>
-                <span class="pull-right">{{this.attributes.category}} </span>
-            </div>
-
-            <div class="row book-details-entry">
-                <span class="pull-left"><strong>Price:</strong> </span>
-                <span class="pull-right">{{this.attributes.price}} Euro </span>
-            </div>
-
-            <div class="row book-details-entry">
-                <span class="pull-left"><strong>ISBN:</strong> </span>
-                <span class="pull-right">{{this.attributes.isbn}} </span>
-            </div>
-
-            <div class="row book-details-entry">
-                <span class="pull-left"><strong>Description:</strong> </span>
-                <span class="pull-right">{{this.attributes.description}} </span>
-            </div>
-
-            <div class="row book-details-entry">
-                <span class="pull-left"><strong>View:</strong> </span>
-                <span class="pull-right">{{this.attributes.views}} </span>
-            </div>
-        </div>
-        <div class="col-md-2"></div>
+<div class="container detail-wrapper">
+    <div class="col-md-4">
+        <img class="img-responsive" alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}"
+             width="200" height="300">
     </div>
+
+    <div class="col-md-6">
+        <div class="row">
+            <div class="">
+                <h4 class="book-details-title pull left">{{this.attributes.title}}</h4>
+                <span class="pull right">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
+                    <script>
+                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+                    </script>
+                </span>
+            </div>
+            <hr class="book-details-hr"/>
+        </div>
+
+        <div class="row book-details-entry">
+            <span class="pull-left"><strong>Author:</strong> </span>
+            <span class="pull-right">{{this.attributes.author}} </span>
+        </div>
+
+        <div class="row book-details-entry">
+            <span class="pull-left"><strong>Category:</strong> </span>
+            <span class="pull-right">{{this.attributes.category}} </span>
+        </div>
+
+        <div class="row book-details-entry">
+            <span class="pull-left"><strong>Price:</strong> </span>
+            <span class="pull-right">{{this.attributes.price}} Euro </span>
+        </div>
+
+        <div class="row book-details-entry">
+            <span class="pull-left"><strong>ISBN:</strong> </span>
+            <span class="pull-right">{{this.attributes.isbn}} </span>
+        </div>
+
+        <div class="row book-details-entry">
+            <span class="pull-left"><strong>Description:</strong> </span>
+            <span class="pull-right">{{this.attributes.description}} </span>
+        </div>
+
+        <div class="row book-details-entry">
+            <span class="pull-left"><strong>View:</strong> </span>
+            <span class="pull-right">{{this.attributes.views}} </span>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>

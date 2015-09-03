@@ -79,7 +79,6 @@ class libraryController {
                 result.set('views', ++bookViews);
                 bookModel.updateBook(result);
 
-                templatesHelper.appendSingle('headTest', result, 'head');
                 templatesHelper.appendSingle('bookDetailed', result, '#library-content');
                 
             },

@@ -162,7 +162,9 @@ html, body {
 }
 
 .book-details-title {
+    display: inline-block;
     font-weight: normal;
+    margin-right: 5%;
 }
 
 .book-details-entry {
