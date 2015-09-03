@@ -20,7 +20,7 @@ class libraryController {
         pagesHelper.append('library');
         allBooks.find()
             .then(function(books) {
-                books.forEach(function(book) {
+                _.each(books, function(book) {
                     let category = book.attributes.category.capitalizeFirst();
                     if (categories.indexOf(category) < 0) {
                         categories.push(category);
@@ -83,7 +83,7 @@ class libraryController {
                 return templatesHelper.append('category', categories, '#categories-content');
             })
             .then(function() {
-                var imageInCategory = $('.category-img');
+                var imageInCategory = $('#categories-content div img');
 
                 imageInCategory.on('click', function() {
                     var category = $(this).attr('data-category');

@@ -327,6 +327,6 @@ html, body {
     color: #2C3E50;
 }
 
-.category-img {
-    pointer: cursor;
+#categories-content .img-responsive {
+    cursor: pointer;
 }
