@@ -12,6 +12,10 @@ h5 {
     font-size: 1.4em;
 }
 
+hr {
+    border-bottom: 2px solid #eee;
+}
+
 html, body {
     width: auto !important;
     overflow-x: hidden !important;
@@ -133,10 +137,6 @@ html, body {
     border-color: #ddd;
 }
 
-#library-content .category-select hr {
-    border-bottom: 1px solid #eee;
-}
-
 #library-content .library-item {
     margin: 20px 0;
 }
@@ -171,9 +171,6 @@ html, body {
     margin: 6px;
 }
 
-.book-details-hr {
-    border-bottom: 1px solid #eee;
-}
 
 .latest-books {
     text-align: center;
@@ -183,8 +180,36 @@ html, body {
     margin-top: 18px;
 }
 
-.latest-books hr {
-    border-bottom: 1px solid #eee;
+#search-form {
+    width: 100%;
+}
+
+.search-header h5 {
+    text-align: right;
+}
+
+.search-header div {
+    text-align: left;
+}
+#search-form input {
+    margin-top: 5px;
+    width: 83%;
+    float: left;
+    margin-bottom: 25px;
+}
+
+#search-form button {
+    width: 15%;
+    padding: 8px 15px 9px 15px;
+    margin-bottom: 25px;
+}
+
+.search-padding {
+    padding: 5px;
+}
+
+#library-content select {
+    border-color: #ddd;
 }
 
 #book-cover {
@@ -258,8 +283,6 @@ html, body {
     width: 75%;
     margin-left: 2%;
 }
-
-
 
 .remove-book.login {
     margin: 0;

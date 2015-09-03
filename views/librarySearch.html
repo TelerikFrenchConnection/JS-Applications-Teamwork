@@ -1,5 +1,27 @@
 <div class="container-fluid wrapper">
     <div id="library-content" class="row">
+        <form id="search-form" class="form-group" action="#/library/search" method="get">
+            <div class="row search-header">
+                <h5 class="col-md-6 col-sm-6 col-xs-6">Search from all books</h5>
+                <div class="col-md-5 col-sm-5 col-xs-5">
+                    <label><strong>Filter by:</strong></label>
+                    <select id="search-filter" class="bootstrap-select">
+                        <option value="title" selected="selected">Title</option>
+                        <option value="author">Author</option>
+                        <option value="description">Description</option>
+                        <option value="category">Category</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="textarea" id="search-term" class="form-control contact-field" value="" placeholder="Enter your search term here" id="library-search">
+            <button type="submit" class="col-md-6 btn btn-block btn-lg btn-inverse">Search</button>
+        </form>
+</div>
+
+<!--
+<div class="container-fluid wrapper">
+    <div id="library-content" class="row">
         <h1>Search from all books</h1>
         <form id="search-form" class="form-group" action="#/library/search" method="get">
             <input type="textarea" id="search-term"class="form-control contact-field" value="" placeholder="Enter your search term here" id="library-search">
@@ -10,7 +32,7 @@
                 <option value="description">Description</option>
                 <option value="category">Category</option>
             </select>
-          <button type="submit">Search</button>
+            <button type="submit">Search</button>
         </form>
     </div>
-</div>
+</div> -->
