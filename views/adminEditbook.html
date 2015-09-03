@@ -1,48 +1,46 @@
 
 <div class="container">
-	<div class="add-book login">
-	    <div class="add-book-screen login-screen">
-	        <div class="add-book-form login-form">
+	<div class="row">
+		<div class="center-block login-form">
 	        <h5 class="add-book-heading"><strong>Edit</strong> Book details</h5><br/>  
 
-				<form id="search-form" class="form-group" action="#/library/search" method="get">
-		            <input type="textarea" id="search-term" class="form-control contact-field" value="" placeholder="Enter your search term here">
-		            <label id="frack-label">Filter by:</label>
-		            <select id="search-filter" class="bootstrap-select">
-		                <option value="title" selected="selected">Title</option>
-		                <option value="author">Author</option>
-		                <option value="description">Description</option>
-		                <option value="category">Category</option>
-		            </select>
-		          <button type="submit" class="btn-inverse btn-sm">Search</button>
-		        </form>
+			<form id="search-form" class="form-group" action="#/library/search" method="get">
+	            <input type="textarea" id="search-term" class="form-control contact-field" value="" placeholder="Enter your search term here">
+	            <label id="frack-label">Filter by:</label>
+	            <select id="search-filter" class="bootstrap-select">
+	                <option value="title" selected="selected">Title</option>
+	                <option value="author">Author</option>
+	                <option value="description">Description</option>
+	                <option value="category">Category</option>
+	            </select>
+	          <button type="submit" class="btn-inverse btn-sm">Search</button>
+	        </form>
 
-				<form action="/#/admin/addbook" method="POST" id="add-book-form">
-		              <div class="form-group">
-		                  <input type="text" class="form-control" name="book-title" placeholder="add Book Title">
-		              </div>
-		              <div class="form-group">
-		                  <input type="text" class="form-control" name="book-author" placeholder="add Book Author">
-		              </div>
-		              <div class="form-group">
-		                  <input type="text" class="form-control" name="book-category" placeholder="add Book Category">
-		              </div>
-		              <div class="form-group">
-		                   <input type="text" class="form-control" name="book-isbn" placeholder="add ISBN number">
-		              </div>
-		              <div class="form-group">
-		                  <input type="text" class="form-control" name="book-price" placeholder="add Price" value="">
-		              </div>
-		              <div class="form-group">
-		                  <input type="text" class="form-control" name="book-image-url" placeholder="add Book Cover URL" value="">
-		              </div>
-		              <div>
-		              	 <input type="textarea" class="form-control" name="book-description" placeholder="add Book Description" value="">
-		              </div>
-		              <button type="submit" id='submit-new-book-button' class="btn btn-primary btn-lg btn-bloc">Submit</button>
-					  <button type="button" class="btn btn-primary btn-lg btn-bloc" onClick="$('#add-book-form').trigger('reset')">Clear</button>
-				</form>	  
-			</div>
-	    </div>
+			<form action="/#/admin/addbook" method="POST" id="add-book-form">
+	              <div class="form-group">
+	                  <input type="text" class="form-control" name="book-title" placeholder="add Book Title">
+	              </div>
+	              <div class="form-group">
+	                  <input type="text" class="form-control" name="book-author" placeholder="add Book Author">
+	              </div>
+	              <div class="form-group">
+	                  <input type="text" class="form-control" name="book-category" placeholder="add Book Category">
+	              </div>
+	              <div class="form-group">
+	                   <input type="text" class="form-control" name="book-isbn" placeholder="add ISBN number">
+	              </div>
+	              <div class="form-group">
+	                  <input type="text" class="form-control" name="book-price" placeholder="add Price" value="">
+	              </div>
+	              <div class="form-group">
+	                  <input type="text" class="form-control" name="book-image-url" placeholder="add Book Cover URL" value="">
+	              </div>
+	              <div>
+	              	 <input type="textarea" class="form-control" name="book-description" placeholder="add Book Description" value="">
+	              </div>
+	              <button type="submit" id='submit-new-book-button' class="btn btn-primary btn-lg btn-bloc">Submit</button>
+				  <button type="button" class="btn btn-primary btn-lg btn-bloc" onClick="$('#add-book-form').trigger('reset')">Clear</button>
+			</form>	  
+		</div>
 	</div>
 </div>

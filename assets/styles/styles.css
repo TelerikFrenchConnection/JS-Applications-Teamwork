@@ -227,36 +227,6 @@ html, body {
     transition: all .25s;
 }
 
-.add-book.login {
-    margin: 0;
-    padding: 0;
-}
-
-.add-book-screen.login-screen {
-    background-color: white;
-    padding-top: 2%;
-}
-
-.add-book-form.login-form {
-    border: 1px solid #34495E;
-    border-radius: 5px;
-    margin: 0;
-}
-
-.add-book.login .add-book-form .add-book-heading {
-    color: #34495E;
-}
-
-.add-book.login.add-book-form.add-book-heading label{
-    color: #34495E;
-}
-
-
-.add-book.login .add-book-form .form-control {
-    text-indent: 3px;
-    border: 1px solid #34495E;
-}
-
 .admin-root {
     display: inline-block;
     width: 90%;
