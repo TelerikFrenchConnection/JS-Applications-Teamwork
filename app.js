@@ -57,6 +57,7 @@ export function init(element) {
 
         this.post('#/contact', contactController.contactPost);
 
+        this.post("#/admin/addbook")
 
         this.get('#/404', function () {
             pagesHelper.append('404');

@@ -22,19 +22,19 @@ class adminController {
 	}
 
     addBookPost(sammy) {
-        var title = sammy.params['book-title'];
-        var author = sammy.params['book-author'];
-        var category = sammy.params['book-category'];
-        var isbn = sammy.params['book-isbn'];
-        var price = sammy.params['book-price'];
-        var pictureURL = sammy.params['book-image-url'];
-        var description = sammy.params['book-description'];
+        var title = sammy.params['title'];
+        var author = sammy.params['author'];
+        var category = sammy.params['category'];
+        var isbn = sammy.params['isbn'];
+        var price = sammy.params['price'];
+        var pictureURL = sammy.params['pictureURL'];
+        var description = sammy.params['description'];
 
         bookModel.addBook(title, author, category, isbn, price, pictureURL, description)
-            .then(function(book){
-                console.log('Success at adding new book entry');
-            }, function(err) {
-                console.log('Failed at adding new book entry');
+            .then(function(){
+                sammy.redirect('#/admin')
+            }, function(errors) {
+                templatesHelper.set('warning', errors, '.warning');
             });
     }
     removeBook(sammy) {

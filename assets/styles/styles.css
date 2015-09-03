@@ -21,6 +21,11 @@ html, body {
     overflow-x: hidden !important;
 }
 
+#map {
+    width: 300px;
+    height: 400px;
+}
+
 .wrapper {
     width: 1200px;
     max-width: 85%;
@@ -230,10 +235,12 @@ html, body {
 }
 
 .contact .contact-form {
+    margin: 20px 0;
     position: relative;
     padding: 20px;
     background-color: #edeff1;
     border-radius: 6px;
+    float: right;
 }
 
 .contact .contact-form .contact-field {
@@ -250,6 +257,11 @@ html, body {
     color: #bfc9ca;
     -webkit-transition: all .25s;
     transition: all .25s;
+}
+
+.contact .contact-info {
+    width: 30%;
+    margin-top: 10px;
 }
 
 .admin-root {
