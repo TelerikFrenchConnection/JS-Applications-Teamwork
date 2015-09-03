@@ -1,57 +1,60 @@
-<div id="fb-root">
-<script id="the-script">
-    (function (d, s, id) {
-        var js, fjs = d.getElementById(s);
-        if (d.getElementById(id)) return;
-        js = d.createElement('script');
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'the-script', 'facebook-jssdk'));
-</script>
-<div class="detail-wrapper">
-    <div class="col-md-6">
-        <h4>
-            Title:<span class="pull-right">{{this.attributes.title}}</span>
-        </h4>
+<div id="fb-root"></div>
+    <script id="the-script">
+        (function (d, s, id) {
+            var js, fjs = d.getElementById(s);
+            if (d.getElementById(id)) return;
+            js = d.createElement('script');
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'the-script', 'facebook-jssdk'));
+    </script>
 
-        <div>
-            <p>
-                <strong>Author:</strong>
-                <span class="pull-right">{{this.attributes.author}}</span>
-            </p>
 
-            <p>
-                <strong>Category:</strong>
-                <span class="pull-right">{{this.attributes.category}}</span>
-            </p>
+    <div class="container detail-wrapper ">
+        <div class="col-md-4">
 
-            <p>
-                <strong>Price:</strong>
-                <span class="pull-right">{{this.attributes.price}}</span>
-            </p>
+            <div class="row">
+                <span></span>
+                <span class="pull-left">
+                   <h4>Title:</h4>
+                </span>
+                <span class="pull-right">{{this.attributes.title}} </span>
+            </div>
 
-            <p>
-                <strong>Isbn:</strong>
-                <span class="pull-right">{{this.attributes.isbn}}</span>
-            </p>
+            <div class="row">
+                <span class="pull-left"><strong>Author:</strong> </span>
+                <span class="pull-right">{{this.attributes.author}} </span>
+            </div>
 
-            <p>
-                <strong>Description:</strong>
-                <span class="pull-right">{{this.attributes.description}}</span>
-            </p>
+            <div class="row">
+                <span class="pull-left"><strong>Category:</strong> </span>
+                <span class="pull-right">{{this.attributes.category}} </span>
+            </div>
 
-            <p>
-                <strong>Views:</strong>
-                <span class="pull-right">{{this.attributes.views}}</span>
-            </p>
+            <div class="row">
+                <span class="pull-left"><strong>Price:</strong> </span>
+                <span class="pull-right">{{this.attributes.price}} Euro </span>
+            </div>
+
+            <div class="row">
+                <span class="pull-left"><strong>ISBN:</strong> </span>
+                <span class="pull-right">{{this.attributes.isbn}} </span>
+            </div>
+
+            <div class="row">
+                <span class="pull-left"><strong>Description:</strong> </span>
+                <span class="pull-right">{{this.attributes.description}} </span>
+            </div>
+
+            <div class="row">
+                <span class="pull-left"><strong>View:</strong> </span>
+                <span class="pull-right">{{this.attributes.views}} </span>
+            </div>
+
         </div>
-        <div class="fb-share-button" data-href="http://127.0.0.1:8080/#/library/detailed/{{id}}"
-             data-layout="button_count">
+        <div class="col-md-4">
+            <img class="img-responsive" alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}"
+                 width="200" height="300">
         </div>
     </div>
-    <div class="col-md-6">
-        <img alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}" width="200" height="300">
-    </div>
-</div>
-</div>
