@@ -5,9 +5,21 @@ import Book from './viewModels/bookViewModel.js';
 class bookModel {
     addBook(title, author, category, isbn, price, pictureURL, description) {
         var book = new Book(title, author, category, isbn, +price, pictureURL, description);
+        console.log(book);
+        var promise = new Promise(function (resolve, reject) {
+            var errors = errorHelper.getErrors();
+            if (errors.length === 0) {
+                db.add('Book', book);
+                resolve()
+            } else {
+                reject(errors);
+            }
 
-        // Add error handling logic
-        return db.add('Book', book);
+            errors = [];
+        });
+
+     return promise
+
     }
 
     getBooks() {
@@ -15,15 +27,15 @@ class bookModel {
     }
 
     removeBook(book) {
-    	return db.remove('Book', book);
+        return db.remove('Book', book);
     }
 
     updateBook(book) {
         book.save(null, {
-            success: function(bookObject) {
+            success: function (bookObject) {
                 bookObject.save();
             },
-            error: function(bookObject, error) {
+            error: function (bookObject, error) {
                 console.log('Cannot access the given book' + object);
                 console.log(error);
             }
