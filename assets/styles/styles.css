@@ -327,6 +327,28 @@ html, body {
     color: #2C3E50;
 }
 
-#categories-content .img-responsive {
+#categories-content {
+    text-align: center;
+    max-width: 97%;
+    margin: 20px auto;
+}
+
+#library-content .category-item {
+    margin: 20px 0;
+}
+
+#library-content .category-item h4{
+    font-weight: bold;
+}
+
+#categories-content .category-item .category-header {
+    height: 55px;
+}
+
+#categories-content .category-item .img-responsive {
+    width: 200px;
+    max-width: 200px;
+    height: 2850px;
+    max-height: 285px;
     cursor: pointer;
 }
