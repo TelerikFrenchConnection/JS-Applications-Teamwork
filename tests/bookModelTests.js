@@ -1,170 +1,172 @@
+import mocha from 'mocha'
+//import mocha.css from 'mocha'
 import chai from 'chai';
-import jsdom from 'jsdom';
+/*import jsdom from 'jsdom';
 import $ from 'jquery';
-import jq from 'jquery';
-import bookViewModel from '../models/bookModel.js';
+import jq from 'jquery';*/
+import Book from './viewModels/bookViewModel.js';
+import bookModel from '../models/bookModel.js';
+
+
+mocha.setup('bdd');
+var expect = chai.expect;
+
 
 //var result = require('../tasks/task-1')();
 
-var utils = (function () {
-    var CONSTS = {
-        NAME: {
-            MIN: 2,
-            MAX: 40
-        },
-        DESCRIPTION: {
-            MIN: 1,
-            MAX: 1000
-        },
-        ISBN10: {
-            LENGTH: 10
-        },
-        ISBN13: {
-            LENGTH: 13
-        },
-        GENRE: {
-            MIN: 2,
-            MAX: 20
-        },
-        DURATION: {
-            MIN: 0,
-            MAX: 10000
-        },
-        RATING: {
-            MIN: 1,
-            MAX: 5
-        },
-        CHARS: 'QWERTYUIOPASDFGHJKLZXCVBNM _.-?!,\'\":;',
-        DIGIS: '0123456789'
-    };
+var longName='Qwertyuiopasdfghjklzxcvbnmkjhgfds';
 
-    function getRandom(min, max) {
-        if (typeof (max) === 'undefined') {
-            max = min;
-            min = 0;
-        }
-        /* jshint ignore: start */
-        return (Math.random() * (max - min) + min) | 0;
-        /* jshint ignore: end */
-    }
+describe('E-Library', function () {
+    describe('Book tests', function () {
+        describe('Valid tests', function () {
+            // test 1
+            sessionStorage.clear();
+            it('expect addBook to exist when valid data with ISBN 10 symbols long , and session storage length to be 0', function () {
+                var validBook10 = new Book('It', 'Stephan King', 'Horror', '1234567890', '12', 'pictureURL', 'Nice book');
+                validBook10.add();
+                var expected = 0;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
 
-    function getRandomString(chars, length) {
-        return Array.apply(null, {
-            length: length
-        }).map(function () {
-            return chars[getRandom(chars.length)];
-        }).join('');
-    }
+            it('expect getBook to exist when valid data with ISBN 13 symbols long, and session storage length to be 0', function () {
+                var validBook13 = new Book('It', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
+                validBook13.add();
+                var expected = 0;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
 
-    var utils = {
-        valid: {
-            getName: function () {
-                var length = getRandom(CONSTS.NAME.MIN, CONSTS.NAME.MAX);
-                return getRandomString(CONSTS.CHARS, length);
-            },
-            getISBN10: function () {
-                var length = 10;
-                return getRandomString(CONSTS.DIGIS, length);
-            },
-            getISBN13: function () {
-                var length = 13;
-                return getRandomString(CONSTS.DIGIS, length);
-            },
-            getGenre: function () {
-                var length = getRandom(CONSTS.GENRE.MIN, CONSTS.GENRE.MAX);
-                return getRandomString(CONSTS.CHARS, length);
-            },
-            getDescription: function () {
-                var length = getRandom(CONSTS.DESCRIPTION.MIN, CONSTS.DESCRIPTION.MAX);
-                return getRandomString(CONSTS.CHARS, length);
-            }
-        },
+        });
 
-        invalid: {
-            getShorterName: function () {
-                var length = getRandom(0, CONSTS.NAME.MIN - 1);
-                return getRandomString(CONSTS.CHARS, length);
-            },
-            getLongerName: function () {
-                var length = getRandom(CONSTS.NAME.MAX + 1, CONSTS.NAME.MAX * 2);
-                return getRandomString(CONSTS.CHARS, length);
-            },
-            getInvalidISBN10WithLetters: function () {
-                var isbn = utils.valid.getISBN10().split(''),
-                    index = getRandom(isbn.length);
-                isbn.splice(index, 1, 'a');
-                return isbn;
-            },
-            getInvalidISBN13WithLetters: function () {
-                return utils.valid.getISBN13().substring(1);
-            },
-            getInvalidISBNNot10or13: function () {
-                var isbn = utils.valid.getISBN13().split(''),
-                    index = getRandom(isbn.length);
-                isbn.splice(index, 1, 'a');
-                return isbn;
-            },
-            getShorterDescription: function () {
-                var length = getRandom(0, CONSTS.DESCRIPTION.MIN - 1);
-                return getRandomString(CONSTS.CHARS, length);
-            },
-            getLongerDescription: function () {
-                var length = getRandom(CONSTS.DESCRIPTION.MAX + 1, CONSTS.DESCRIPTION.MAX * 2);
-                return getRandomString(CONSTS.CHARS, length);
-            },
-            getShorterGenre: function () {
-                var length = getRandom(0, CONSTS.GENRE.MIN - 1);
-                return getRandomString(CONSTS.CHARS, length);
-            },
-            getLongerGenre: function () {
-                var length = getRandom(CONSTS.GENRE.MAX + 1, CONSTS.GENRE.MAX * 2);
-                return getRandomString(CONSTS.CHARS, length);
-            }
-        }
-    };
+        describe('Invalid tests', function () {
+            it('expect session storage length to be 1, when title is not valid', function () {
+                var invalidBookTitle = new Book('<post', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
+                invalidBookTitle.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
 
-    return utils;
-}());
+            it('expect session storage length to be 1, when title is empty', function () {
+                var invalidBookTitleEmptyString = new Book('', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
+                invalidBookTitleEmptyString.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
 
-sessionStorage.clear();
+            it('expect session storage length to be 1, when author is not valid', function () {
+                var invalidBookAuthor = new Book('It', 'Step<han King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
+                invalidBookAuthor.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
 
-describe('Task #1 Tests', function () {
+            it('expect session storage length to be 1, when author is empty', function () {
+                var invalidBookAuthorEmptyString = new Book('It', 'Step<han King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
+                invalidBookAuthorEmptyString.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            })
 
-    before(function (done) {
-        sessionStorage.clear();
-        /*jsdom.env({
-            html: '',
-            done: function (errors, window) {
-                global.window = window;
-                global.document = window.document;
-                global.$ = jq(window);
-                Object.keys(window)
-                    .filter(function (prop) {
-                        return prop.toLowerCase().indexOf('html') >= 0;
-                    }).forEach(function (prop) {
-                        global[prop] = window[prop];
-                    });
-                done();
-            }
-        });*/
-    });
+            it('expect session storage length to be 1, when category name is not valid', function () {
+                var invalidBookCategoryName = new Book('It', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
+                invalidBookCategoryName.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
 
-    it('expect to append a list with 5 LIs, when selector is valid and COUNT is 5', function () {
-        var count = 5;
-        document.body.innerHTML = '<div id="root"></div>';
-        result('#root', count);
+            it('expect session storage length to be 1, when category is empty', function () {
+                var invalidBookCategoryEmptyString = new Book('It', 'Stephan King', '', '1234567890123', '12', 'pictureURL', 'Nice book');
+                invalidBookCategoryEmptyString.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
 
-        var $list = $('#root .items-list');
-        expect($list).to.exist;
-        expect($list).to.have.length(1);
-        var $items = $list.find('*');
-        expect($items).to.have.length(count);
+            it('expect session storage length to be 1, when category length is longer', function () {
+                var invalidBookCategoryLong = new Book('It', 'Stephan King', longName, '1234567890123', '12', 'pictureURL', 'Nice book');
+                invalidBookCategoryLong.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
 
-        $items.each(function (index, item) {
-            var $item = $(item);
-            expect($item.is('li')).to.be.true;
-            expect($item.hasClass('list-item')).to.be.true;
-            expect($item.html()).to.equal('List item #' + index);
+            it('expect session storage length to be 1, when ISBN length is longer', function () {
+                var invalidBookLongIsbn = new Book('It', 'Stephan King', longName, '12345678901234', '12', 'pictureURL', 'Nice book');
+                invalidBookLongIsbn.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
+
+            it('expect session storage length to be 1, when ISBN length is shorter', function () {
+                var invalidBookShortIsbn = new Book('It', 'Stephan King', 'Horror', '123456789', '12', 'pictureURL', 'Nice book');
+                invalidBookShortIsbn.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
+
+            it('expect session storage length to be 1, when ISBN length is 11', function () {
+                var invalidBookIsbn11 = new Book('It', 'Stephan King', 'Horror', '123456789101', '12', 'pictureURL', 'Nice book');
+                invalidBookIsbn11.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
+
+            it('expect session storage length to be 1, when price is NAN ', function () {
+                var invalidPrice = new Book('It', 'Stephan King', 'Horror', '1234567890123', '1a2', 'pictureURL', 'Nice book');
+                invalidPrice.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
+
+            it('expect session storage length to be 1, when price is negative number', function () {
+                var invalidNegativePrice = new Book('It', 'Stephan King', 'Horror', '1234567890123', '-12', 'pictureURL', 'Nice book');
+                invalidNegativePrice.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
+
+            it('expect session storage length to be 1, when title is not valid', function () {
+                var invalidBookTitle = new Book('<post', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
+                invalidBookTitle.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
+
+            it('expect session storage length to be 1, when title is empty', function () {
+                var invalidBookTitleEmptyString = new Book('', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
+                invalidBookTitleEmptyString.add();
+                var expected = 1;
+                var actual = sessionStorage.length
+                expect(actual).to.equal.(expected);
+                sessionStorage.clear();
+            });
         });
     });
 }
