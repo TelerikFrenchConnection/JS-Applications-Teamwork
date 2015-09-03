@@ -37,13 +37,18 @@ class libraryController {
 
                     $(this).parent().nextAll().remove();
 
-                    allBooksRetrieved.forEach(function(book) {
+                    if (category === 'All') {
+                        booksToAdd = allBooksRetrieved;
+                    }
+                    else {
+                        allBooksRetrieved.forEach(function(book) {
                         if (book.attributes.category === category) {
                             booksToAdd.push(book);
                         }
-
                     });
-
+    
+                    }
+                    
                     if (booksToAdd.length) {
                         templatesHelper.append('libraryBook', booksToAdd, '#library-content');
                     }
