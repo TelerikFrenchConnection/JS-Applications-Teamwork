@@ -43,16 +43,11 @@ class adminController {
         }
     }
     removeBookPost(sammy) {
-        var isbnParam = sammy.params['isbn'];
-
-        bookModel.getBooks().find()
-            .then(function(allBooks) {
-                _.each(allBooks, function(book){
-                    if (book.attributes.isbn === isbnParam) {
-                        bookModel.removeBook(book);
-                    }
-                });
-            });    
+        if(isUserAuthorized(sammy)){
+            var idParam = sammy.params['id'];
+            bookModel.removeBookById(idParam);  
+        }
+        
     }
 
     editBook(sammy) {

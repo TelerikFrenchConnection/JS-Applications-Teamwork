@@ -18,16 +18,12 @@ class bookModel {
             errors = [];
         });
 
-     return promise
+     return promise;
 
     }
 
     getBooks() {
         return db.get('Book');
-    }
-
-    removeBook(book) {
-        return db.remove('Book', book);
     }
 
     updateBook(book) {
@@ -40,6 +36,28 @@ class bookModel {
                 console.log(error);
             }
         });
+    }
+
+    removeBookById(id) {
+        this.getBooks().get(id, {
+            success: function(receivedBook) {
+                receivedBook.destroy({
+                  success: function(myObject) {
+                    console.log('Book deleted successfully!');
+                    // The object was deleted from the Parse Cloud.
+                  },
+                  error: function(myObject, error) {
+                    console.log('Error at book destroying!');
+                    // The delete failed.
+                    // error is a Parse.Error with an error code and message.
+                  }
+                });
+            },
+            error: function(object, error) {
+                console.log('Cannot access the given book' + object);
+                console.log(error);
+            }
+        }); 
     }
 }
 
