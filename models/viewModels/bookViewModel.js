@@ -34,9 +34,9 @@ class Book {
     get categoryProperty() {
         return this.category;
     }
-    set categoryProperty(newDescription) {
-        validate.safeText(newDescription, 'Description');
-        this.description = newDescription;
+    set categoryProperty(newCategory) {
+        validate.safeText(newCategory, 'Description');
+        this.description = newCategory.toLowerCase();
     }
 
     get isbnProperty() {

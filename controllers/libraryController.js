@@ -156,7 +156,7 @@ function loadLibrary(promise, sammy) {
             $('#book-category').change(function() {
                 var optionSelected = $(this).find(':selected');
                 var category = optionSelected.attr('value');
-                
+
                 sammy.redirect('#/library/' + category.toLowerCase());
             });
         });
