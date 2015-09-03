@@ -9,56 +9,28 @@ import searchModel from '../models/searchModel.js';
 
 class libraryController {
     load(sammy) {
-        pagesHelper.append('library');
+        loadLibrary(bookModel.getBooks().find(), sammy)
+    }
 
-        var allBooksRetrieved = [];
-        var categories = [];
+    category(sammy) {
+        var allBooks = bookModel.getBooks();
+        var category = this.params['category'];
 
-        bookModel.getBooks().find()
-            .then(function(allBooks) {
-                allBooks.forEach(function(book) {
-                    if (categories.indexOf(book.attributes.category) < 0) {
-                        categories.push(book.attributes.category);
-                    }
-                });
-
-                templatesHelper.append('categoriesTemplate', categories, '#book-category');
-
-                allBooksRetrieved = allBooks;
-                return templatesHelper.append('libraryBook', allBooks, '#library-content');
-            })
-            .then(function() {
-                var booksToAdd = [];
-
-                $('#book-category').change(function() {
-                    var optionSelected = $(this).find(':selected');
-                    var category = optionSelected.attr('value');
-
-                    $(this).parent().nextAll().remove();
-
-                    if (category === 'All') {
-                        booksToAdd = allBooksRetrieved;
-                    } else {
-                        allBooksRetrieved.forEach(function(book) {
-                            if (book.attributes.category === category) {
-                                booksToAdd.push(book);
-                            }
-                        });
-
-                    }
-
-                    templatesHelper.append('libraryBook', booksToAdd, '#library-content');
-
-                    booksToAdd = [];
-                });
-            })
-            .then(function() {
-                var libraryBookContent = $('#library-content');
-                libraryBookContent.on('click', 'div img', function() {
-                    var id = $(this).attr('data-id');
-                    sammy.redirect('#/library/detailed/' + id);
-                });
+        loadLibrary(allBooks.find(), sammy)
+            .then(function(){
+                $('select').val(category.capitalizeFirst());
             });
+
+        if (category === 'all') {
+            allBooks = allBooks.find();
+        } else {
+            allBooks = allBooks.equalTo('category', category).find();
+        }
+
+        allBooks.then(function(books){
+            console.log(books);
+            templatesHelper.set('libraryBook', books, '.books-list');
+        })
     }
 
     detailed(sammy) {
@@ -161,6 +133,32 @@ function displaySearchResults(booksCollection, searchFilter, searchTerm) {
 
         return templatesHelper.appendSingle('libraryEmptySearch', emptySearch, '#library-content');
     }
+}
+
+function loadLibrary(promise, sammy) {
+    pagesHelper.append('library');
+
+    var categories = [];
+
+    return promise
+        .then(function(books){
+            books.forEach(function(book){
+                let category = book.attributes.category.capitalizeFirst();
+                if(categories.indexOf(category) < 0) {
+                    categories.push(category);
+                }
+            });
+
+            return templatesHelper.append('categories', categories, '#book-category');
+        })
+        .then(function() {
+            $('#book-category').change(function() {
+                var optionSelected = $(this).find(':selected');
+                var category = optionSelected.attr('value');
+
+                sammy.redirect('#/library/' + category.toLowerCase());
+            });
+        });
 }
 
 export default new libraryController;

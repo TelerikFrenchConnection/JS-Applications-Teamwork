@@ -27,6 +27,7 @@ export function init(element) {
         this.get('#/contact', contactController.load);
 
         this.get('#/library', libraryController.load);
+        this.get('#/library/:category', libraryController.category);
         this.get('#/library/detailed/:bookId', libraryController.detailed);
         this.get('#/library/search', libraryController.search);
         this.get('#/library/search/:prop/:search', libraryController.search);
