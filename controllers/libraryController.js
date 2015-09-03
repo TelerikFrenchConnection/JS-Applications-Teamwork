@@ -9,7 +9,7 @@ import searchModel from '../models/searchModel.js';
 
 class libraryController {
     load(sammy) {
-        sammy.redirect('#/library/categories/all');
+        sammy.redirect('#/library/categories/All');
     }
 
     category(sammy) {
@@ -21,7 +21,7 @@ class libraryController {
         allBooks.find()
             .then(function(books) {
                 _.each(books, function(book) {
-                    let category = book.attributes.category.capitalizeFirst();
+                    let category = book.attributes.category;
                     
                     if (categories.indexOf(category) < 0) {
                         categories.push(category);
@@ -35,13 +35,12 @@ class libraryController {
                     var optionSelected = $(this).find(':selected');
                     var category = optionSelected.attr('value');
 
-                    sammy.redirect('#/library/categories/' + category.toLowerCase());
+                    sammy.redirect('#/library/categories/' + category);
                 });
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
-
-                $('select').val(category.capitalizeFirst());
+                $('select').val(category);
 
                 libraryBookContent.on('click', 'div img', function() {
                     var id = $(this).attr('data-id');
@@ -49,7 +48,7 @@ class libraryController {
                 });
             });
 
-        if (category === 'all') {
+        if (category === 'All') {
             allBooks = allBooks.find();
         } else {
             allBooks = allBooks.equalTo('category', category).find();
@@ -70,12 +69,12 @@ class libraryController {
             .then(function(books) {
                 _.each(books, function(book) {
                     var hasThisCategory = _.find(categories, function(currentBook) {
-                        return currentBook.category === book.attributes.category.capitalizeFirst();
+                        return currentBook.category === book.attributes.category;
                     });
 
                     if (!hasThisCategory) {
                         categories.push({
-                            category: book.attributes.category.capitalizeFirst(),
+                            category: book.attributes.category,
                             picUrl: book.attributes.pictureURL
                         });
                     }
@@ -89,7 +88,7 @@ class libraryController {
                 imageInCategory.on('click', function() {
                     var category = $(this).attr('data-category');
 
-                    sammy.redirect('#/library/categories/' + category.toLowerCase());
+                    sammy.redirect('#/library/categories/' + category);
                 });
             });
     }
