@@ -3,7 +3,7 @@ import Handlebars from 'handlebars';
 var templatesHelper = (function() {
     function get(templateName) {
         return new Promise(function(success){
-            var path = 'views/templates/' + templateName + '.handlebars';
+            var path = 'views/templates/' + templateName + '.html';
 
             $.get(path).then(function(result){
                 success(result);
