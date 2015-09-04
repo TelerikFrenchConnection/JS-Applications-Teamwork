@@ -13,46 +13,24 @@ E-Library Catalog is a Single-Page Application developed by Team "French Conecti
 
 ##Application Desription 
 
-The main purpuse of the application is to help the user easy to find  books.Paging and searching functionality  
-allow user easy to navigate around the aplication. 
-He can easy dowload book for Kindle from Amazon and share this with friends via tweeter.
+The main purpuse of the application is to help the user easy to find books. Paging and searching functionality allow the user to easily navigate around the aplication. He can easy dowload book for Kindle from Amazon and share this with friends via tweeter.
 
 ## Aplication Logic
 
-For the responsive design  is used Twitter Bootstrap.
+Twitter Bootstrap is used for the responsive design.
 e-Libray have 2 type of users - administrator and users.
 [Administrator](http://french-connection.apphb.com/#/admin) recive latest messages from contacts form. 
 
 He can [add](http://french-connection.apphb.com/#/admin/addbook),[edit](http://french-connection.apphb.com/#/admin/editbook)  and [remove](http://french-connection.apphb.com/#/admin/removebook) books by ID, title or ISBN.
 
-From [Home page](http://french-connection.apphb.com/#/home) can explore library or top books - Most viewed books from application. 
-One click on  the [book](http://french-connection.apphb.com/#/library/detailed/G0MMeBZtxI), can be viewed all book details from Parse Backend Services, to be dowload for Kindle from Amazon and shared via tweeter.
-From [Category](http://french-connection.apphb.com/#/categories) are listed all existinf categories
-[Search](http://french-connection.apphb.com/#/library/search) , using underscore and jQuery, filter books acoording title, auther, category, description
+From [Home page](http://french-connection.apphb.com/#/home), the user can explore library or top books (most viewed books from application.)
 
+When clicked on the [book](http://french-connection.apphb.com/#/library/detailed/G0MMeBZtxI), the user can view all book details from our Parse Backend Services, to dowload the book for Kindle from Amazon and shared via Twitter.
 
-User can [signup](http://french-connection.apphb.com/#/account/signup) if all his data are valid. 
+In the [Category](http://french-connection.apphb.com/#/categories) page, all existing categories are listed.
+The [Search](http://french-connection.apphb.com/#/library/search) is using Underscore.js and jQuery for filtering the books by title, auther, category, description.
 
-Contact 
-
-
-
-
-
-
-
-
-
-
-searchBook via category, title and author.
-
-
-addBook
-removeBook
-editBook
-
-
-
+Users can [signup](http://french-connection.apphb.com/#/account/signup) and [login](http://french-connection.apphb.com/#/account/login) if all their data is valid. 
 
 ## Used Libreries
 [SystemJS](https://github.com/systemjs/systemjs)
@@ -62,11 +40,6 @@ editBook
 [Sammy] (http://sammyjs.org/) as route loader 
 [Undescore](http://underscorejs.org/)
 [Babel](https://babeljs.io/)
-
-##Backend
-Parse
-
-## [Git URL](https://github.com/TelerikFrenchConnection/JS-Applications-Teamwork)
 
 -------------------------------------------------------------------------------------
 
