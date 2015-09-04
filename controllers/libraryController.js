@@ -131,11 +131,7 @@ class libraryController {
                 var searchFilter = sammy.params['prop'];
                 var searchTerm = sammy.params['search'];
 
-                console.log(searchFilter);
-                console.log(searchTerm);
-
                 allBooks = handleSearchParameters(allBooks, searchFilter, searchTerm);
-
                 $('#search-form button').on('click', changeFormActionAttribute);
 
                 return displaySearchResults(allBooks, searchFilter, searchTerm);

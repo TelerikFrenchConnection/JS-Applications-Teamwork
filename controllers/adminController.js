@@ -5,13 +5,30 @@ import templatesHelper from '../views/helpers/templatesHelper.js';
 import pagesHelper from '../views/helpers/pagesHelper.js';
 
 import bookModel from '../models/bookModel.js';
+import contactModel from '../models/contactModel.js';
 
 
 class adminController {
     load(sammy) {
         if(isUserAuthorized(sammy)){
             pagesHelper.append('admin');
-            // show all contact form entires
+
+            contactModel.getContacts()
+                .descending("createdAt")
+                .find()
+                .then(function(messages) {
+                    _.each(messages, function(message){
+                        let $tableRow = $('<tr/>');
+
+                        console.log(message);
+                        $tableRow.append($('<td/>').html(message.attributes.name));
+                        $tableRow.append($('<td/>').html(message.attributes.email));
+                        $tableRow.append($('<td/>').html(message.attributes.title));
+                        $tableRow.append($('<td/>').html(message.attributes.text));
+
+                        $('tbody').append($tableRow);
+                    })
+                })
         }
     }
 

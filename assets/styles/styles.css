@@ -416,3 +416,13 @@ html, body {
     -moz-border-radius: 0 7px 7px 0;
     border-radius: 0 7px 7px 0;
 }
+
+.admin-contacts-table {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.admin-contacts-table h4{
+    text-align: center;
+    margin: 15px;
+}

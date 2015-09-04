@@ -23,7 +23,7 @@ class contactModel {
     }
 
     getContacts() {
-        return db.get('Contact');
+        return db.get('Contacts');
     }
 }
 
