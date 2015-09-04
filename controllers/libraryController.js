@@ -36,7 +36,7 @@ class libraryController {
                     var optionSelected = $(this).find(':selected');
                     var category = optionSelected.attr('value');
 
-                    sammy.redirect('#/library/categories/' + category + '/');
+                    sammy.redirect('#/library/categories/' + category);
                 });
             })
             .then(function() {
