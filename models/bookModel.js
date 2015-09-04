@@ -39,10 +39,10 @@ class bookModel {
         });
     }
 
-    getBookBy(prop) {
+    getBookById(id) {
         var that = this;
         return new Promise(function(resolve, reject) {
-            that.getBooks().get(prop, {
+            that.getBooks().get(id, {
                 success: function(book) {
                     resolve(book);
                 },
@@ -50,6 +50,22 @@ class bookModel {
                     reject(error);
                 }
             });
+        });
+    }
+
+    getBookBy(prop, value) {
+        var that = this;
+        return new Promise(function(resolve, reject) {
+            var bookQuery = that.getBooks();
+                bookQuery.equalTo(prop, value);
+                bookQuery.find({
+                    success: function(book) {
+                        resolve(book);
+                    },
+                    error: function(book, error) {
+                        reject(error);
+                    }
+                });
         });
     }
 
