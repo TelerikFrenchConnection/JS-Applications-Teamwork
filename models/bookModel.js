@@ -53,17 +53,20 @@ class bookModel {
         });
     }
 
-    getBookBy(prop, value) {
+    getBooksBy(prop, value) {
         var that = this;
         return new Promise(function(resolve, reject) {
-            var bookQuery = that.getBooks();
-                bookQuery.equalTo(prop, value);
-                bookQuery.find({
-                    success: function(book) {
-                        resolve(book);
-                    },
-                    error: function(book, error) {
-                        reject(error);
+            that.getBooks()
+                .equalTo(prop, value)
+                .find({
+                    success: function(books) {
+                        if (books.length < 1) {
+                            reject({
+                                message: 'Could not retrieve any books from "' + prop + '" with "' + value + '"'
+                            });
+                        }
+
+                        resolve(books);
                     }
                 });
         });
