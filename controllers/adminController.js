@@ -65,14 +65,29 @@ class adminController {
         if(isUserAuthorized(sammy)){
             if (sammy.params['id']) {
                 var idParam = sammy.params['id'];
-                bookModel.removeBookById(idParam);  
+                bookModel.removeBookById(idParam)
+                    .then(function() {
+                        sammy.redirect('#/admin');
+                    }, function() {
+                        appendRemoveError('ID');
+                    });
             } else if (sammy.params['title']) {
                 var titleParam = sammy.params['title'];
-                bookModel.removeBookByTitle(titleParam);  
+                bookModel.removeBookByTitle(titleParam)
+                    .then(function() {
+                        sammy.redirect('#/admin');
+                    }, function() {
+                        appendRemoveError('title');
+                    });
             } else if (sammy.params['isbn']) {
                 var isbnParam = sammy.params['isbn'];
-                bookModel.removeBookByISBN(isbnParam);  
-            }         
+                bookModel.removeBookByISBN(isbnParam)
+                    .then(function() {
+                        sammy.redirect('#/admin');
+                    }, function() {
+                        appendRemoveError('ISBN');
+                    });
+            }
         }
         
     }
@@ -141,6 +156,11 @@ function isUserAuthorized(sammy) {
     } else {
         return true;
     }
+}
+
+function appendRemoveError(name) {
+    var errorObject = {name, message: "does not point to any existing book"};
+    templatesHelper.setSingle('warning', errorObject, '.warning');
 }
 
 export default new adminController;

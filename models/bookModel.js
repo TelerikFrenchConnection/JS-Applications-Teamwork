@@ -40,7 +40,7 @@ class bookModel {
     }
 
     removeBookById(id) {
-        this.getBooks().get(id, {
+        return this.getBooks().get(id, {
             success: function(receivedBook) {
                 receivedBook.destroy({
                   success: function(myObject) {
@@ -53,16 +53,12 @@ class bookModel {
                     // error is a Parse.Error with an error code and message.
                   }
                 });
-            },
-            error: function(object, error) {
-                console.log('Cannot access the given book' + object);
-                console.log(error);
             }
         }); 
     }
 
     removeBookByTitle(title) {
-        this.getBooks().get(title, {
+        return this.getBooks().get(title, {
             success: function(receivedBook) {
                 receivedBook.destroy({
                   success: function(myObject) {
@@ -75,16 +71,12 @@ class bookModel {
                     // error is a Parse.Error with an error code and message.
                   }
                 });
-            },
-            error: function(object, error) {
-                console.log('Cannot access the given book' + object);
-                console.log(error);
             }
         }); 
     }
 
     removeBookByISBN(isbn) {
-        this.getBooks().get(isbn, {
+        return this.getBooks().get(isbn, {
             success: function(receivedBook) {
                 receivedBook.destroy({
                   success: function(myObject) {
@@ -97,10 +89,6 @@ class bookModel {
                     // error is a Parse.Error with an error code and message.
                   }
                 });
-            },
-            error: function(object, error) {
-                console.log('Cannot access the given book' + object);
-                console.log(error);
             }
         }); 
     }

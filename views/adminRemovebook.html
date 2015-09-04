@@ -3,12 +3,22 @@
 	<div class="row">
 	    <div class="center-block">
 	        <div class="login-form">
+                <div class="warning"></div>
 				<h5 class="remove-book-heading">Remove book by ID number</h5><br/>  
 				<form action="/#/admin/removebook" method="POST" id="remove-book-form">
-		              <div class="form-group">
-		                  <input type="text" class="form-control" name="id" placeholder="Enter ID to remove">
-		              </div>
-		              <button type="submit" id='submit-new-book-button' class="btn btn-primary btn-lg btn-bloc">Remove Book</button>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="id" placeholder="Enter ID to remove">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="title" placeholder="Enter title to remove">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="isbn" placeholder="Enter ISBN to remove">
+                    </div>
+
+                    <button type="submit" id='submit-new-book-button' class="btn btn-primary btn-lg btn-bloc">Remove Book</button>
 		         </form>
 			</div>
 	    </div>
