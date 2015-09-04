@@ -41,7 +41,7 @@ class bookModel {
 
     getBookBy(prop) {
         var that = this;
-        return new Promise(function(resolve) {
+        return new Promise(function(resolve, reject) {
             that.getBooks().get(prop, {
                 success: function(book) {
                     resolve(book);
