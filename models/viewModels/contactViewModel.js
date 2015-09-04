@@ -21,7 +21,7 @@ class Contact {
         return this.name
     }
 
-    set nameProperty(newName) {   //name to be only
+    set nameProperty(newName) {
         validate.name(newName, 'Name');
         this.name = newName;
     }
