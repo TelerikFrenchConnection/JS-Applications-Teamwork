@@ -36,7 +36,7 @@ class libraryController {
                     var optionSelected = $(this).find(':selected');
                     var category = optionSelected.attr('value');
 
-                    sammy.redirect('#/library/categories/' + category);
+                    sammy.redirect('#/library/categories/' + category + '/');
                 });
             })
             .then(function() {
@@ -56,13 +56,13 @@ class libraryController {
         }
 
         allBooks.find().then(function(books) {
-            setPagesNav(books, sammy, category);
+            setPagesNav(books, booksOnPage, '#/library/categories/' + category);
         });
 
         allBooks
             .descending("createdAt")
             .skip((sammy.params['page'] - 1) * booksOnPage)
-            .limit(3)
+            .limit(booksOnPage)
             .find()
             .then(function(books) {
                 templatesHelper.set('libraryBook', books, '.books-list');
@@ -150,19 +150,17 @@ class libraryController {
     }
 
     top(sammy) {
+        var booksOnPage = 3;
         pagesHelper.append('libraryTop');
 
-        bookModel.getBooks().find()
-            .then(function(allBooks) {
-                var sortedBooks = _.chain(allBooks)
-                    .sortBy(function(book) {
-                        return book.attributes.views;
-                    })
-                    .reverse()
-                    .value();
-
-                return templatesHelper.append('libraryBook', sortedBooks, '#library-content');
-
+        bookModel.getBooks()
+            .descending("views")
+            .skip((sammy.params['page'] - 1) * booksOnPage)
+            .limit(booksOnPage)
+            .find()
+            .then(function(books) {
+                console.log(books);
+                templatesHelper.append('libraryBook', books, '#library-content');
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
@@ -171,6 +169,10 @@ class libraryController {
                     sammy.redirect('#/library/detailed/' + id);
                 });
             });
+
+        bookModel.getBooks().find().then(function(books) {
+            setPagesNav(books, booksOnPage, '#/library/top/');
+        });
     }
 }
 
@@ -208,10 +210,10 @@ function displaySearchResults(booksCollection, searchFilter, searchTerm) {
     }
 }
 
-function setPagesNav(books, sammy, category) {
-    var pagesCount = Math.ceil(books.length / 3);
+function setPagesNav(books, booksOnPage,  url) {
+    var pagesCount = Math.ceil(books.length / booksOnPage);
     for (let index = 0; index < pagesCount; index += 1) {
-        let pageNavLink = $('<a/>').attr('href', '#/library/categories/' + category + '/' + (index + 1)).html(index + 1);
+        let pageNavLink = $('<a/>').attr('href', url + (index + 1)).html(index + 1);
         let pageNavItem = $('<li/>').append(pageNavLink);
 
         $('.pagination ul').append(pageNavItem);

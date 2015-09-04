@@ -390,3 +390,29 @@ html, body {
     border-color: #ddd;
 }
 
+.pagination {
+    display: block;
+    text-align: center;
+}
+
+.pagination ul{
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.pagination ul li {
+    color: white;
+    background-color: #374e64;
+}
+
+.pagination ul li:first-of-type {
+    -webkit-border-radius: 7px 0 0 7px;
+    -moz-border-radius: 7px 0 0 7px;
+    border-radius: 7px 0 0 7px;
+}
+
+.pagination ul li:last-of-type {
+    -webkit-border-radius: 0 7px 7px 0;
+    -moz-border-radius: 0 7px 7px 0;
+    border-radius: 0 7px 7px 0;
+}

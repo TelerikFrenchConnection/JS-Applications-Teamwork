@@ -33,6 +33,7 @@ export function init(element) {
         this.get('#/library/search', libraryController.search);
         this.get('#/library/search/:prop/:search', libraryController.search);
         this.get('#/library/top', libraryController.top);
+        this.get('#/library/top/:page', libraryController.top);
 
         this.get('#/categories', libraryController.loadCategories);
 
