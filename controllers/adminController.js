@@ -83,6 +83,52 @@ class adminController {
         }
     }
 
+    getBookPost(sammy) {
+        if(isUserAuthorized(sammy)){
+            var id = sammy.params['id'];
+
+            $('.edit-book-hidden').attr('value', id);
+
+            bookModel.getBooks()
+                .equalTo('objectId', id)
+                .first().then(function(book) {
+                    let bookAttrs = book.attributes;
+
+                    $('input[name=title]').val(bookAttrs.title);
+                    $('input[name=author]').val(bookAttrs.author);
+                    $('input[name=category]').val(bookAttrs.category);
+                    $('input[name=isbn]').val(bookAttrs.isbn);
+                    $('input[name=price]').val(bookAttrs.price);
+                    $('input[name=pictureURL]').val(bookAttrs.pictureURL);
+                    $('input[name=bookURL]').val(bookAttrs.kindleURL);
+                    $('input[name=description]').val(bookAttrs.description);
+                });
+        }
+    }
+
+    editBookPost(sammy) {
+        var id = sammy.params['id'];
+
+        bookModel.getBooks()
+            .equalTo('objectId', id)
+            .first().then(function(book) {
+                book.set('title', sammy.params['title']);
+                book.set('author', sammy.params['author']);
+                book.set('category', sammy.params['category']);
+                book.set('isbn', sammy.params['isbn']);
+                book.set('price', +sammy.params['price']);
+                book.set('pictureURL', sammy.params['pictureURL']);
+                book.set('kindleURL', sammy.params['bookURL']);
+                book.set('description', sammy.params['description']);
+
+                console.log(book);
+                book.save().then(function(){
+                    sammy.redirect('#/admin');
+                }, function(error){
+                    console.log(error);
+                });
+            });
+    }
 }
 
 function isUserAuthorized(sammy) {

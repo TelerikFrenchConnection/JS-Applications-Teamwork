@@ -87,7 +87,7 @@ html, body {
 
 .login-form {
     max-width: 90%;
-    width: 500px;
+    width: 700px;
     margin: 20px auto;
 }
 
@@ -425,4 +425,11 @@ html, body {
 .admin-contacts-table h4{
     text-align: center;
     margin: 15px;
+}
+
+.edit-book-submit {
+    border: none;
+    margin-top: 9px;
+    margin-left: 10px;
+
 }
