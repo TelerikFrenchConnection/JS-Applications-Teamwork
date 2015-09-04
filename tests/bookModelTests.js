@@ -11,7 +11,7 @@ var longName = 'Qwertyuiopasdfghjklzxcvbnmkjhgfds';
 describe('Book tests', function () {
     describe('Valid tests', function () {
         sessionStorage.clear();
-        it('expect addBook to exist when valid data with ISBN 10 symbols long , and session storage length to be 0', function () {
+        it('expect session storage length to be 0 when valid data with ISBN is 10 symbols long ', function () {
             var validBook10 = new Book('It', 'Stephan King', 'Horror', '1234567890', '12', 'pictureURL', 'Nice book');
 
             var expected = 0;
@@ -21,7 +21,7 @@ describe('Book tests', function () {
 
         });
 
-        it('expect getBook to exist when valid data with ISBN 13 symbols long, and session storage length to be 0', function () {
+        it('expect session storage length to be 0 when valid data with ISBN is 13 symbols long', function () {
             var validBook13 = new Book('It', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
             var expected = 0;
             var actual = sessionStorage.length;
@@ -128,7 +128,7 @@ describe('Book tests', function () {
         });
 
         it('expect session storage length to be 1, when title is not valid', function () {
-            var invalidBookTitle = new Book('<post', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
+            var invalidBookDescription = new Book('<post', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', '#Nice book');
             var expected = 1;
             var actual = sessionStorage.length;
             expect(actual).to.equal.(expected);
@@ -136,7 +136,7 @@ describe('Book tests', function () {
         });
 
         it('expect session storage length to be 1, when title is empty', function () {
-            var invalidBookTitleEmptyString = new Book('', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', 'Nice book');
+            var invalidBookDescriptionEmptyString = new Book('', 'Stephan King', 'Horror', '1234567890123', '12', 'pictureURL', '');
             var expected = 1;
             var actual = sessionStorage.length;
             expect(actual).to.equal.(expected);
