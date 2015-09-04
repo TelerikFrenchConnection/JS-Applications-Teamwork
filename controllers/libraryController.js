@@ -14,7 +14,11 @@ class libraryController {
 
     category(sammy) {
         var allBooks = bookModel.getBooks();
+<<<<<<< HEAD
         var booksOnPage = 6;
+=======
+        var booksOnPage = 9;
+>>>>>>> 6baf0febe6120fc3ec8cc07e4bf16d2f343ff0df
         var category = sammy.params['category'];
         var categories = [];
 
@@ -148,7 +152,7 @@ class libraryController {
     }
 
     top(sammy) {
-        var booksOnPage = 3;
+        var booksOnPage = 9;
         pagesHelper.append('libraryTop');
 
         bookModel.getBooks()
