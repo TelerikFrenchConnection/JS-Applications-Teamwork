@@ -1,5 +1,7 @@
-#Application e-Library - Team "French Connection"
+ Team "French Connection"
 *************************************************
+E-Library Catalog is a Single-Page Application developed by Team "French Conection" as part of the JavaScript Applications course at Telerik Academy 2015/16.
+
 ##Team
 | Nickname  | Name |
 | ------------- | ------------- |
@@ -9,11 +11,46 @@
 | divided.zero  | Николай Илиев  |
 | dushka.dragoeva  | Душка Драгоева  |
 
-##Application Desription
+##Application Desription 
+
+The main purpuse of the application is to help the user easy to find  books.Paging and searching functionality  
+allow user easy to navigate around the aplication. 
+He can easy dowload book for Kindle from Amazon and share this with friends via tweeter.
+
+## Aplication Logic
+
+For the responsive design  is used Twitter Bootstrap.
+e-Libray have 2 type of users - administrator and users.
+[Administrator](http://french-connection.apphb.com/#/admin) recive latest messages from contacts form. 
+
+He can [add](http://french-connection.apphb.com/#/admin/addbook),[edit](http://french-connection.apphb.com/#/admin/editbook)  and [remove](http://french-connection.apphb.com/#/admin/removebook) books by ID, title or ISBN.
+
+From [Home page](http://french-connection.apphb.com/#/home) can explore library or top books - Most viewed books from application. 
+One click on  the [book](http://french-connection.apphb.com/#/library/detailed/G0MMeBZtxI), can be viewed all book details from Parse Backend Services, to be dowload for Kindle from Amazon and shared via tweeter.
+From [Category](http://french-connection.apphb.com/#/categories) are listed all existinf categories
+[Search](http://french-connection.apphb.com/#/library/search) , using underscore and jQuery, filter books acoording title, auther, category, description
+
+
+User can [signup](http://french-connection.apphb.com/#/account/signup) if all his data are valid. 
+
+Contact 
 
 
 
-## code Logic
+
+
+
+
+
+
+
+searchBook via category, title and author.
+
+
+addBook
+removeBook
+editBook
+
 
 
 
@@ -28,12 +65,6 @@
 
 ##Backend
 Parse
-
-## Unit tests
-[Mocha](http://mochajs.org/), 
-[Chai](http://chaijs.com/)
-[SinonJS](http://sinonjs.org/)
-
 
 ## [Git URL](https://github.com/TelerikFrenchConnection/JS-Applications-Teamwork)
 
