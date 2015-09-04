@@ -28,11 +28,12 @@ class adminController {
         var isbn = sammy.params['isbn'];
         var price = sammy.params['price'];
         var pictureURL = sammy.params['pictureURL'];
+        var kindleURL = sammy.params['bookURL'];
         var description = sammy.params['description'];
 
-        bookModel.addBook(title, author, category, isbn, price, pictureURL, description)
+        bookModel.addBook(title, author, category, isbn, price, pictureURL, kindleURL, description)
             .then(function(){
-                //sammy.redirect('#/admin');
+                sammy.redirect('#/admin');
             }, function(errors) {
                 templatesHelper.set('warning', errors, '.warning');
             });

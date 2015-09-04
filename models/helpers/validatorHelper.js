@@ -37,14 +37,7 @@ var validate = {
     price: function (value, name) {
         name = name || CONSTANTS.DEFAULT;
 
-        var isInRange = false;
-
-        if (!this.isUndefined(value) && !isNaN(+value)) {
-            isInRange = (0 >= value && value <= CONSTANTS.MAX_NUMBER)
-        }
-
-        if (!isInRange) {
-       
+        if (isNaN(value)) {
             sessionStorage.setObject(name, {
                 name: name,
                 message: CONSTANTS.INVALID_VALUE_MESSAGE

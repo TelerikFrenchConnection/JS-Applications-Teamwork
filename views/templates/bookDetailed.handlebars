@@ -1,21 +1,21 @@
 <div class="container detail-wrapper">
     <div class="col-md-4">
         <img class="img-responsive" alt="book cover" id="book-cover" src="{{this.attributes.pictureURL}}"
-             width="200" height="300">
+             width="250" height="400">
     </div>
 
-    <div class="col-md-6">
-        <div class="row">
+    <div class="col-md-7">
+        <div class="row book-details-entry">
             <div class="">
-                <h4 class="book-details-title pull left">{{this.attributes.title}}</h4>
-                <span class="pull right">
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
-                    <script>
-                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-                    </script>
-                </span>
+                <h4 class="book-details-title pull-left">{{this.attributes.title}}</h4>
+                <span class="book-details-views pull-right">[{{this.attributes.price}} Euro]</span>
             </div>
-            <hr class="book-details-hr"/>
+        </div>
+
+        <hr class="book-details-hr"/>
+
+        <div class="row book-details-entry book-description">
+            <span class="pull-left">{{this.attributes.description}} </span>
         </div>
 
         <div class="row book-details-entry">
@@ -29,24 +29,29 @@
         </div>
 
         <div class="row book-details-entry">
-            <span class="pull-left"><strong>Price:</strong> </span>
-            <span class="pull-right">{{this.attributes.price}} Euro </span>
-        </div>
-
-        <div class="row book-details-entry">
             <span class="pull-left"><strong>ISBN:</strong> </span>
             <span class="pull-right">{{this.attributes.isbn}} </span>
         </div>
 
         <div class="row book-details-entry">
-            <span class="pull-left"><strong>Description:</strong> </span>
-            <span class="pull-right">{{this.attributes.description}} </span>
+            <span class="pull-left"><strong>Page views:</strong> </span>
+            <span class="pull-right">{{this.attributes.views}}</span>
         </div>
 
+        <hr class="book-details-hr"/>
+
         <div class="row book-details-entry">
-            <span class="pull-left"><strong>View:</strong> </span>
-            <span class="pull-right">{{this.attributes.views}} </span>
+            <div class="">
+                <a href="{{this.attributes.kindleURL}}"><img class="book-details-title pull-left" src="http://lancehaynes.com/images/kindle_button.png" alt="Buy on kindle"/></a>
+                <span class="pull-right">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
+                    <script>
+                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+                    </script>
+                </span>
+            </div>
         </div>
+
     </div>
     <div class="col-md-2"></div>
 </div>

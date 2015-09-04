@@ -1,13 +1,14 @@
 import '../helpers/validatorHelper.js';
 
 class Book {
-    constructor(title, author, category, isbn, price, pictureURL, description) {
+    constructor(title, author, category, isbn, price, pictureURL, kindleURL, description) {
         this.titleProperty = title;
         this.authorProperty = author;
         this.categoryProperty = category;
         this.isbnProperty = isbn;
         this.priceProperty = price;
         this.pictureURLProperty = pictureURL;
+        this.kindleURLProperty = kindleURL;
         this.descriptionProperty = description;
         this.viewsProperty = 0;
         return this;
@@ -36,7 +37,7 @@ class Book {
     }
     set categoryProperty(newCategory) {
         validate.safeText(newCategory, 'category');
-        this.description = newCategory;
+        this.category = newCategory;
     }
 
     get isbnProperty() {
@@ -62,8 +63,17 @@ class Book {
     }
 
     set pictureURLProperty(newPictureUrl) {
-        validate.isEmpty(newPictureUrl, 'picture URL')
-        this.pictureUrl = newPictureUrl;
+        validate.isEmpty(newPictureUrl, 'picture URL');
+        this.pictureURL = newPictureUrl;
+    }
+
+    get kindleURLProperty() {
+        return this.kindleURL;
+    }
+
+    set kindleURLProperty(newKindleUrl) {
+        validate.isEmpty(newKindleUrl, 'Kindle URL');
+        this.kindleURL = newKindleUrl;
     }
 
     get descriptionProperty() {
