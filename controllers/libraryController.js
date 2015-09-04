@@ -148,7 +148,7 @@ class libraryController {
     }
 
     top(sammy) {
-        var booksOnPage = 3;
+        var booksOnPage = 9;
         pagesHelper.append('libraryTop');
 
         bookModel.getBooks()
