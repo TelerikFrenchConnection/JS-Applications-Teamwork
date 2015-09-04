@@ -113,6 +113,8 @@ class libraryController {
                 result.set('views', ++bookViews);
                 bookModel.updateBook(result);
 
+                document.title = 'E-Library French Connection - "' + result.attributes.title + '"';
+
                 templatesHelper.appendSingle('bookDetailed', result, '#library-content');
 
             },
