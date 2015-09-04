@@ -127,12 +127,21 @@ class libraryController {
 
     search(sammy) {
         pagesHelper.append('librarySearch');
+        var booksOnPage = 9;
 
-        bookModel.getBooks().find()
+        var searchFilter = sammy.params['prop'];
+        var searchTerm = sammy.params['search'];
+        var booksQueryResult;
+
+        if (searchFilter && searchTerm) {
+            booksQueryResult = bookModel.getBooks().find();
+        }
+        else {
+            booksQueryResult = bookModel.getBooks().limit(booksOnPage).find();
+        }
+
+        booksQueryResult
             .then(function(allBooks) {
-                var searchFilter = sammy.params['prop'];
-                var searchTerm = sammy.params['search'];
-
                 allBooks = handleSearchParameters(allBooks, searchFilter, searchTerm);
                 $('#search-form button').on('click', changeFormActionAttribute);
 
