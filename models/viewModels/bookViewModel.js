@@ -2,14 +2,14 @@ import '../helpers/validatorHelper.js';
 
 class Book {
     constructor(title, author, category, isbn, price, pictureURL, description) {
-        this.title = title;
-        this.author = author;
-        this.category = category;
-        this.isbn = isbn;
-        this.price = price;
-        this.pictureURL = pictureURL;
-        this.description = description;
-        this.views = 0;
+        this.titleProperty = title;
+        this.authorProperty = author;
+        this.categoryProperty = category;
+        this.isbnProperty = isbn;
+        this.priceProperty = price;
+        this.pictureURLProperty = pictureURL;
+        this.descriptionProperty = description;
+        this.viewsProperty = 0;
         return this;
     }
 
@@ -18,7 +18,7 @@ class Book {
     }
 
     set titleProperty(newTitle) {
-        validate.safeText(newTitle, 'Title');
+        validate.safeText(newTitle, 'title');
         this.title = newTitle;
     }
 
@@ -27,7 +27,7 @@ class Book {
     }
 
     set authorProperty(newAuthor) {
-        validate.safeText(newAuthor, 'Author');
+        validate.safeText(newAuthor, 'author');
         this.author = newAuthor;
     }
 
@@ -35,7 +35,7 @@ class Book {
         return this.category;
     }
     set categoryProperty(newCategory) {
-        validate.safeText(newCategory, 'Description');
+        validate.safeText(newCategory, 'category');
         this.description = newCategory;
     }
 
@@ -44,7 +44,7 @@ class Book {
     }
 
     set isbnProperty(newIsbn) {
-        validate.ISBN(newIsbn, 'Isbn');
+        validate.ISBN(newIsbn, 'ISBN');
         this.isbn = newIsbn;
     }
 
@@ -53,7 +53,7 @@ class Book {
     }
 
     set priceProperty(newPrice) {
-        validate.price(newPrice, 'Price');
+        validate.price(newPrice, 'price');
         this.price = newPrice;
     }
 
@@ -62,6 +62,7 @@ class Book {
     }
 
     set pictureURLProperty(newPictureUrl) {
+        validate.isEmpty(newPictureUrl, 'picture URL')
         this.pictureUrl = newPictureUrl;
     }
 
@@ -70,7 +71,7 @@ class Book {
     }
 
     set descriptionProperty(newDescription) {
-        validate.safeText(newDescription, 'Description');
+        validate.safeText(newDescription, 'description');
         this.description = newDescription;
     }
 

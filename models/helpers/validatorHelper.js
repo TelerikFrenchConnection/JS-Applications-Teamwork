@@ -8,9 +8,10 @@
     EMAIL_PATTERN: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
     RESTRICTED_SYMBOLS_PATTERN: /[<>$@#&]/gm,
     DEFAULT: 'Value',
+    INVALID_EMPTY_MESSAGE: 'must not be empty',
     INVALID_VALUE_MESSAGE: 'must be filled and in valid format',
     INVALID_ISBN_MESSAGE: 'must contain exactly 10 or 13 digits',
-    INVALID_SYMBOLS_MESSAGE: 'must not contain special characters as <, > and $',
+    INVALID_SYMBOLS_MESSAGE: 'must not contain special characters as <, > and $ or be empty',
     INVALID_PASSWORD_MESSAGE: 'must contain at last one uppercase, lowcase or number and be 8-20 symbols long',
     INVALID_USERNAME_MESSAGE: 'must contain only letters, numbers or underscore and be 6-15 symbols'
 };
@@ -22,6 +23,15 @@ var validate = {
 
     isUndefined: function (value) {
         return (value === undefined)
+    },
+
+    isEmpty: function(value, name) {
+        if (!value || value.length === 0) {
+            sessionStorage.setObject(name, {
+                name: name,
+                message: CONSTANTS.INVALID_VALUE_MESSAGE
+            });
+        }
     },
 
     price: function (value, name) {

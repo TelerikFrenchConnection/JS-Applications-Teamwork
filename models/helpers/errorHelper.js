@@ -10,7 +10,6 @@ var errorHelper = (function() {
         }
 
         sessionStorage.clear();
-        console.log(errors);
         return errors;
     }
 

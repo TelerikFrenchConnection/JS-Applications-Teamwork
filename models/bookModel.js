@@ -1,15 +1,17 @@
 import db from './database/dbContext.js';
 import Book from './viewModels/bookViewModel.js';
 
+import errorHelper from './helpers/errorHelper.js';
+
 class bookModel {
     addBook(title, author, category, isbn, price, pictureURL, description) {
-
         var book = new Book(title, author, category, isbn, +price, pictureURL, description);
 
         var promise = new Promise(function (resolve, reject) {
             var errors = errorHelper.getErrors();
+
             if (errors.length === 0) {
-                db.add('Book', book);
+                //db.add('Book', book);
                 resolve()
             } else {
                 reject(errors);

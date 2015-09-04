@@ -32,7 +32,7 @@ class adminController {
 
         bookModel.addBook(title, author, category, isbn, price, pictureURL, description)
             .then(function(){
-                sammy.redirect('#/admin');
+                //sammy.redirect('#/admin');
             }, function(errors) {
                 templatesHelper.set('warning', errors, '.warning');
             });
