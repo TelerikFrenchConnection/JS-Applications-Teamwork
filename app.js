@@ -28,6 +28,7 @@ export function init(element) {
 
         this.get('#/library', libraryController.load);
         this.get('#/library/categories/:category', libraryController.category);
+        this.get('#/library/categories/:category/:page', libraryController.category);
         this.get('#/library/detailed/:bookId', libraryController.detailed);
         this.get('#/library/search', libraryController.search);
         this.get('#/library/search/:prop/:search', libraryController.search);

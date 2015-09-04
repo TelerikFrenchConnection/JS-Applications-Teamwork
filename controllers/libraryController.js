@@ -14,6 +14,7 @@ class libraryController {
 
     category(sammy) {
         var allBooks = bookModel.getBooks();
+        var booksOnPage = 3;
         var category = sammy.params['category'];
         var categories = [];
 
@@ -28,7 +29,6 @@ class libraryController {
                         categories.push(category);
                     }
                 });
-
                 return templatesHelper.append('optionCategory', categories, '#book-category');
             })
             .then(function() {
@@ -50,13 +50,22 @@ class libraryController {
             });
 
         if (category === 'All') {
-            allBooks = allBooks.find();
+            allBooks = allBooks;
         } else {
-            allBooks = allBooks.equalTo('category', category).find();
+            allBooks = allBooks.equalTo('category', category);
         }
 
-        allBooks.then(function(books) {
-            templatesHelper.set('libraryBook', books, '.books-list');
+        allBooks.find().then(function(books) {
+            setPagesNav(books, sammy, category);
+        });
+
+        allBooks
+            .descending("createdAt")
+            .skip((sammy.params['page'] - 1) * booksOnPage)
+            .limit(3)
+            .find()
+            .then(function(books) {
+                templatesHelper.set('libraryBook', books, '.books-list');
         })
     }
 
@@ -196,6 +205,16 @@ function displaySearchResults(booksCollection, searchFilter, searchTerm) {
         };
 
         return templatesHelper.appendSingle('libraryEmptySearch', emptySearch, '#library-content');
+    }
+}
+
+function setPagesNav(books, sammy, category) {
+    var pagesCount = Math.ceil(books.length / 3);
+    for (let index = 0; index < pagesCount; index += 1) {
+        let pageNavLink = $('<a/>').attr('href', '#/library/categories/' + category + '/' + (index + 1)).html(index + 1);
+        let pageNavItem = $('<li/>').append(pageNavLink);
+
+        $('.pagination ul').append(pageNavItem);
     }
 }
 
