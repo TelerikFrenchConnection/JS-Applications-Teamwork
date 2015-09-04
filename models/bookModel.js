@@ -53,6 +53,23 @@ class bookModel {
         });
     }
 
+    removeBookBy(prop) {
+    	return this.getBookBy(prop)
+            .then(function(bookToRemove) {
+                bookToRemove.destroy({
+                  success: function(myObject) {
+                    console.log('Book deleted successfully!');
+                    // The object was deleted from the Parse Cloud.
+                  },
+                  error: function(myObject, error) {
+                    console.log('Error at book destroying!');
+                    // The delete failed.
+                    // error is a Parse.Error with an error code and message.
+                  }
+                });
+            });
+    }
+
     removeBookById(id) {
         return this.getBooks().get(id, {
             success: function(receivedBook) {
