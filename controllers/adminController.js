@@ -73,7 +73,7 @@ class adminController {
                     });
             } else if (sammy.params['title']) {
                 var titleParam = sammy.params['title'];
-                bookModel.removeBookByTitle(titleParam)
+                bookModel.removeBooksBy('title', titleParam)
                     .then(function() {
                         sammy.redirect('#/admin');
                     }, function() {
@@ -81,7 +81,7 @@ class adminController {
                     });
             } else if (sammy.params['isbn']) {
                 var isbnParam = sammy.params['isbn'];
-                bookModel.removeBookByISBN(isbnParam)
+                bookModel.removeBooksBy('isbn', isbnParam)
                     .then(function() {
                         sammy.redirect('#/admin');
                     }, function() {
