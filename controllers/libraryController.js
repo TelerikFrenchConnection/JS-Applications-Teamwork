@@ -143,9 +143,15 @@ class libraryController {
         booksQueryResult
             .then(function(allBooks) {
                 allBooks = handleSearchParameters(allBooks, searchFilter, searchTerm);
+                return displaySearchResults(allBooks, searchFilter, searchTerm);
+            })
+            .then(function() {
                 $('#search-form button').on('click', changeFormActionAttribute);
 
-                return displaySearchResults(allBooks, searchFilter, searchTerm);
+                if (searchFilter) {
+                    var $selectElement = $('select');
+                    $selectElement.val(searchFilter);
+                }
             })
             .then(function() {
                 var libraryBookContent = $('#library-content');
