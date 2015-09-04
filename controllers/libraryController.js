@@ -56,7 +56,7 @@ class libraryController {
         }
 
         allBooks.find().then(function(books) {
-            setPagesNav(books, booksOnPage, '#/library/categories/' + category);
+            setPagesNav(books, booksOnPage, '#/library/categories/' + category + '/');
         });
 
         allBooks
@@ -159,7 +159,6 @@ class libraryController {
             .limit(booksOnPage)
             .find()
             .then(function(books) {
-                console.log(books);
                 templatesHelper.append('libraryBook', books, '#library-content');
             })
             .then(function() {
