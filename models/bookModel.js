@@ -39,6 +39,20 @@ class bookModel {
         });
     }
 
+    getBookBy(prop) {
+        var that = this;
+        return new Promise(function(resolve) {
+            that.getBooks().get(prop, {
+                success: function(book) {
+                    resolve(book);
+                },
+                error: function(book, error) {
+                    reject(error);
+                }
+            });
+        });
+    }
+
     removeBookById(id) {
         return this.getBooks().get(id, {
             success: function(receivedBook) {
