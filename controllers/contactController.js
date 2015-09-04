@@ -8,7 +8,18 @@ import contactModel from '../models/contactModel.js';
 
 class contactsController {
     load() {
-        pagesHelper.append('contact');
+        pagesHelper.append('contact').then(function() {
+            (function initialize() {
+                var mapCanvas = document.getElementById('map');
+                var mapOptions = {
+                    center: new google.maps.LatLng(40.7403522, -73.825769),
+                    zoom: 8,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(mapCanvas, mapOptions);
+                map.setZoom(12);
+            })();
+        });
     }
 
     contactPost(sammy){
