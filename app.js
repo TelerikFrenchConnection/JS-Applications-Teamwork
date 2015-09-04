@@ -57,14 +57,10 @@ export function init(element) {
 
         this.post('#/contact', contactController.contactPost);
 
-        this.post("#/admin/addbook")
-
-        this.get('#/404', function () {
-            pagesHelper.append('404');
-        });
+        this.post("#/admin/addbook");
 
         this.get(/.*/, function () {
-            this.redirect('#/404');
+            pagesHelper.append('404');
         });
     });
 
