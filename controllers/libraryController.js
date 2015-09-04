@@ -36,7 +36,7 @@ class libraryController {
                     var optionSelected = $(this).find(':selected');
                     var category = optionSelected.attr('value');
 
-                    sammy.redirect('#/library/categories/' + category + '/');
+                    sammy.redirect('#/library/categories/' + category);
                 });
             })
             .then(function() {
@@ -113,6 +113,8 @@ class libraryController {
                 result.set('views', ++bookViews);
                 bookModel.updateBook(result);
 
+                document.title = 'E-Library French Connection - "' + result.attributes.title + '"';
+
                 templatesHelper.appendSingle('bookDetailed', result, '#library-content');
 
             },
@@ -131,11 +133,7 @@ class libraryController {
                 var searchFilter = sammy.params['prop'];
                 var searchTerm = sammy.params['search'];
 
-                console.log(searchFilter);
-                console.log(searchTerm);
-
                 allBooks = handleSearchParameters(allBooks, searchFilter, searchTerm);
-
                 $('#search-form button').on('click', changeFormActionAttribute);
 
                 return displaySearchResults(allBooks, searchFilter, searchTerm);
