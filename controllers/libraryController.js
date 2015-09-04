@@ -14,7 +14,7 @@ class libraryController {
 
     category(sammy) {
         var allBooks = bookModel.getBooks();
-        var booksOnPage = 3;
+        var booksOnPage = 9;
         var category = sammy.params['category'];
         var categories = [];
 
