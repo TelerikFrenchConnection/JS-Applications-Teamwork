@@ -235,11 +235,11 @@ html, body {
 
 .book-description {
     text-align: left;
-    font-size: 13px;
+    font-size: 0.75em;
 }
 
 .twitter-share-button {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .contact {
@@ -384,4 +384,8 @@ html, body {
 .description-breaker {
     text-align: right;
     width: 75%;
+}
+
+.form-control {
+    border-color: #ddd;
 }

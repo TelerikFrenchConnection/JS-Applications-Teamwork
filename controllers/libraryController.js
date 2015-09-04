@@ -18,7 +18,8 @@ class libraryController {
         var categories = [];
 
         pagesHelper.append('library');
-        allBooks.find()
+        allBooks.descending("createdAt")
+            .find()
             .then(function(books) {
                 _.each(books, function(book) {
                     let category = book.attributes.category;

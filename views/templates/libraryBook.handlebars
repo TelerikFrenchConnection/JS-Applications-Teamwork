@@ -4,5 +4,5 @@
         <h7>{{this.attributes.author}}</h7>
     </div>
     <img src="{{this.attributes.pictureURL}}" class="img-responsive center-block" alt="{this.attributes.title}} cover" data-id="{{this.id}}">
-    <div><strong>Price:</strong> {{this.attributes.price}} Euro</div>
+    <div><strong>Price:</strong> {{#if this.attributes.price}}{{this.attributes.price}} Euro{{else}}Free{{/if}}</div>
 </div>

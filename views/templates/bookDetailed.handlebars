@@ -8,7 +8,7 @@
         <div class="row book-details-entry">
             <div class="">
                 <h4 class="book-details-title pull-left">{{this.attributes.title}}</h4>
-                <span class="book-details-views pull-right">[{{this.attributes.price}} Euro]</span>
+                <span class="book-details-views pull-right">[{{#if this.attributes.price}}{{this.attributes.price}} Euro{{else}}Free{{/if}}]</span>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
 
         <div class="row book-details-entry">
             <div class="">
-                <a href="{{this.attributes.kindleURL}}"><img class="book-details-title pull-left" src="http://lancehaynes.com/images/kindle_button.png" alt="Buy on kindle"/></a>
+                <a href="{{this.attributes.kindleURL}}"><img class="book-details-title pull-left" src="http://www.kremerresources.com/images/reynold-kremer-christian-books/buttons/button_amazon_kindle.gif" height="50px" alt="Buy on kindle"/></a>
                 <span class="pull-right">
                     <a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
                     <script>
