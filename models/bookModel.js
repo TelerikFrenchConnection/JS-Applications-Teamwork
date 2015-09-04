@@ -12,7 +12,7 @@ class bookModel {
 
             if (errors.length === 0) {
                 db.add('Book', book);
-                resolve()
+                resolve();
             } else {
                 reject(errors);
             }
@@ -72,32 +72,6 @@ class bookModel {
         });
     }
 
-    removeBooksBy(prop, value) {
-        var that = this;
-        return new Promise(function(resolve, reject) {
-            that.getBooks()
-                .equalTo(prop, value)
-                .find()
-                .then(function(booksToRemove) {
-
-                    if (booksToRemove.length < 1) {
-                        reject({
-                            message: 'No books to remove from "' + prop + '" with "' + value + '"'
-                        });
-                    }
-
-                    var promise = Parse.Promise.as();
-                    booksToRemove.forEach(function(book) {
-                        promise = promise.then(function() {
-                            return book.destroy();
-                        });
-                    });
-
-                    resolve(booksToRemove);
-                });
-        });
-    }
-
     removeBookById(id) {
         return this.getBooks().get(id, {
             success: function(receivedBook) {
@@ -116,40 +90,29 @@ class bookModel {
         }); 
     }
 
-    removeBookByTitle(title) {
-        return this.getBooks().get(title, {
-            success: function(receivedBook) {
-                receivedBook.destroy({
-                  success: function(myObject) {
-                    console.log('Book deleted successfully!');
-                    // The object was deleted from the Parse Cloud.
-                  },
-                  error: function(myObject, error) {
-                    console.log('Error at book destroying!');
-                    // The delete failed.
-                    // error is a Parse.Error with an error code and message.
-                  }
-                });
-            }
-        }); 
-    }
+    removeBooksBy(prop, value) {
+        var that = this;
+        return new Promise(function(resolve, reject) {
+            that.getBooks()
+                .equalTo(prop, value)
+                .find()
+                .then(function(booksToRemove) {
+                    if (booksToRemove.length < 1) {
+                        reject({
+                            message: 'No books to remove from "' + prop + '" with "' + value + '"'
+                        });
+                    }
 
-    removeBookByISBN(isbn) {
-        return this.getBooks().get(isbn, {
-            success: function(receivedBook) {
-                receivedBook.destroy({
-                  success: function(myObject) {
-                    console.log('Book deleted successfully!');
-                    // The object was deleted from the Parse Cloud.
-                  },
-                  error: function(myObject, error) {
-                    console.log('Error at book destroying!');
-                    // The delete failed.
-                    // error is a Parse.Error with an error code and message.
-                  }
+                    var promise = Parse.Promise.as();
+                    booksToRemove.forEach(function(book) {
+                        promise = promise.then(function() {
+                            return book.destroy();
+                        });
+                    });
+
+                    resolve(booksToRemove);
                 });
-            }
-        }); 
+        });
     }
 }
 
