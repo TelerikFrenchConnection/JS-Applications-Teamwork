@@ -53,37 +53,49 @@ class bookModel {
         });
     }
 
-    getBookBy(prop, value) {
+    getBooksBy(prop, value) {
         var that = this;
         return new Promise(function(resolve, reject) {
-            var bookQuery = that.getBooks();
-                bookQuery.equalTo(prop, value);
-                bookQuery.find({
-                    success: function(book) {
-                        resolve(book);
-                    },
-                    error: function(book, error) {
-                        reject(error);
+            that.getBooks()
+                .equalTo(prop, value)
+                .find({
+                    success: function(books) {
+                        if (books.length < 1) {
+                            reject({
+                                message: 'Could not retrieve any books from "' + prop + '" with "' + value + '"'
+                            });
+                        }
+
+                        resolve(books);
                     }
                 });
         });
     }
 
-    removeBookBy(prop) {
-    	return this.getBookBy(prop)
-            .then(function(bookToRemove) {
-                bookToRemove.destroy({
-                  success: function(myObject) {
-                    console.log('Book deleted successfully!');
-                    // The object was deleted from the Parse Cloud.
-                  },
-                  error: function(myObject, error) {
-                    console.log('Error at book destroying!');
-                    // The delete failed.
-                    // error is a Parse.Error with an error code and message.
-                  }
+    removeBooksBy(prop, value) {
+        var that = this;
+        return new Promise(function(resolve, reject) {
+            that.getBooks()
+                .equalTo(prop, value)
+                .find()
+                .then(function(booksToRemove) {
+
+                    if (booksToRemove.length < 1) {
+                        reject({
+                            message: 'No books to remove from "' + prop + '" with "' + value + '"'
+                        });
+                    }
+
+                    var promise = Parse.Promise.as();
+                    booksToRemove.forEach(function(book) {
+                        promise = promise.then(function() {
+                            return book.destroy();
+                        });
+                    });
+
+                    resolve(booksToRemove);
                 });
-            });
+        });
     }
 
     removeBookById(id) {
