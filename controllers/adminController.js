@@ -8,18 +8,18 @@ import bookModel from '../models/bookModel.js';
 
 
 class adminController {
-	load(sammy) {
+    load(sammy) {
         if(isUserAuthorized(sammy)){
             pagesHelper.append('admin');
             // show all contact form entires
         }
-	}
+    }
 
-	addBook(sammy) {
+    addBook(sammy) {
         if(isUserAuthorized(sammy)){
             pagesHelper.append('adminAddbook');
         }
-	}
+    }
 
     addBookPost(sammy) {
         var title = sammy.params['title'];
