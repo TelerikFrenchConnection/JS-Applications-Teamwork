@@ -9,7 +9,10 @@ import bookModel from '../models/bookModel.js';
 class homeController {
     load(sammy) {
         pagesHelper.append('home');
-        bookModel.getBooks().limit(3).find()
+        bookModel.getBooks()
+            .descending("createdAt")
+            .limit(3)
+            .find()
             .then(function(books){
                 return templatesHelper.append('libraryBook', books, '#library-content');
             })
